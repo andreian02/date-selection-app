@@ -5,19 +5,15 @@
   
   import {air_datepicker}  from "$lib/components/calendarItem";
   import localeEn from 'air-datepicker/locale/en';
-
-  import { helper, dayofbirthDetails, yearofBirthdate } from '../../Utils.js';
+  import { DayElement, dayofbirthDetails, yearofBirthdate } from '../../Utils.js';
   
-	
 	let isExpanded = false
 
 	function clickHandler() {
 		isExpanded = !isExpanded
 	}
 
-
-  let selected
-  
+  let selected  
   let shans = ['甲','卯','乙','辰','巽','巳','丙', '午', '丁', '未', '坤', 
                '申', '庚', '酉', "辛", '戌','乾','亥','壬','子','癸','丑','艮','寅'];
 
@@ -173,7 +169,7 @@
                       
                       );
               
-              dayElement = (helper(dz2.getDayGan()))
+              dayElement = (DayElement(dz2.getDayGan()))
               hStems = (dz2.getYearGan()+dz2.getMonthGan()+dz2.getDayGan()+dz2.getTimeGan())
               eStems = (dz2.getYearZhi()+dz2.getMonthZhi()+dz2.getDayZhi()+dz2.getTimeZhi())
 

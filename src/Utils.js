@@ -2,10 +2,10 @@ import { Lunar } from 'lunar-javascript'
 
 // 甲、乙、丙、丁、戊、己、庚、辛、壬、癸 
 
-export function helper(day){
+export function DayElement(day){
 
     //console.log("Utils...working?")
-    let elementOfDay =""
+    let elementOfDay = ""
 
     if (day == "壬" || day == "癸") {
       elementOfDay = "水"
@@ -24,42 +24,26 @@ export function helper(day){
 export function dayofbirthDetails(dob){
   let bz = ""
 
-
-  
   const person = Lunar.fromDate(dob);
   bz = (person.getYearGan()+person.getYearZhi()+"年 "
               +person.getMonthGan()+person.getMonthZhi()+"月 "
               +person.getDayGan()+person.getDayZhi()+"日 "
               +person.getTimeGan()+person.getTimeZhi()+"时"
               );
-
-  // let todayDate = new Date(); 
-  // const checker = Lunar.fromDate(todayDate);
-
-
-  // if (person.getDay() == checker.getDay()) {
-  //   bz = ""  
-  
-  // } else (bz = (person.getYearGan()+person.getYearZhi()+"年 "
-  //             +person.getMonthGan()+person.getMonthZhi()+"月 "
-  //             +person.getDayGan()+person.getDayZhi()+"日 "
-  //             +person.getTimeGan()+person.getTimeZhi()+"时"
-  //             ))
   return (bz)
 }
 
 export function yearofBirthdate(dob){
   
+  const person = Lunar.fromDate(dob);
   const birthYear = {
     hYear: "",
-    eYear: ""
+    eYear: "" 
   }
   
-  
-  const person = Lunar.fromDate(dob);
   birthYear.hYear = (person.getYearGan())
   birthYear.eYear = (person.getYearZhi())
-
   return (birthYear)
-
 }
+
+

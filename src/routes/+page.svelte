@@ -27,11 +27,9 @@
 	<div class="h-10 text-gray-500 mb-6 items-center mt-1">
 		择日是将选日期人的出生干支信息与当日的五行干支信息进行运算，去掉冲、克、刑、害对自身不好的日子，挑选出生助自身的好日子。
 	<p class="mb-2 text-center tracking-tight p-8">
-		{data.Ldate} . 
+		{data.Ldate} ·
 		{data.Year}年 {data.Month}月 {data.Day}日
-		{data.solar2.getLunar().toFullString()}
 	</p>
-	
 	</div>
 
 	
@@ -48,14 +46,6 @@
 
 	h1 {
 		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
 	}
 
 	picture {

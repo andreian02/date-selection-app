@@ -15,10 +15,10 @@
           Input Details:
         </h4>
         <p class="text-gray-500 m-2">
-          Person 1 Details: {keys[0]}
+          Person 1 DOB: {keys[0]}
         </p>
         <p class="text-gray-500 m-2">
-          Person 2 Details: {keys[1]}
+          Person 2 DOB: {keys[1]}
         </p>
         <p class="text-gray-500 mx-2 mb-6">
           Door Sector: {sector}
@@ -33,19 +33,19 @@
                         Date (五行)
                       </th>
                       <th scope="col" class="px-6 py-4">
-                        年 - 月 - 日 - 时
+                        年 月 日 时
                       </th>
                       <th scope="col" class="px-6 py-4">
                         命主 (年柱)
                       </th>
                       <th scope="col" class="px-6 py-4">
-                        门方为
+                        门
                       </th>
                       <th scope="col" class="px-6 py-4">
-                        Category2
+                        Score
                       </th>
                       <th scope="col" class="px-6 py-4">
-                        Placeholder
+                        Rank
                       </th>
                   </tr>
                 

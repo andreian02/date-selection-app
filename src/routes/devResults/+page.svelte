@@ -29,20 +29,25 @@
     birthYear = data
   })
 
-
+ 
+  export let data
 </script>
 
 
 <ResultTable {payload}, {sector} {keys} {birthYear}/>
 
 
-<div>
+
+
+
+
+<!-- <div>
   {#each payload as item}
     <div>
      {item.key} - {item.value} 
     </div>  
 {/each}
-</div>
+</div> -->
 
 
 

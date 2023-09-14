@@ -19,11 +19,8 @@
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/calendarForm') ? 'page' : undefined}>
-				<a href="/calendarForm">Date Selection</a>
-			</li>
-			<!-- <li aria-current={$page.url.pathname.startsWith('/trial') ? 'page' : undefined}>
-				<a href="/trial">Trial</a>
+			<!-- <li aria-current={$page.url.pathname.startsWith('/calendarForm') ? 'page' : undefined}>
+				<a href="/calendarForm">DS</a>
 			</li> -->
 			<li aria-current={$page.url.pathname.startsWith('/devCalendar') ? 'page' : undefined}>
 				<a href="/devCalendar">Dev</a>
