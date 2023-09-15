@@ -3,6 +3,7 @@
     export let keys
     export let sector
     export let birthYear
+    export let sectorElement
     
 </script>
 
@@ -21,7 +22,7 @@
           Person 2 DOB: {keys[1]}
         </p>
         <p class="text-gray-500 mx-2 mb-6">
-          Door Sector: {sector}
+          Door Sector: {sectorElement}
         </p>
   
   
@@ -66,7 +67,13 @@
                         <p>{birthYear[0].eYear} | {birthYear[1].eYear}</p>
                       </td>
                       <td class="px-6 py-4 text-base">
-                        {item.door}
+                        {sectorElement}
+                      </td>
+                      <td class="px-6 py-4 text-base">
+                        {item.score}
+                      </td>
+                      <td class="px-6 py-4 text-base">
+                        {item.score}
                       </td>
                   </tr>
                   {/each}

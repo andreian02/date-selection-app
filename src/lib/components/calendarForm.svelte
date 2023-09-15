@@ -148,7 +148,7 @@
 
           for (let i = 0; i <24; i+=2) {
               const dzt1 = new Date(date.setHours(i))
-              console.log(dzt1)
+              //console.log(dzt1)
               const engdate = Solar.fromDate(dzt1)
               const dz2 = Lunar.fromDate(dzt1)
               
@@ -161,17 +161,17 @@
 
               engDate = (engdate.getDay()+"·"+engdate.getMonth()+"·"+engdate.getYear())
               
-              console.log("looping:", dzt1, engdate.getDay(), engdate.getMonth(), engdate.getYear());
-              console.log('年干支：'+dz2.getYearInGanZhi(), 
-                      '月干支：'+dz2.getMonthInGanZhiExact(),
-                      '日干支：'+dz2.getDayInGanZhi(),
-                      '时辰干支：'+dz2.getTimeInGanZhi()
+              // console.log("looping:", dzt1, engdate.getDay(), engdate.getMonth(), engdate.getYear());
+              // console.log('年干支：'+dz2.getYearInGanZhi(), 
+              //         '月干支：'+dz2.getMonthInGanZhiExact(),
+              //         '日干支：'+dz2.getDayInGanZhi(),
+              //         '时辰干支：'+dz2.getTimeInGanZhi()
                       
-                      );
+              //         );
               
               dayElement = (DayElement(dz2.getDayGan()))
-              hStems = (dz2.getYearGan()+dz2.getMonthGan()+dz2.getDayGan()+dz2.getTimeGan())
-              eStems = (dz2.getYearZhi()+dz2.getMonthZhi()+dz2.getDayZhi()+dz2.getTimeZhi())
+              hStems = (dz2.getYearGan()+" "+dz2.getMonthGan()+" "+dz2.getDayGan()+" "+dz2.getTimeGan())
+              eStems = (dz2.getYearZhi()+" "+dz2.getMonthZhi()+" "+dz2.getDayZhi()+" "+dz2.getTimeZhi())
 
               
               

@@ -1,6 +1,10 @@
+<!-- this is result page.  -->
+
 <script>
   import ResultTable from "$lib/components/resultTable.svelte";
   import { Dcodes, doorSector, homeowners, yearKeys } from '../../Store.js';
+
+  import {checkElement, checkPayload} from '../../Utils.js'
 
   export let sector
   export let payload 
@@ -29,25 +33,107 @@
     birthYear = data
   })
 
- 
   export let data
+
+  let sectorElement = checkElement(sector)
+
+  let sanhe1 
+  let sanhe2 
+
+  let sanhui1 
+  let sanhui2 
+
+  let 合2 = ""
+  let 冲2 = ""
+  let 合1 = ""
+  let 冲1 = ""
+
+
+
+  let stemName1 = birthYear[0].hYear
+  let stemName2 = birthYear[1].hYear
+  
+  
+
+  // export function queryProperty(stemName, propertyName) {
+  //   const properties = this.forwardMap.get(stemName);
+  //   if (properties && properties.hasOwnProperty(propertyName)) {
+  //     return properties[propertyName];
+  //   } else {
+  //     return `Property '${propertyName}' not found for '${stemName}'.`;
+  //   }
+  // }
+  合1 = (data.stemMap.queryProperty(stemName1, '合' ))
+  冲1 = (data.stemMap.queryProperty(stemName1, '冲' ))
+  合2 = (data.stemMap.queryProperty(stemName2, '合' ))
+  冲2 = (data.stemMap.queryProperty(stemName2, '冲' ))
+
+  //console.log('#################################')
+  //console.log(合1,合2,冲1,冲2)
+
+
+  // sanhe1 = (data.stemMap.queryProperty(stemName1, 'sanhe' ))
+  // sanhui1 = (data.stemMap.queryProperty(stemName1, 'sanhui' ))
+
+  // sanhe2 = (data.stemMap.queryProperty(stemName2, 'sanhe' ))
+  // sanhui2 = (data.stemMap.queryProperty(stemName2, 'sanhui' ))
+
+  //console.log(sanhe1, sanhe2, sanhui1, sanhui2)
+  // console.log(payload[0])
+  // console.log(payload[5])
+
+  let result = checkPayload(payload, birthYear, 合1,合2,冲1,冲2)
+  console.log(result)
+
+  
 </script>
 
 
-<ResultTable {payload}, {sector} {keys} {birthYear}/>
+<ResultTable {payload}, {sectorElement} {keys} {birthYear}/>
 
 
 
 
 
+<div class="m-4">
+<p>sector: {sector} | {sectorElement}</p>
+<p>Owner1: {keys[0]}</p>
+<p>Owner2: {keys[1]}</p>
+</div>
 
-<!-- <div>
-  {#each payload as item}
+<div>
+  
+</div>
+
+<div>
+  
+</div>
+
+<div class="m-4">
+  
+    <div>Select Date / DayE / HStm / EStm / DrSctr / DrE / O1 & O2 / </div> 
+    {#each payload as item}
     <div>
-     {item.key} - {item.value} 
+     {item.detail} - {item.dayEl} - {item.hvalue}
+    
+    
+     | {birthYear[0].hYear} {birthYear[1].hYear} 
+
+     | {item.chonghe}
+     | {item.score}
+
+     | {sector} | {checkElement(sector)} 
     </div>  
 {/each}
-</div> -->
+</div>
+
+
+
+
+{birthYear[0].hYear} | {birthYear[0].eYear}
+{birthYear[1].hYear} | {birthYear[1].eYear}
+
+
 
 
 
