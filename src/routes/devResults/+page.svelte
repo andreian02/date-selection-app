@@ -4,7 +4,7 @@
   import ResultTable from "$lib/components/resultTable.svelte";
   import { Dcodes, doorSector, homeowners, yearKeys } from '../../Store.js';
 
-  import {checkElement, checkPayload} from '../../Utils.js'
+  import {checkElement, version2} from '../../Utils.js'
 
   export let sector
   export let payload 
@@ -82,14 +82,14 @@
   // console.log(payload[0])
   // console.log(payload[5])
 
-  let result = checkPayload(payload, birthYear, 合1,合2,冲1,冲2)
-  console.log(result)
-
+  //Analying Tiangan
+  version2(payload, birthYear, 合1,合2,冲1,冲2)
+  
   
 </script>
 
 
-<ResultTable {payload}, {sectorElement} {keys} {birthYear}/>
+<!-- <ResultTable {payload}, {sectorElement} {keys} {birthYear}/> -->
 
 
 
@@ -101,37 +101,30 @@
 <p>Owner2: {keys[1]}</p>
 </div>
 
-<div>
-  
-</div>
-
-<div>
-  
-</div>
 
 <div class="m-4">
   
-    <div>Select Date / DayE / HStm / EStm / DrSctr / DrE / O1 & O2 / </div> 
+    <div>Select Date / DayE / HStm / O1 & O2 / Analysis Score / DrE </div> 
     {#each payload as item}
     <div>
      {item.detail} - {item.dayEl} - {item.hvalue}
-    
-    
-     | {birthYear[0].hYear} {birthYear[1].hYear} 
-
+     | {birthYear[0].hYear} - {birthYear[1].hYear} 
      | {item.chonghe}
-     | {item.score}
-
-     | {sector} | {checkElement(sector)} 
+     | {item.tganhe}
+     | {sectorElement} 
     </div>  
 {/each}
 </div>
 
 
 
+<p>
+  {birthYear[0].hYear} | {birthYear[1].hYear}
+</p>
+<p>
+  {birthYear[0].eYear} | {birthYear[1].eYear}
+</p>
 
-{birthYear[0].hYear} | {birthYear[0].eYear}
-{birthYear[1].hYear} | {birthYear[1].eYear}
 
 
 

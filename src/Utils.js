@@ -1,60 +1,6 @@
 import { Lunar } from 'lunar-javascript'
 
 // '甲','卯','乙','辰','巽','巳','丙', '午', '丁', '未', '坤', '申', '庚', '酉', "辛", '戌','乾','亥','壬','子','癸','丑','艮','寅'
-
-export function checkPayload(payload, birthYear, 合1,合2, 冲1,冲2){
-  
-  for (let i = 0; i < payload.length; i++) {
-    let findings = ""
-    let score = 1;
-    const ownersArray = [birthYear[0]['hYear'], birthYear[1]['hYear']]
-    const myArray = (payload[i]['hvalue']).split(" ") //date + time.
-
-    console.log('#################################')
-    //console.log("Date+Time" ,myArray)
-    //console.log("ownerYear" ,ownersArray)
-
-    //console.log(合1)
-    //console.log(myArray.indexOf(合1) >-1)
-      if (myArray.indexOf(合1) >-1){
-        console.log(myArray, "有合", ownersArray)
-        findings += "有合"
-        score ++
-        
-      } 
-      if (myArray.indexOf(合2) >-1){
-        console.log(myArray, "有合", ownersArray) 
-        findings += "有合"
-        score ++
-        
-      } 
-      if (myArray.indexOf(冲1) >-1){
-        console.log(myArray, "有冲", ownersArray) 
-        findings += "有冲"
-        score -=1
-      } 
-      if (myArray.indexOf(冲2) >-1){
-        console.log(myArray, "有冲", ownersArray) 
-        findings += "有冲"
-        score -=1
-      } 
-      else {
-        findings += ""
-        
-      }
-      console.log('---ss--')
-      payload[i]['chonghe']= findings
-      payload[i]['score'] = score
-  } 
-
-  return (payload)
-} 
-
-
-
-
-
-
 export function checkElement(input){
   
   let element =  ""
@@ -72,6 +18,106 @@ export function checkElement(input){
   }
       return element
   };
+
+
+export function tianganhe(input){
+  let combinedElement = ""
+  if (input == "甲己" || input == "己甲") {
+    combinedElement = "土"
+  }
+  if (input == "乙庚" || input == "庚乙") {
+    combinedElement = "金"
+  } 
+  if (input == "丙辛" || input == "辛丙"){
+    combinedElement = "水"
+  }
+  if (input == "丁壬" || input == "壬丁"){
+    combinedElement = "木"
+  }
+  return combinedElement
+}
+  
+
+
+export function version2(payload, birthYear, 合1,合2, 冲1,冲2){
+  
+    for (let i = 0; i < payload.length; i++) {
+      //let findings = ""
+      //let score = 0;
+      const ownersArray = [birthYear[0]['hYear'], birthYear[1]['hYear']]
+      const myArray = (payload[i]['hvalue']).split(" ") //date + time.
+  
+        console.log('---------------------------')
+        let findings = ""
+        let input = ""
+        let combinedElement = "";
+        for (let j = 0; j < myArray.length; j++) {
+          
+          if (myArray[j] === 合1) {
+            findings += "有合"
+            console.log(`${i} 有合 Value ${合1} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
+            console.log('x',findings)
+            let input = ""
+            input = `${myArray[j]}${ownersArray[0]}`
+            combinedElement = tianganhe(input)
+            console.log(tianganhe(input))
+
+
+             // If you want to stop searching after finding the first occurrence
+          }
+          if (myArray[j] === 合2) {
+            findings += "有合"
+            console.log(`${i} 有合 Value ${合2} found at index ${j}, ${myArray[j]}, ${ownersArray[1]}`);
+            console.log('x',findings)
+            let input = ""
+            input = `${myArray[j]}${ownersArray[1]}`
+            combinedElement = tianganhe(input)
+            console.log(tianganhe(input))
+             // If you want to stop searching after finding the first occurrence
+          }
+          if (myArray[j] === 冲1) {
+            findings += "有冲"
+            console.log(`${i} 有冲 Value ${冲1} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
+            console.log('x',findings)
+            
+             // If you want to stop searching after finding the first occurrence
+          }
+          if (myArray[j] === 冲2) {
+            findings += "有冲"
+            console.log(`${i} 有冲 Value ${冲2} found at index ${j}, ${myArray[j]}, ${ownersArray[1]}`);
+            console.log('x',findings)
+             // If you want to stop searching after finding the first occurrence
+          } 
+          else {
+            findings += ""
+            
+          }   
+
+        payload[i]['chonghe'] = findings
+        payload[i]['tganhe'] = combinedElement
+        //console.log('y', findings)      
+        //payload[j]['chonghe'] = findings
+        //console.log("Date+Time" ,myArray)
+        //console.log("ownerYear" ,ownersArray)
+        }
+        console.log('---version2----------')
+       
+        } 
+        console.log(payload)
+        return (payload)
+        
+  }
+
+
+
+// export function elementRS(){
+//   if 
+
+// }
+
+
+
+
 
 
 

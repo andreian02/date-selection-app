@@ -179,9 +179,9 @@
               payload.push({key:i, 
                             detail:engDate, 
                             dayEl: dayElement,
-                            hvalue: hStems,
                             evalue: eStems,
-                            door: selected})
+                            hvalue: hStems
+                          })
 
               payload = payload
 
