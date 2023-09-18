@@ -14,9 +14,8 @@
 	}
 
   let selected  
-  let shans = ['甲','卯','乙','辰','巽','巳','丙', '午', '丁', '未', '坤', 
-               '申', '庚', '酉', "辛", '戌','乾','亥','壬','子','癸','丑','艮','寅'];
-
+  let sectors = ['震', '巽','离', '坤', '兑',  '乾', '坎', '艮' ];
+  
 
   let todayDate = new Date(); 
   
@@ -180,8 +179,8 @@
                             detail:engDate, 
                             dayEl: dayElement,
                             evalue: eStems,
-                            hvalue: hStems
-                          })
+                            hvalue: hStems,
+                            door: selected})
 
               payload = payload
 
@@ -249,9 +248,9 @@
                 <div class="md:col-span-1">
                   <label for="TwentyFourMountain">Door Sector</label>
                       <select type="text" name="zipcode" id="zipcode" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" bind:value={selected}>
-                        {#each shans as shan}
-                          <option value={shan}>
-                            {shan}
+                        {#each sectors as gram}
+                          <option value={gram}>
+                            {gram}
                           </option>
                         {/each}
                     </select>

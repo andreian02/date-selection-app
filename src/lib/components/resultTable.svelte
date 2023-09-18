@@ -4,6 +4,17 @@
     export let sector
     export let birthYear
     export let sectorElement
+
+    let filterValue = ""; // Initialize the filter value
+    
+    function filterData() {
+      return payload.filter((item) => item.dayEl != "金");}
+
+      
+    
+      payload = filterData()
+
+
     
 </script>
 
