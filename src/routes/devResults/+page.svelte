@@ -4,7 +4,7 @@
   import ResultTable from "$lib/components/resultTable.svelte";
   import { Dcodes, doorSector, homeowners, yearKeys } from '../../Store.js';
 
-  import {checkElement, version2, version4} from '../../Utils.js'
+  import {checkElement, version2, version4, version5} from '../../Utils.js'
 
   export let sector
   export let payload 
@@ -37,6 +37,7 @@
 
   let sectorElement = checkElement(sector)
 
+
   let 合1 = ""
   let 冲1 = ""
   let 合2 = ""
@@ -53,6 +54,7 @@
 
   let stemName3 = birthYear[0].eYear
   let stemName4 = birthYear[1].eYear
+
   
   // export function queryProperty(stemName, propertyName) {
   //   const properties = this.forwardMap.get(stemName);
@@ -67,13 +69,16 @@
   合2 = (data.stemMap.queryProperty(stemName2, '合' ))
   冲2 = (data.stemMap.queryProperty(stemName2, '冲' ))
 
-  合3 = (data.stemMap.queryProperty(stemName3, '合' ))
+  合3 = (data.stemMap.queryProperty(stemName3, 'L合' ))
   冲3 = (data.stemMap.queryProperty(stemName3, '冲' ))
-  合4 = (data.stemMap.queryProperty(stemName4, '合' ))
+  合4 = (data.stemMap.queryProperty(stemName4, 'L合' ))
   冲4 = (data.stemMap.queryProperty(stemName4, '冲' ))
-  //console.log('#################################')
-  //console.log(合1,合2,冲1,冲2)
-
+  
+  console.log('############################')
+  console.log(合1,合2,冲1,冲2)
+  console.log(合3,合4,冲3,冲4)
+  
+  // console.log("refList", data.refList)
 
   // sanhe1 = (data.stemMap.queryProperty(stemName1, 'sanhe' ))
   // sanhui1 = (data.stemMap.queryProperty(stemName1, 'sanhui' ))
@@ -88,7 +93,7 @@
   //Analying Tiangan
   version2(payload, birthYear, 合1,合2,冲1,冲2)
   version4(payload, birthYear, 合3,合4,冲3,冲4)
-  
+  version5(payload, birthYear)
   
 </script>
 
