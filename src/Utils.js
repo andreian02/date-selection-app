@@ -295,14 +295,14 @@ export function version4(payload, birthYear, 合3,合4, 冲3,冲4){
 //version4 is to check 地支 合/冲 关系
 export function version5(payload, birthYear){
   const reflist = [{name:"金", title:["巳", "酉", "丑"],type:"三合"}, 
-                 {name:"水", title:["申", "子", "辰"],type:"三合"},
-                 {name:"火", title:["寅", "午", "戌"],type:"三合"},
-                 {name:"木", title:["亥", "卯", "未"],type:"三合"},
+                   {name:"水", title:["申", "子", "辰"],type:"三合"},
+                   {name:"火", title:["寅", "午", "戌"],type:"三合"},
+                   {name:"木", title:["亥", "卯", "未"],type:"三合"},
 
-                 {name:"金", title:["申", "酉", "戌"],type:"三会"}, 
-                 {name:"水", title:["丑", "子", "亥"],type:"三会"},
-                 {name:"火", title:["巳", "午", "未"],type:"三会"},
-                 {name:"木", title:["寅", "卯", "辰"],type:"三会"},
+                   {name:"金", title:["申", "酉", "戌"],type:"三会"}, 
+                   {name:"水", title:["丑", "子", "亥"],type:"三会"},
+                   {name:"火", title:["巳", "午", "未"],type:"三会"},
+                   {name:"木", title:["寅", "卯", "辰"],type:"三会"},
                 ]
   
   
@@ -324,18 +324,19 @@ export function version5(payload, birthYear){
     console.log('-------------version5------------------------------')
     
     console.log('date:', (payload[i]['evalue'])  ,'dayElement:', dayElement,  'owners:' ,ownersArray ,'doorSector:', doorElement)
-    let findings = ""
-    let input = ""
+    
     let combinedElement = "";
-    let relationship = "";
+    let combinedElements = [];
     let result = [];
 
     for (let z=0; z<reflist.length; z++) {
         console.log("checking array...",reflist[z].title, "against", arrList)
         let cList = reflist[z].title
         
+        let relationship = "";
+        let findings = ""
         let count = 0
-          
+
         for (let j=0; j<arrList.length; j++){
             console.log("find:",arrList[j])
             if (cList.includes(arrList[j])){
@@ -343,21 +344,28 @@ export function version5(payload, birthYear){
                 console.log([j], arrList[j], "found", "count:", count)	
                   
                 if (count == 3) {
-                  let type = reflist[z].type
-                  let result = reflist[z].name; 
-                  console.log("found all 3 values!", "result:", type, result)
+                  findings += reflist[z].type
+                  combinedElement = reflist[z].name; 
+                  relationship = elementRS(doorElement, combinedElement )
+                  result.push(relationship)
+                  combinedElements.push(combinedElement)
+                  console.log("found all 3 values!", "result:", findings, combinedElement, relationship)
                 } 
               } 
+              else {
+                findings += ""
+                combinedElement += ""
+                relationship += ""
+              }   
             }
 
-        }   
-          //payload[i]['chonghe2'] = findings
-          //payload[i]['dzhihe'] = combinedElement
-          //payload[i]['z_relationship'] = result
+          } //payload[i]['chonghe2'] = findings
+            payload[i]['dzhisanhe'] = combinedElements
+            payload[i]['z_relationship2'] = result
         
-      } console.log("version5")
-        console.log(payload)
-        return (payload)
+        } console.log("version5")
+          console.log(payload)
+          return (payload)
   } 
 
 
