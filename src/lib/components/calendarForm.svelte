@@ -155,8 +155,8 @@
               let engDate = ""
               let dayElement = ""
               
-              let hStems = "" 
-              let eStems = ""
+              let gStems = "" 
+              let zStems = ""
 
               engDate = (engdate.getDay()+"·"+engdate.getMonth()+"·"+engdate.getYear())
               
@@ -169,17 +169,17 @@
               //         );
               
               dayElement = (DayElement(dz2.getDayGan()))
-              hStems = (dz2.getYearGan()+" "+dz2.getMonthGan()+" "+dz2.getDayGan()+" "+dz2.getTimeGan())
-              eStems = (dz2.getYearZhi()+" "+dz2.getMonthZhi()+" "+dz2.getDayZhi()+" "+dz2.getTimeZhi())
+              gStems = (dz2.getYearGan()+" "+dz2.getMonthGan()+" "+dz2.getDayGan()+" "+dz2.getTimeGan())
+              zStems = (dz2.getYearZhi()+" "+dz2.getMonthZhi()+" "+dz2.getDayZhi()+" "+dz2.getTimeZhi())
 
               
               
 
               payload.push({key:i, 
-                            detail:engDate, 
+                            date:engDate, 
                             dayEl: dayElement,
-                            evalue: eStems,
-                            hvalue: hStems,
+                            gValue: gStems,
+                            zValue: zStems,
                             door: selected})
 
               payload = payload

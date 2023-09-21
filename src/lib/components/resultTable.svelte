@@ -65,16 +65,16 @@
                 {#each payload as item} 
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                       <th scope="row" class="px-6 py-4 text-xs text-center text-gray-700 whitespace-nowrap dark:text-white">
-                        <p>{item.detail} ({item.dayEl})</p>
+                        <p>{item.date} ({item.dayEl})</p>
                         
                       </th>
                       <td class="px-6 py-4 text-base">
-                        <p>{item.hvalue}</p>
-                        <p>{item.evalue}</p>
+                        <p>{item.gValue}</p>
+                        <p>{item.zValue}</p>
                       </td>
                       <td class="px-6 py-4 text-base">
-                        <p>{birthYear[0].hYear} | {birthYear[1].hYear}</p>
-                        <p>{birthYear[0].eYear} | {birthYear[1].eYear}</p>
+                        <p>{birthYear[0].gYear} | {birthYear[1].gYear}</p>
+                        <p>{birthYear[0].zYear} | {birthYear[1].zYear}</p>
                       </td>
                       <td class="px-6 py-4 text-base">
                         {sectorElement}

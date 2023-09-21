@@ -4,7 +4,7 @@
   import ResultTable from "$lib/components/resultTable.svelte";
   import { Dcodes, doorSector, homeowners, yearKeys } from '../../Store.js';
 
-  import {checkElement, version2, version4, version5} from '../../Utils.js'
+  import {checkElement, version2, version3, version4, version5} from '../../Utils.js'
 
   export let sector
   export let payload 
@@ -49,21 +49,13 @@
   let 冲4 = ""
 
 
-  let stemName1 = birthYear[0].hYear
-  let stemName2 = birthYear[1].hYear
+  let stemName1 = birthYear[0].gYear
+  let stemName2 = birthYear[1].gYear
 
-  let stemName3 = birthYear[0].eYear
-  let stemName4 = birthYear[1].eYear
+  let stemName3 = birthYear[0].zYear
+  let stemName4 = birthYear[1].zYear
 
   
-  // export function queryProperty(stemName, propertyName) {
-  //   const properties = this.forwardMap.get(stemName);
-  //   if (properties && properties.hasOwnProperty(propertyName)) {
-  //     return properties[propertyName];
-  //   } else {
-  //     return `Property '${propertyName}' not found for '${stemName}'.`;
-  //   }
-  // }
   合1 = (data.stemMap.queryProperty(stemName1, '合' ))
   冲1 = (data.stemMap.queryProperty(stemName1, '冲' ))
   合2 = (data.stemMap.queryProperty(stemName2, '合' ))
@@ -74,25 +66,14 @@
   合4 = (data.stemMap.queryProperty(stemName4, 'L合' ))
   冲4 = (data.stemMap.queryProperty(stemName4, '冲' ))
   
-  console.log('############################')
-  console.log(合1,合2,冲1,冲2)
-  console.log(合3,合4,冲3,冲4)
-  
-  // console.log("refList", data.refList)
-
-  // sanhe1 = (data.stemMap.queryProperty(stemName1, 'sanhe' ))
-  // sanhui1 = (data.stemMap.queryProperty(stemName1, 'sanhui' ))
-
-  // sanhe2 = (data.stemMap.queryProperty(stemName2, 'sanhe' ))
-  // sanhui2 = (data.stemMap.queryProperty(stemName2, 'sanhui' ))
-
-  //console.log(sanhe1, sanhe2, sanhui1, sanhui2)
-  // console.log(payload[0])
-  // console.log(payload[5])
+  // console.log('############################')
+  // console.log(合1,合2,冲1,冲2)
+  // console.log(合3,合4,冲3,冲4)
 
   //Analying Tiangan
   version2(payload, birthYear, 合1,合2,冲1,冲2)
-  version4(payload, birthYear, 合3,合4,冲3,冲4)
+  version3(payload, birthYear, 合3,合4,冲3,冲4)
+  version4(payload, birthYear)
   version5(payload, birthYear)
   
 </script>
@@ -106,8 +87,8 @@
 
 <div class="m-4">
 <p>sector: {sector} | {sectorElement}</p>
-<p>Owner1: {keys[0]}  ({birthYear[0].hYear}|{birthYear[1].hYear}) </p> 
-<p>Owner2: {keys[1]}  ({birthYear[0].eYear}|{birthYear[1].eYear}) </p>
+<p>Owner1: {keys[0]}  ({birthYear[0].gYear}|{birthYear[1].gYear}) </p> 
+<p>Owner2: {keys[1]}  ({birthYear[0].zYear}|{birthYear[1].zYear}) </p>
 </div>
 
 
@@ -117,13 +98,13 @@
     <div>Select Date / DayE / HStm / O1 & O2 / Analysis Score / DrE </div> 
     {#each payload as item}
     <div>
-     {item.detail} - {item.dayEl} 
+     {item.date} - {item.dayEl} 
      -
      门卦:  {sectorElement} 
      -
-      {item.hvalue} / {item.evalue} 
+      {item.gValue} / {item.zValue} 
      -
-     Owner 1: {birthYear[0].hYear} {birthYear[0].eYear} - Owner 2: {birthYear[1].hYear} {birthYear[1].eYear}
+     Owner 1: {birthYear[0].gYear} {birthYear[0].zYear} - Owner 2: {birthYear[1].gYear} {birthYear[1].zYear}
      - 天干关系: {item.tganhe} {item.chonghe1}
        地支关系: {item.dzhihe} {item.chonghe2}
     </div>  

@@ -3,18 +3,6 @@ import BiDirectionalStems from '$lib/CustomClass';
 
 
 export async function load() {
-
-    const refList = [{name:"金", title:["巳", "酉", "丑"],type:"三合"}, 
-                     {name:"水", title:["申", "子", "辰"],type:"三合"},
-                     {name:"火", title:["寅", "午", "戌"],type:"三合"},
-                     {name:"木", title:["亥", "卯", "未"],type:"三合"},
-
-                     {name:"金", title:["申", "酉", "戌"],type:"三会"}, 
-                     {name:"水", title:["丑", "子", "亥"],type:"三会"},
-                     {name:"火", title:["巳", "午", "未"],type:"三会"},
-                     {name:"木", title:["寅", "卯", "辰"],type:"三会"},
-                    ]
-
     const stemMap = new BiDirectionalStems();
 
     stemMap.addStem("甲", {
@@ -55,7 +43,7 @@ export async function load() {
     });
     stemMap.addStem("癸", {
       合: "戊",
-      冲: "",
+      冲: "丁",
     });
 
     stemMap.addStem("丑", {
@@ -159,8 +147,7 @@ export async function load() {
     
   
     return {  
-        stemMap,
-        refList
+        stemMap
       }
     };
 
