@@ -45,14 +45,15 @@
   let 合4 = ""
   let 冲4 = ""
 
-  let stemName1 = birthYear[0].gYear
+  let stemName1 = birthYear[0].gYear 
   let stemName2 = birthYear[1].gYear
 
-  let stemName3 = birthYear[0].zYear
+  let stemName3 = birthYear[0].zYear 
   let stemName4 = birthYear[1].zYear
 
   合1 = (data.stemMap.queryProperty(stemName1, '合' ))
   冲1 = (data.stemMap.queryProperty(stemName1, '冲' ))
+  
   合2 = (data.stemMap.queryProperty(stemName2, '合' ))
   冲2 = (data.stemMap.queryProperty(stemName2, '冲' ))
 
@@ -61,8 +62,10 @@
   合4 = (data.stemMap.queryProperty(stemName4, 'L合' ))
   冲4 = (data.stemMap.queryProperty(stemName4, '冲' ))
   
-  // console.log(合1,合2,冲1,冲2)
-  // console.log(合3,合4,冲3,冲4)
+  
+  // console.log(stemName1, stemName2)
+  // console.log("Gan",合1,合2,冲1,冲2)
+  // console.log("Zhi",合3,合4,冲3,冲4)
 
   //Analying Tiangan
   version2(payload, birthYear, 合1,合2,冲1,冲2)

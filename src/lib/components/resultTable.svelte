@@ -35,22 +35,22 @@
           <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                  <tr>
-                      <th scope="col" class="text-center px-6 py-4">
+                      <th scope="col" class="text-center px-4 py-4">
                         Date (五行)
                       </th>
-                      <th scope="col" class="px-6 py-4">
+                      <th scope="col" class="px-4 py-4">
                         年 月 日 时
                       </th>
-                      <th scope="col" class="px-6 py-4">
+                      <th scope="col" class="px-4 py-4">
                         命主 (年柱)
                       </th>
-                      <th scope="col" class="px-6 py-4">
-                        门
+                      <th scope="col" class="px-4 py-4">
+                        TBC
                       </th>
-                      <th scope="col" class="px-6 py-4">
+                      <th scope="col" class="px-4 py-4">
                         Score
                       </th>
-                      <th scope="col" class="px-6 py-4">
+                      <th scope="col" class="px-4 py-4">
                         Rank
                       </th>
                   </tr>
@@ -59,25 +59,25 @@
               <tbody>
                 {#each payload as item} 
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <th scope="row" class="px-6 py-4 text-xs text-center text-gray-700 whitespace-nowrap dark:text-white">
+                      <th scope="row" class="px-4 py-4 text-xs text-center text-gray-700 whitespace-nowrap dark:text-white">
                         <p>{item.date} ({item.dayEl})</p>
                         
                       </th>
-                      <td class="px-6 py-4 text-base">
+                      <td class="px-4 py-4 text-base">
                         <p>{item.gValue}</p>
                         <p>{item.zValue}</p>
                       </td>
-                      <td class="px-6 py-4 text-base">
+                      <td class="px-4 py-4 text-base">
                         <p>{birthYear[0].gYear} | {birthYear[1].gYear}</p>
                         <p>{birthYear[0].zYear} | {birthYear[1].zYear}</p>
                       </td>
-                      <td class="px-6 py-4 text-base">
-                        {sectorElement}
+                      <td class="px-4 py-4 text-base">
+                        TBC
                       </td>
-                      <td class="px-6 py-4 text-base">
+                      <td class="px-4 py-4 text-base">
                         {item.score}
                       </td>
-                      <td class="px-6 py-4 text-base">
+                      <td class="px-4 py-4 text-base">
                         {item.score}
                       </td>
                   </tr>

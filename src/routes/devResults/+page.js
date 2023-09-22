@@ -30,8 +30,8 @@ export async function load() {
       冲: "",
     });
     stemMap.addStem("庚", {
-      合: "午",
-      冲: "子",
+      合: "乙",
+      冲: "甲",
     });
     stemMap.addStem("辛", {
       合: "丙",
@@ -44,6 +44,15 @@ export async function load() {
     stemMap.addStem("癸", {
       合: "戊",
       冲: "丁",
+    });
+
+    stemMap.addStem("子", {
+      会: ["丑","亥"],
+      S合: ["申","辰"],
+      冲: "午",
+      L合: "丑",
+      刑: ["卯"],
+      破: "酉",
     });
 
     stemMap.addStem("丑", {

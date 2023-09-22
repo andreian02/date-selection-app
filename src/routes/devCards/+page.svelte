@@ -1,5 +1,4 @@
 <script>
-  import ResultTable from "$lib/components/resultTable.svelte";
   import CardComp from "$lib/components/cardCom.svelte";
   import { Dcodes } from '../../Store.js';
 
@@ -20,7 +19,7 @@
 <div>
   {#each payload as item}
     <div>
-    {item.key} - {item.value} 
+    {item.index} - {item.date} 
     </div>  
 {/each}
 </div>

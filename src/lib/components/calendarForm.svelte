@@ -175,7 +175,7 @@
               counter++ 
               
 
-              payload.push({index:counter,
+              payload.push({andex:counter,
                             date:engDate, 
                             dayEl: dayElement,
                             gValue: gStems,
