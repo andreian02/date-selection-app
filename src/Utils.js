@@ -449,10 +449,15 @@ export function version5(payload, birthYear){
     let owners = [owner1, owner2];
     
     const myArray = (payload[i]['zValue']) //date + time.
-    //let dtList = [...new Set(myArray)]
+    const myArray2 = (payload[i]['zValue']).split(" ")
+
+    let dtList = [...new Set(myArray)]
     
-    //const filteredList = dtList.filter(item => item.trim() !== "");
-    let arrList = myArray.concat(ownersArray); // datetime + owners
+    const filteredList = dtList.filter(item => item.trim() !== "");
+    let arrList = filteredList.concat(ownersArray); // datetime + owners
+
+    let arrList2 = myArray2.concat(ownersArray);
+    
 
     console.log('-------------------地支-刑破害-------------------')
     console.log('date:', (payload[i]['zValue'])  ,'dayElement:', dayElement,  'owners:' ,owners ,'doorSector:', doorElement)
@@ -536,24 +541,24 @@ export function version5(payload, birthYear){
     console.log('-------------------地支-自刑-------------------')      
     for (let z=0; z<reflist_3.length; z++) {
       
-      console.log("checking array...",reflist_3[z], "against", arrList)
+      console.log("checking array...",reflist_3[z], "against", arrList2)
       
       let cList = reflist_3[z]   
       
       let findings = ""
       let count = 0; 
 
-      for (let j=0; j<arrList.length; j++){
+      for (let j=0; j<arrList2.length; j++){
           
-          console.log("find:",arrList[j])
+          console.log("find:",arrList2[j])
 
-          if (cList === arrList[j]){
+          if (cList === arrList2[j]){
               count+=1
     
             if (count === 2) {
               findings += "自刑"
               result3.push(findings)
-              console.log(cList,  arrList[j], findings)
+              console.log(cList,  arrList2[j], findings)
             } 
           }
           else {
@@ -562,6 +567,8 @@ export function version5(payload, birthYear){
         } 
       } payload[i]['地支自刑'] = result3
         
-    } console.log(payload)
-      return (payload)
+  } console.log(payload)
+    return (payload)
+
+
 }
