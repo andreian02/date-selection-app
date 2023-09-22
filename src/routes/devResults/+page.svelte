@@ -1,9 +1,7 @@
 <!-- this is result page.  -->
-
 <script>
   import ResultTable from "$lib/components/resultTable.svelte";
   import { Dcodes, doorSector, homeowners, yearKeys } from '../../Store.js';
-
   import {checkElement, version2, version3, version4, version5} from '../../Utils.js'
 
   export let sector
@@ -11,8 +9,13 @@
   export let keys
   export let birthYear
 
-
-  console.log("Result Table")
+  console.log("--------------------------------")
+  console.log("Result Table:")
+ 
+  homeowners.subscribe((data)=>{
+    keys = data
+    console.log("Owner1:", keys[0], "Owner2:", keys[1] )
+  })
 
   doorSector.subscribe((data)=>{
     sector = data
@@ -23,20 +26,14 @@
     payload = data
     console.log("payload:", payload)
   })
- 
-  homeowners.subscribe((data)=>{
-    keys = data
-    console.log("Owner1:", keys[0], "Owner2:", keys[1] )
-  })
 
   yearKeys.subscribe((data)=>{
     birthYear = data
   })
 
+ 
   export let data
-
   let sectorElement = checkElement(sector)
-
 
   let 合1 = ""
   let 冲1 = ""
@@ -48,14 +45,12 @@
   let 合4 = ""
   let 冲4 = ""
 
-
   let stemName1 = birthYear[0].gYear
   let stemName2 = birthYear[1].gYear
 
   let stemName3 = birthYear[0].zYear
   let stemName4 = birthYear[1].zYear
 
-  
   合1 = (data.stemMap.queryProperty(stemName1, '合' ))
   冲1 = (data.stemMap.queryProperty(stemName1, '冲' ))
   合2 = (data.stemMap.queryProperty(stemName2, '合' ))
@@ -66,7 +61,6 @@
   合4 = (data.stemMap.queryProperty(stemName4, 'L合' ))
   冲4 = (data.stemMap.queryProperty(stemName4, '冲' ))
   
-  // console.log('############################')
   // console.log(合1,合2,冲1,冲2)
   // console.log(合3,合4,冲3,冲4)
 
@@ -75,14 +69,11 @@
   version3(payload, birthYear, 合3,合4,冲3,冲4)
   version4(payload, birthYear)
   version5(payload, birthYear)
-  
+
 </script>
 
 
-<ResultTable {payload}, {sectorElement} {keys} {birthYear}/>
-
-
-
+<ResultTable {payload} {sector} {sectorElement} {keys} {birthYear}/>
 
 
 <div class="m-4">
@@ -94,21 +85,25 @@
 
 
 <div class="m-4">
-  
+
     <div>Select Date / DayE / HStm / O1 & O2 / Analysis Score / DrE </div> 
     {#each payload as item}
-    <div>
-     {item.date} - {item.dayEl} 
-     -
-     门卦:  {sectorElement} 
-     -
-      {item.gValue} / {item.zValue} 
-     -
-     Owner 1: {birthYear[0].gYear} {birthYear[0].zYear} - Owner 2: {birthYear[1].gYear} {birthYear[1].zYear}
-     - 天干关系: {item.tganhe} {item.chonghe1}
-       地支关系: {item.dzhihe} {item.chonghe2}
-    </div>  
-{/each}
+      <div>
+        {item.date}·({item.dayEl})
+        -
+        门: {sectorElement} 
+        -
+        {item.gValue}·{item.zValue} 
+        -
+        P1: {birthYear[0].gYear}{birthYear[0].zYear} · P2: {birthYear[1].gYear} {birthYear[1].zYear}
+        
+        天干关系: {item.天干合冲}·{item.天干六合}·{item.天干合关系}
+        地支关系: {item.地支合冲}·{item.地支合五行}·{item.地支合关系}
+        地支关系: {item.地支三合三会五行}·{item.地支三合三会关系}
+        地支关系: {item.地支三刑}·{item.地支破害}·{item.地支自刑}
+
+      </div>  
+    {/each}
 </div>
 
 

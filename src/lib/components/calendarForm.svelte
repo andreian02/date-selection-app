@@ -70,7 +70,8 @@
 
 
   Dcodes.subscribe((data)=>{
-        dateRangeData = data // console.log(data)
+        dateRangeData = data 
+        // console.log(data)
         // console.log("payload:", uniquedata2)
     })
 
@@ -81,6 +82,8 @@
 
       let sc1year = ""
       let sc2year = ""
+
+      let counter = 0;
       
       // console.log("#####################################################")
       console.log("Door Sector:",selectedM)
@@ -126,7 +129,6 @@
       })
 
 
-
       for (let date = startDate; date <= endDate;  date.setDate(date.getDate() + 1)) 
           
           {const dz1 = Lunar.fromDate(new Date(date));
@@ -144,14 +146,13 @@
           doThings.can = (dz1.getDayYi())
           doThings.cannot = (dz1.getDayJi())
 
-
           for (let i = 0; i <24; i+=2) {
               const dzt1 = new Date(date.setHours(i))
               //console.log(dzt1)
               const engdate = Solar.fromDate(dzt1)
               const dz2 = Lunar.fromDate(dzt1)
               
-            
+              
               let engDate = ""
               let dayElement = ""
               
@@ -171,11 +172,10 @@
               dayElement = (DayElement(dz2.getDayGan()))
               gStems = (dz2.getYearGan()+" "+dz2.getMonthGan()+" "+dz2.getDayGan()+" "+dz2.getTimeGan())
               zStems = (dz2.getYearZhi()+" "+dz2.getMonthZhi()+" "+dz2.getDayZhi()+" "+dz2.getTimeZhi())
-
+              counter++ 
               
-              
 
-              payload.push({key:i, 
+              payload.push({index:counter,
                             date:engDate, 
                             dayEl: dayElement,
                             gValue: gStems,
@@ -183,7 +183,6 @@
                             door: selected})
 
               payload = payload
-
               dateRangeData = [... new Set(payload)]
             }
             
@@ -197,7 +196,6 @@
         return (dateRangeData)
         
 
-        
     };
 </script>
 
@@ -217,11 +215,7 @@
   
             <div class="lg:col-span-2">
               <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
-                <!-- <div class="md:col-span-5">
-                  <label for="full_name">Full Name</label>
-                  <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
-                </div> -->
-  
+              
                 <div class="md:col-span-5">
                   <label for="full_name">Date Period</label>
                   <!-- <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" /> -->
@@ -238,13 +232,6 @@
                     <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" use:air_datepicker={options3} />
                 </div>
 
-                <!-- <div class="md:col-span-1">
-                  <label for="zipcode">Door Sector</label>
-                  <input type="text" name="zipcode" id="zipcode" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" bind:value={dsector} />
-                  
-                </div> -->
-
-               
                 <div class="md:col-span-1">
                   <label for="TwentyFourMountain">Door Sector</label>
                       <select type="text" name="zipcode" id="zipcode" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" bind:value={selected}>
@@ -255,71 +242,9 @@
                         {/each}
                     </select>
                 </div>
-
-                
-                
-
-                
   
-                
-                <!-- <div class="md:col-span-2">
-                  <label for="country">Start Date</label>
-                  <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                    <input name="country" id="country" placeholder="Start" class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value={range.start} />
-                    <button tabindex="-1" class="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600">
-                      <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                      </svg>
-                    </button>
-                    <button tabindex="-1" for="show_more" class="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600">
-                      <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-                    </button>
-                  </div>
-                </div>
-  
-                <div class="md:col-span-2">
-                  <label for="state">End Date</label>
-                  <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                    <input name="state" id="state" placeholder="End" class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value={range.end} />
-                    <button tabindex="-1" class="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600">
-                      <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                      </svg>
-                    </button>
-                    <button tabindex="-1" for="show_more" class="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600">
-                      <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-                    </button>
-                  </div>
-                </div> -->
-  
-                
-
                 <br />
                 <br />
-                
-
-                <!-- <div class="md:col-span-2">
-                  {#if range.start && range.end}
-                    <p>Start: {range.start}</p>
-                    <p>End: {range.end}</p>
-                  {/if} -->
-                  <!-- <label for="soda">How many soda pops?</label>
-                  <div class="h-10 w-28 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                    <button tabindex="-1" for="show_more" class="cursor-pointer outline-none focus:outline-none border-r border-gray-200 transition-all text-gray-500 hover:text-blue-600">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-2" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                      </svg>
-                    </button>
-                    <input name="soda" id="soda" placeholder="0" class="px-2 text-center appearance-none outline-none text-gray-800 w-full bg-transparent" value="0" />
-                    <button tabindex="-1" for="show_more" class="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-500 hover:text-blue-600">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-2 fill-current" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                      </svg>
-                    </button>
-                  </div> -->
-                <!-- </div> -->
         
                 <div class="md:col-span-5 text-right">
                   <div class="inline-flex items-end">
@@ -339,4 +264,3 @@
 
 
 
-<!-- {uniquedata2} -->

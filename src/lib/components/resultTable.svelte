@@ -9,12 +9,7 @@
     // function filterData() {
     //   return payload.filter((item) => item.dayEl != "金");}
 
-      
-    
-    //   payload = filterData()
-
-
-    
+    //   payload = filterData()    
 </script>
 
 
@@ -32,7 +27,7 @@
           Person 2 DOB: {keys[1]}
         </p>
         <p class="text-gray-500 mx-2 mb-6">
-          Door Sector: {sectorElement}
+          Door Sector: {sector} | {sectorElement}
         </p>
   
   
