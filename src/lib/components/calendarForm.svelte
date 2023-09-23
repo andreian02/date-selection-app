@@ -159,7 +159,7 @@
               let gStems = "" 
               let zStems = ""
 
-              engDate = (engdate.getDay()+"·"+engdate.getMonth()+"·"+engdate.getYear())
+              engDate = (engdate.getDay()+"/"+engdate.getMonth()+"/"+engdate.getYear())
               
               // console.log("looping:", dzt1, engdate.getDay(), engdate.getMonth(), engdate.getYear());
               // console.log('年干支：'+dz2.getYearInGanZhi(), 
@@ -201,7 +201,7 @@
 
 
 <div class="p-2 flex">
-    <div class="container max-w-screen-lg mx-auto">
+    <div class="container max-w-screen-md mx-auto">
       <div>
         <h2 class="font-semibold text-xl text-gray-600">择日表格 ｜ Date Selection Form V1</h2>
         <p class="text-gray-500 mb-6">Form is mobile responsive. Give it a try.</p>

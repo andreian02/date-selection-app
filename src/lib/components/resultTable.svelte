@@ -6,10 +6,10 @@
     export let sectorElement
 
     
-    // function filterData() {
-    //   return payload.filter((item) => item.dayEl != "金");}
+    function filterData() {
+      return payload.filter((item) => item.dayEl != "金");}
 
-    //   payload = filterData()    
+      payload = filterData()    
 </script>
 
 
@@ -48,6 +48,12 @@
                         TBC
                       </th>
                       <th scope="col" class="px-4 py-4">
+                        TBC
+                      </th>
+                      <th scope="col" class="px-4 py-4">
+                        TBC
+                      </th>
+                      <th scope="col" class="px-4 py-4">
                         Score
                       </th>
                       <th scope="col" class="px-4 py-4">
@@ -61,15 +67,14 @@
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                       <th scope="row" class="px-4 py-4 text-xs text-center text-gray-700 whitespace-nowrap dark:text-white">
                         <p>{item.date} ({item.dayEl})</p>
-                        
                       </th>
                       <td class="px-4 py-4 text-base">
                         <p>{item.gValue}</p>
                         <p>{item.zValue}</p>
                       </td>
                       <td class="px-4 py-4 text-base">
-                        <p>{birthYear[0].gYear} | {birthYear[1].gYear}</p>
-                        <p>{birthYear[0].zYear} | {birthYear[1].zYear}</p>
+                        <p>{birthYear[0].gYear}·{birthYear[1].gYear}</p>
+                        <p>{birthYear[0].zYear}·{birthYear[1].zYear}</p>
                       </td>
                       <td class="px-4 py-4 text-base">
                         TBC

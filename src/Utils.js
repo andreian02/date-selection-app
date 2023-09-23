@@ -142,6 +142,7 @@ export function version2(payload, birthYear, 合1,合2, 冲1,冲2){
         console.log('-------------------天干合冲关系-------------------')
         console.log('dayElement:', dayElement,  'owners:', owners,'doorSector:', doorElement)
         console.log("合:"  ,合1, 合2)
+
         let findings = ""
         let input = ""
         let combinedElements = [];
@@ -160,13 +161,11 @@ export function version2(payload, birthYear, 合1,合2, 冲1,冲2){
             combinedElement = ganzhihe(input)
             
             console.log('x','o1',owner1, input, 'res:',combinedElement)
-            
 
             relationship = elementRS(owner1, combinedElement)
             result.push(relationship)
             combinedElements.push(combinedElement)
             console.log('xr1:',owner1, combinedElement ,relationship)
-            
 
           }
           if (myArray[j] === 合2) {
