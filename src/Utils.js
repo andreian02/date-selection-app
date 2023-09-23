@@ -120,6 +120,20 @@ export function elementRS(body, use){
   return relationship
 }
 
+export function rScore(relationship){
+  let scoring = 0;
+  if (relationship == '比旺'){
+    scoring++;
+  } else if (relationship == '生入 ▲'){
+    scoring+=2;
+  } else if (relationship == '生出 ▼'){
+    scoring--;
+  } else if (relationship == '◀ 剋入'){
+    scoring-=2;
+  }
+  return scoring
+}
+
 
 //version2 is to check 天干 合/冲 关系
 export function version2(payload, birthYear, 合1,合2, 冲1,冲2){
@@ -138,11 +152,7 @@ export function version2(payload, birthYear, 合1,合2, 冲1,冲2){
       
       
       const myArray = (payload[i]['gValue']).split(" ") //date + time.
-  
-        console.log('-------------------天干合冲关系-------------------')
-        console.log('dayElement:', dayElement,  'owners:', owners,'doorSector:', doorElement)
-        console.log("合:"  ,合1, 合2)
-
+        let totalScore = 0;
         let findings = ""
         let input = ""
         let combinedElements = [];
@@ -150,7 +160,21 @@ export function version2(payload, birthYear, 合1,合2, 冲1,冲2){
         let relationship = "";
         let result = [];
 
+        console.log('-------------------天干合冲关系-------------------')
+        console.log('dayElement:', dayElement,  'owners:', owners,'doorSector:', doorElement)
+        
+        let rs1 = elementRS(owner1, dayElement)
+        let rs2 = elementRS(owner2, dayElement)
+        let s1 = rScore(rs1)
+        let s2 = rScore(rs2)
+        totalScore = s1 + s2
+        console.log("owners and day elemenet", owner1, owner2, dayElement, rs1, rs2, totalScore)
+
+        console.log("合:"  ,合1, 合2)
+
+
         for (let j = 0; j < myArray.length; j++) {
+          let score = 0;
           
           if (myArray[j] === 合1) {
             findings += "有合"
@@ -164,8 +188,10 @@ export function version2(payload, birthYear, 合1,合2, 冲1,冲2){
 
             relationship = elementRS(owner1, combinedElement)
             result.push(relationship)
+            score = rScore(relationship)
+            totalScore += score
             combinedElements.push(combinedElement)
-            console.log('xr1:',owner1, combinedElement ,relationship)
+            console.log('xr1:',owner1, combinedElement ,relationship, score)
 
           }
           if (myArray[j] === 合2) {
@@ -181,8 +207,10 @@ export function version2(payload, birthYear, 合1,合2, 冲1,冲2){
 
             relationship = elementRS(owner2, combinedElement)
             result.push(relationship)
+            score = rScore(relationship)
+            totalScore += score
             combinedElements.push(combinedElement)
-            console.log('xr2:',owner2, combinedElement ,relationship)
+            console.log('xr2:',owner2, combinedElement ,relationship, score)
             
 
           }
@@ -206,6 +234,7 @@ export function version2(payload, birthYear, 合1,合2, 冲1,冲2){
         payload[i]['天干合冲'] = findings
         payload[i]['天干六合'] = combinedElements
         payload[i]['天干合关系'] = result
+        payload[i]['score'] = totalScore
         //console.log('y', findings)      
         //payload[j]['chonghe'] = findings
       }
@@ -224,6 +253,8 @@ export function version3(payload, birthYear, 合3,合4, 冲3,冲4){
     //let score = 0;
     const dayElement = (payload[i]['dayEl'])
     const doorElement = checkElement((payload[i]['door']))
+
+    let totalScore = (payload[i]['score'])
          
     const ownersArray = [birthYear[0]['zYear'], birthYear[1]['zYear']]
     const owner1 = checkElement(birthYear[0]['zYear'])
@@ -232,16 +263,31 @@ export function version3(payload, birthYear, 合3,合4, 冲3,冲4){
 
     const myArray = (payload[i]['zValue']).split(" ") //date + time.
 
-    console.log('-------------------地支合冲关系-------------------')
-    console.log('date:', (payload[i]['zValue'])  ,'dayElement:', dayElement, 'owners:' ,owners , 'doorSector:', doorElement)
-    console.log("合:"  ,合3, 合4)
-    
+    let score;
     let findings = "";
     let input = "";
     let combinedElements = [];
     let combinedElement = "";
     let relationship = "";
     let result = [];
+
+    console.log('-------------------地支合冲关系-------------------')
+    console.log('date:', (payload[i]['zValue'])  ,'dayElement:', dayElement, 'owners:' ,owners , 'doorSector:', doorElement)
+    
+    let rs1 = elementRS(owner1, dayElement)
+    let rs2 = elementRS(owner2, dayElement)
+    let s1 = rScore(rs1)
+    let s2 = rScore(rs2)
+
+    totalScore += s1
+    totalScore += s2
+
+    console.log("owners and day elemenet", owner1, owner2, dayElement, rs1, rs2, totalScore)
+
+    
+    console.log("合:"  ,合3, 合4)
+    
+   
 
     for (let j = 0; j < myArray.length; j++) {
       
@@ -260,6 +306,10 @@ export function version3(payload, birthYear, 合3,合4, 冲3,冲4){
         // console.log('xs1',relationship)
 
         relationship = elementRS(owner1, combinedElement)
+        
+        score = rScore(relationship)
+        totalScore += score
+        
         result.push(relationship)
         combinedElements.push(combinedElement)
         console.log('xr1:',owner1, combinedElement ,relationship)
@@ -280,6 +330,10 @@ export function version3(payload, birthYear, 合3,合4, 冲3,冲4){
         // console.log('xs2',relationship)
 
         relationship = elementRS(owner2, combinedElement)
+
+        score = rScore(relationship)
+        totalScore += score
+
         result.push(relationship)
         combinedElements.push(combinedElement)
         console.log('xr2:',owner2, combinedElement ,relationship)
@@ -304,6 +358,7 @@ export function version3(payload, birthYear, 合3,合4, 冲3,冲4){
       payload[i]['地支合冲'] = findings
       payload[i]['地支合五行'] = combinedElements
       payload[i]['地支合关系'] = result
+      payload[i]['score'] = totalScore
       //console.log('y', findings)      
       //payload[j]['chonghe'] = findings
     }
@@ -331,6 +386,8 @@ export function version4(payload, birthYear){
     //let score = 0;
     const dayElement = (payload[i]['dayEl'])
     const doorElement = checkElement((payload[i]['door']))
+
+    let totalScore = (payload[i]['score'])
          
     const ownersArray = [birthYear[0]['zYear'], birthYear[1]['zYear']]
     const owner1 = checkElement(birthYear[0]['zYear'])
@@ -351,12 +408,13 @@ export function version4(payload, birthYear){
     const fList = arList.filter(item => item.trim() !== "");
 
     console.log('-------------------地支三合三会关系-------------------')
-    console.log('date:', (payload[i]['zValue'])  ,'dayElement:', dayElement,  'owners:' ,owners ,'doorSector:', doorElement)
+    console.log('date:', [i], (payload[i]['zValue'])  ,'dayElement:', dayElement,  'owners:' ,owners ,'doorSector:', doorElement)
     
     let combinedElement = "";
     let combinedElements = [];
     let result = [];
     let findings = [];
+    let score;  
   
 
     for (let z=0; z<reflist.length; z++) {
@@ -384,12 +442,20 @@ export function version4(payload, birthYear){
                     // combinedElements.push(combinedElement)
 
                     relationship = elementRS(owner1, combinedElement)
+
+                    score = rScore(relationship)
+                    totalScore += score
+
                     result.push(relationship)
                     findings.push(finding)
                     combinedElements.push(combinedElement)
                     console.log('xr1:',owner1, combinedElement ,relationship)
 
                     relationship = elementRS(owner2, combinedElement)
+
+                    score = rScore(relationship)
+                    totalScore += score
+
                     result.push(relationship)
                     findings.push(finding)
                     combinedElements.push(combinedElement)
@@ -409,6 +475,8 @@ export function version4(payload, birthYear){
             payload[i]['地支三合三会五行'] = combinedElements
             payload[i]['地支三合三会关系'] = result
             payload[i]['地支三合三会'] = findings
+            payload[i]['score'] = totalScore
+
         
         } 
           console.log(payload)
@@ -440,6 +508,8 @@ export function version5(payload, birthYear){
     //let score = 0;
     const dayElement = (payload[i]['dayEl'])
     const doorElement = checkElement((payload[i]['door']))
+
+    let totalScore = (payload[i]['score'])
          
     const ownersArray = [birthYear[0]['zYear'], birthYear[1]['zYear']]
     
@@ -464,6 +534,7 @@ export function version5(payload, birthYear){
     let result1 = [];
     let result2 = [];
     let result3 = [];
+    let score = 0;
 
     console.log('-------------------地支-三刑-------------------')
     for (let z=0; z<reflist_1.length; z++) {
@@ -477,7 +548,7 @@ export function version5(payload, birthYear){
 
         for (let j=0; j<arrList.length; j++){
             
-            console.log("find:",arrList[j])
+            //console.log("find:",arrList[j])
             
             if (cList.includes(arrList[j])){
                 count+=1
@@ -488,7 +559,9 @@ export function version5(payload, birthYear){
                   findings += reflist_1[z].type
                   // combinedElement = reflist[z].name; 
                   // relationship = elementRS(doorElement, combinedElement )
-                  
+                  score--
+                  totalScore += score
+
                   result1.push(findings)
                   // combinedElements.push(combinedElement)
                   console.log("found all 3 values!", "result:", findings)
@@ -501,6 +574,7 @@ export function version5(payload, birthYear){
 
           } //payload[i]['chonghe2'] = findings
             payload[i]['地支三刑'] = result1
+            payload[i]['score'] = totalScore
     
     console.log('-------------------地支-破害-------------------')     
     for (let z=0; z<reflist_2.length; z++) {
@@ -514,7 +588,7 @@ export function version5(payload, birthYear){
 
       for (let j=0; j<arrList.length; j++){
         
-        console.log("find:",arrList[j])
+        //console.log("find:",arrList[j])
         
         if (cList.includes(arrList[j])){
             count+=1
@@ -524,6 +598,9 @@ export function version5(payload, birthYear){
               findings += reflist_2[z].type
               // combinedElement = reflist[z].name; 
               // relationship = elementRS(doorElement, combinedElement )
+              score--
+              totalScore += score
+
               result2.push(findings)
               // combinedElements.push(combinedElement)
               console.log("found both values!", "result:", findings)
@@ -536,6 +613,7 @@ export function version5(payload, birthYear){
 
         } //payload[i]['chonghe2'] = findings
           payload[i]['地支破害'] = result2
+          payload[i]['score'] = totalScore
   
     console.log('-------------------地支-自刑-------------------')      
     for (let z=0; z<reflist_3.length; z++) {
@@ -549,13 +627,17 @@ export function version5(payload, birthYear){
 
       for (let j=0; j<arrList2.length; j++){
           
-          console.log("find:",arrList2[j])
+          //console.log("find:",arrList2[j])
 
           if (cList === arrList2[j]){
               count+=1
     
             if (count === 2) {
               findings += "自刑"
+              
+              score-- 
+              totalScore += score
+              
               result3.push(findings)
               console.log(cList,  arrList2[j], findings)
             } 
@@ -565,6 +647,7 @@ export function version5(payload, birthYear){
           }   
         } 
       } payload[i]['地支自刑'] = result3
+        payload[i]['score'] = totalScore
         
   } console.log(payload)
     return (payload)

@@ -15,6 +15,7 @@
       for (const item of payload) {
         
         if (item.andex === cardId) {
+          console.log(item)
           return item;
         }
       }
@@ -23,25 +24,20 @@
 
     const result = getDatesById(cardId)
     console.log(result)
-    console.log(result.date)
+    console.log("RESULT DATE:",result.date)
+    
+    const [day, month, year] = (result.date).split('/').map(Number);
+    const dateObject = new Date(year, month - 1, day); // Month is 0-based, so we subtract 1
 
-    const dateObject = new Date(result.date);
+
+    //const dateObject = new Date(result.date);
     console.log('dateobject:', dateObject)
     
-    var Ldate = Lunar.fromDate(dateObject);
-    console.log(Ldate)
-
-    console.log(Ldate.getYearInChinese());
-    console.log(Ldate.getMonthInChinese());
-    console.log(Ldate.getDayInChinese());
-
+    var d = Lunar.fromDate(dateObject);
+    // console.log(Ldate)
+    let can = d.getTimeYi();
+    let cannot = d.getTimeJi();
     //console.log(Ldate)
-    let can = (Ldate.getDayYi())
-    let cannot = (Ldate.getDayJi())
-    console.log(can, cannot)
-
-    console.log(Ldate.getZhiXing());
-
 
 </script>
 
@@ -52,7 +48,6 @@
 <p>{result.date} </p>
 <p>{result.door} </p>
 <p>{result.dayEl} </p>
-
 
 <p>{can}</p>
 <p>{cannot}</p>
