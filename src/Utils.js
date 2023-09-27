@@ -157,6 +157,47 @@ export function answersheet(input){
 
 
 
+export function transistor(birthYear) {
+  let result_details = []
+  let 合_1, 冲_1, 合_2, 冲_2, 合_3,冲_3, 合_4, 冲_4;
+  
+  if (birthYear.length > 1){
+    
+    合_1 = answersheet(birthYear[0].gYear).合
+    冲_1 = answersheet(birthYear[0].gYear).冲
+  
+    合_2 = answersheet(birthYear[1].gYear).合
+    冲_2 = answersheet(birthYear[1].gYear).冲
+  
+    合_3 = answersheet(birthYear[0].zYear).L合
+    冲_3 = answersheet(birthYear[0].zYear).冲
+  
+    合_4 = answersheet(birthYear[1].zYear).L合
+    冲_4 = answersheet(birthYear[1].zYear).冲
+
+    result_details.push(合_1, 冲_1, 合_2, 冲_2, 合_3,冲_3, 合_4, 冲_4)
+
+  } else {
+    合_1 = answersheet(birthYear[0].gYear).合
+    冲_1 = answersheet(birthYear[0].gYear).冲
+    
+    合_3 = answersheet(birthYear[0].zYear).L合
+    冲_3 = answersheet(birthYear[0].zYear).冲
+
+    result_details.push(合_1, 冲_1, 合_3,冲_3)
+    
+  } 
+    console.log(result_details)
+    return result_details 
+  };
+
+
+
+
+
+
+
+
 //version2 is to check 天干 合/冲 关系
 export function version2(payload, birthYear, 合1,合2, 冲1,冲2){
   
@@ -216,6 +257,13 @@ export function version2(payload, birthYear, 合1,合2, 冲1,冲2){
             console.log('xr1:',owner1, combinedElement ,relationship, score)
 
           }
+          if (myArray[j] === 冲1) {
+            findings += "有冲"
+            console.log(`${i} 有冲 Value ${冲1} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
+            console.log('x1',findings)
+
+          }
+
           if (myArray[j] === 合2) {
             findings += "有合"
             console.log(`${i} 有合 Value ${合2} found at index ${j}, ${myArray[j]}, ${ownersArray[1]}`);
@@ -234,12 +282,6 @@ export function version2(payload, birthYear, 合1,合2, 冲1,冲2){
             combinedElements.push(combinedElement)
             console.log('xr2:',owner2, combinedElement ,relationship, score)
             
-
-          }
-          if (myArray[j] === 冲1) {
-            findings += "有冲"
-            console.log(`${i} 有冲 Value ${冲1} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
-            console.log('x1',findings)
 
           }
           if (myArray[j] === 冲2) {
@@ -305,8 +347,6 @@ export function version3(payload, birthYear, 合3,合4, 冲3,冲4){
     totalScore += s2
 
     console.log("owners and day elemenet", owner1, owner2, dayElement, rs1, rs2, totalScore)
-
-    
     console.log("合:"  ,合3, 合4)
     
    
@@ -337,6 +377,12 @@ export function version3(payload, birthYear, 合3,合4, 冲3,冲4){
         console.log('xr1:',owner1, combinedElement ,relationship)
 
       }
+      if (myArray[j] === 冲3) {
+        findings += "有冲"
+        console.log(`${i} 有冲 Value ${冲3} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
+        console.log('x',findings)
+
+      }
       if (myArray[j] === 合4) {
         findings += "有合"
         console.log(`${i} 有合 Value ${合4} found at index ${j}, ${myArray[j]}, ${ownersArray[1]}`);
@@ -359,12 +405,6 @@ export function version3(payload, birthYear, 合3,合4, 冲3,冲4){
         result.push(relationship)
         combinedElements.push(combinedElement)
         console.log('xr2:',owner2, combinedElement ,relationship)
-
-      }
-      if (myArray[j] === 冲3) {
-        findings += "有冲"
-        console.log(`${i} 有冲 Value ${冲3} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
-        console.log('x',findings)
 
       }
       if (myArray[j] === 冲4) {

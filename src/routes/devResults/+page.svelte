@@ -2,7 +2,7 @@
 <script>
   import ResultTable from "$lib/components/resultTable.svelte";
   import { Dcodes, doorSector, homeowners, yearKeys } from '../../Store.js';
-  import {answersheet, checkElement, version2, version3, version4, version5} from '../../Utils.js'
+  import {answersheet, transistor, checkElement, version2, version3, version4, version5} from '../../Utils.js'
 
   export let sector
   export let payload 
@@ -32,7 +32,7 @@
   })
 
  
-  export let data
+  // export let data
   let sectorElement = checkElement(sector)
 
   let 合1 = ""
@@ -45,10 +45,16 @@
   let 合4 = ""
   let 冲4 = ""
 
+  let result_details;
+
   console.log("b-year",birthYear)
   console.log("Testing cheatsheet and answersheet g1", birthYear[0].gYear)
   console.log("Testing cheatsheet and answersheet z1", birthYear[0].zYear)
+  console.log("----------------------------------------------------")
+  result_details = transistor(birthYear)
   
+  console.log("--ddd--------------------------------------------------")
+  console.log(result_details)
 
   let 合_1 = answersheet(birthYear[0].gYear).合
   let 冲_1 = answersheet(birthYear[0].gYear).冲
