@@ -1,6 +1,6 @@
 <script>
     
-    import CalendarForm from '$lib/components/calendarForm.svelte';
+    import CalendarForm from '$lib/components/calendarFormV2.svelte';
     
 </script>
 

@@ -37,6 +37,7 @@
     // console.log(Ldate)
     let can = d.getTimeYi();
     let cannot = d.getTimeJi();
+    let zhixing = d.getZhiXing()
     //console.log(Ldate)
 
 </script>
@@ -49,7 +50,10 @@
 <p>{result.door} </p>
 <p>{result.dayEl} </p>
 
-<p>{can}</p>
-<p>{cannot}</p>
+<h1>每日宜忌</h1>
+<p>宜:{can}</p>
+<p>忌:{cannot}</p>
+
+<p>十二值星:{zhixing}</p>
 
 

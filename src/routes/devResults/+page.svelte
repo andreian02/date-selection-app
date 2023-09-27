@@ -2,7 +2,7 @@
 <script>
   import ResultTable from "$lib/components/resultTable.svelte";
   import { Dcodes, doorSector, homeowners, yearKeys } from '../../Store.js';
-  import {checkElement, version2, version3, version4, version5} from '../../Utils.js'
+  import {answersheet, checkElement, version2, version3, version4, version5} from '../../Utils.js'
 
   export let sector
   export let payload 
@@ -45,34 +45,30 @@
   let 合4 = ""
   let 冲4 = ""
 
-  let stemName1 = birthYear[0].gYear 
-  let stemName2 = birthYear[1].gYear
-
-  let stemName3 = birthYear[0].zYear 
-  let stemName4 = birthYear[1].zYear
-
-  合1 = (data.stemMap.queryProperty(stemName1, '合' ))
-  冲1 = (data.stemMap.queryProperty(stemName1, '冲' ))
+  console.log("b-year",birthYear)
+  console.log("Testing cheatsheet and answersheet g1", birthYear[0].gYear)
+  console.log("Testing cheatsheet and answersheet z1", birthYear[0].zYear)
   
-  合2 = (data.stemMap.queryProperty(stemName2, '合' ))
-  冲2 = (data.stemMap.queryProperty(stemName2, '冲' ))
 
-  合3 = (data.stemMap.queryProperty(stemName3, 'L合' ))
-  冲3 = (data.stemMap.queryProperty(stemName3, '冲' ))
-  合4 = (data.stemMap.queryProperty(stemName4, 'L合' ))
-  冲4 = (data.stemMap.queryProperty(stemName4, '冲' ))
-  
-  
-  // console.log(stemName1, stemName2)
-  // console.log("Gan",合1,合2,冲1,冲2)
-  // console.log("Zhi",合3,合4,冲3,冲4)
+  let 合_1 = answersheet(birthYear[0].gYear).合
+  let 冲_1 = answersheet(birthYear[0].gYear).冲
 
+  let 合_2 = answersheet(birthYear[1].gYear).合
+  let 冲_2 = answersheet(birthYear[1].gYear).冲
+
+  let 合_3 = answersheet(birthYear[0].zYear).L合
+  let 冲_3 = answersheet(birthYear[0].zYear).冲
+
+  let 合_4 = answersheet(birthYear[1].zYear).L合
+  let 冲_4 = answersheet(birthYear[1].zYear).冲
+
+  
   //Analying Tiangan
-  version2(payload, birthYear, 合1,合2,冲1,冲2)
-  version3(payload, birthYear, 合3,合4,冲3,冲4)
-  version4(payload, birthYear)
-  version5(payload, birthYear)
-
+  version2(payload, birthYear, 合_1,合_2,冲_1,冲_2) //version2 is to check 天干 合/冲 关系
+  version3(payload, birthYear, 合_3,合_4,冲_3,冲_4) //version3 is to check 地支 合/冲 关系
+  version4(payload, birthYear) //version4 is to check 地支 三合/三会 关系
+  version5(payload, birthYear) //version5 is to check 地支 刑,破,害 关系
+  
 </script>
 
 

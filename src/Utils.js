@@ -1,4 +1,6 @@
 import { Lunar } from 'lunar-javascript'
+import { cheatsheet } from './helper'
+
 
 // '甲','卯','乙','辰','巽','巳','丙', '午', '丁', '未', '坤', '申', '庚', '酉', "辛", '戌','乾','亥','壬','子','癸','丑','艮','寅'
 export function checkElement(input){
@@ -18,6 +20,15 @@ export function checkElement(input){
     return element
   };
 
+export function capacity(birthYear) {
+  let ownersArray;
+  if (birthYear.length > 1){
+    ownersArray = [birthYear[0]['zYear'], birthYear[1]['zYear']]     
+  } else {
+    ownersArray = [birthYear[0]['zYear']] 
+  } 
+    return ownersArray
+  };
 
 export function DayElement(day){
 
@@ -127,12 +138,23 @@ export function rScore(relationship){
   } else if (relationship == '生入 ▲'){
     scoring+=2;
   } else if (relationship == '生出 ▼'){
-    scoring--;
-  } else if (relationship == '◀ 剋入'){
     scoring-=2;
+  } else if (relationship == '◀ 剋入'){
+    scoring-=1;
+  } else if (relationship == '剋出 ▶'){
+    scoring++;
   }
   return scoring
 }
+
+export function answersheet(input){
+  let result; 
+  
+  result = cheatsheet(input)
+  console.log(result)
+  return result
+}
+
 
 
 //version2 is to check 天干 合/冲 关系
@@ -380,7 +402,14 @@ export function version4(payload, birthYear){
                    {name:"火", title:["巳", "午", "未"],type:"三会"},
                    {name:"木", title:["寅", "卯", "辰"],type:"三会"},
                 ]
-  
+  let ownersArray = capacity(birthYear)
+    
+    //console.log("version4:", ownersArray)
+    // const owner1 = checkElement(ownersArray[0])
+    // const owner2 = checkElement(ownersArray[1])
+    // let owners = [owner1, owner2];
+    // console.log('owners elemt', owners)
+
   for (let i = 0; i < payload.length; i++) {
     //let findings = ""
     //let score = 0;
@@ -389,10 +418,8 @@ export function version4(payload, birthYear){
 
     let totalScore = (payload[i]['score'])
          
-    const ownersArray = [birthYear[0]['zYear'], birthYear[1]['zYear']]
-    const owner1 = checkElement(birthYear[0]['zYear'])
-    const owner2 = checkElement(birthYear[1]['zYear'])
-    let owners = [owner1, owner2];
+    //const ownersArray = [birthYear[0]['zYear'], birthYear[1]['zYear']]
+    
     
     let uniqueOwners = [...new Set(ownersArray)] // de-deup if same year
     const fOwners = uniqueOwners.filter(item => item.trim() !== "");
@@ -408,7 +435,7 @@ export function version4(payload, birthYear){
     const fList = arList.filter(item => item.trim() !== "");
 
     console.log('-------------------地支三合三会关系-------------------')
-    console.log('date:', [i], (payload[i]['zValue'])  ,'dayElement:', dayElement,  'owners:' ,owners ,'doorSector:', doorElement)
+    console.log('date:', [i], (payload[i]['zValue'])  ,'dayElement:', dayElement,  'owners:' ,ownersArray ,'doorSector:', doorElement)
     
     let combinedElement = "";
     let combinedElements = [];
@@ -441,6 +468,36 @@ export function version4(payload, birthYear){
                     // result.push(relationship)
                     // combinedElements.push(combinedElement)
 
+                    if (ownersArray.length > 1) {
+                      const owner1 = checkElement(ownersArray[0])
+                      const owner2 = checkElement(ownersArray[1])
+                      //let owners = [owner1, owner2];
+                      //console.log('owners elemt', owners)
+
+                  
+                      relationship = elementRS(owner1, combinedElement)
+
+                      score = rScore(relationship)
+                      totalScore += score
+
+                      result.push(relationship)
+                      findings.push(finding)
+                      combinedElements.push(combinedElement)
+                      console.log('xr1:',owner1, combinedElement ,relationship)
+
+                      relationship = elementRS(owner2, combinedElement)
+
+                      score = rScore(relationship)
+                      totalScore += score
+
+                      result.push(relationship)
+                      findings.push(finding)
+                      combinedElements.push(combinedElement)
+                      console.log('xr2:',owner2, combinedElement ,relationship)
+                  } else {
+
+                    const owner1 = checkElement(ownersArray[0])
+                    //let owners = [owner1];
                     relationship = elementRS(owner1, combinedElement)
 
                     score = rScore(relationship)
@@ -450,16 +507,7 @@ export function version4(payload, birthYear){
                     findings.push(finding)
                     combinedElements.push(combinedElement)
                     console.log('xr1:',owner1, combinedElement ,relationship)
-
-                    relationship = elementRS(owner2, combinedElement)
-
-                    score = rScore(relationship)
-                    totalScore += score
-
-                    result.push(relationship)
-                    findings.push(finding)
-                    combinedElements.push(combinedElement)
-                    console.log('xr2:',owner2, combinedElement ,relationship)
+                  }
                     
                   //console.log("found all 3 values!", "result:", findings, combinedElement, relationship)
                 } 
@@ -484,6 +532,8 @@ export function version4(payload, birthYear){
   } 
 
 
+
+
 //version5 is to check 地支 刑,破,害 关系
 export function version5(payload, birthYear){
   const reflist_1 = [{title:["丑", "未", "戌"],type:"三刑"}, 
@@ -502,6 +552,9 @@ export function version5(payload, birthYear){
                      {title:["戌", "酉"],type:"害"}];
   
   const reflist_3 = ['辰','午','酉','亥'];
+ 
+
+  /// add capacity function here. 
   
   for (let i = 0; i < payload.length; i++) {
     //let findings = ""
@@ -511,25 +564,29 @@ export function version5(payload, birthYear){
 
     let totalScore = (payload[i]['score'])
          
-    const ownersArray = [birthYear[0]['zYear'], birthYear[1]['zYear']]
+    //const ownersArray = [birthYear[0]['zYear'], birthYear[1]['zYear']]
     
-    const owner1 = checkElement(birthYear[0]['zYear'])
-    const owner2 = checkElement(birthYear[1]['zYear'])
-    let owners = [owner1, owner2];
+    let ownersArray = capacity(birthYear)
+    let uniqueOwners = [...new Set(ownersArray)];
+    const filteredOList = uniqueOwners.filter(item => item.trim() !== "");
+    //console.log("Owners:",ownersArray )
+    //const ownersArray = capacity(birthYear)
+    
+    //const owner1 = checkElement(birthYear[0]['zYear'])
+    //const owner2 = checkElement(birthYear[1]['zYear'])
+    //let owners = [owner1, owner2];
     
     const myArray = (payload[i]['zValue']) //date + time.
     const myArray2 = (payload[i]['zValue']).split(" ")
-
     let dtList = [...new Set(myArray)]
     
     const filteredList = dtList.filter(item => item.trim() !== "");
-    let arrList = filteredList.concat(ownersArray); // datetime + owners
-
+    let arrList = filteredList.concat(filteredOList); // datetime + de dup owners
     let arrList2 = myArray2.concat(ownersArray);
     
 
     console.log('-------------------地支-刑破害-------------------')
-    console.log('date:', (payload[i]['zValue'])  ,'dayElement:', dayElement,  'owners:' ,owners ,'doorSector:', doorElement)
+    console.log('date:', (payload[i]['zValue'])  ,'dayElement:', 'owners:', ownersArray, dayElement,'doorSector:', doorElement)
     
     let result1 = [];
     let result2 = [];

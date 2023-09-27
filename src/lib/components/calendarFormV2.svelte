@@ -11,17 +11,23 @@
   export let value = 'couple';
 	let isSwitchedOn = true;
 
-  function handleSwitch() {
+	function handleSwitch() {
     isSwitchedOn = !isSwitchedOn;
 		console.log(isSwitchedOn)}
 
 	let isExpanded = false
+  let isInputVisible = true;
+  
+  function toggleInputVisibility() {
+    isInputVisible = !isInputVisible;
+    console.log(isInputVisible)
+  }
 
 	function clickHandler() {
 		isExpanded = !isExpanded
 	}
 
-  let selected 
+  let selected  
   let sectors = ['震', '巽','离', '坤', '兑',  '乾', '坎', '艮' ];
   
 
@@ -79,6 +85,8 @@
 
   Dcodes.subscribe((data)=>{
         dateRangeData = data 
+        // console.log(data)
+        // console.log("payload:", uniquedata2)
     })
 
 
@@ -91,12 +99,23 @@
 
       let counter = 0;
       
+      // console.log("#####################################################")
       console.log("Door Sector:",selectedM)
       console.log("Date Range:", range.start, range.end)
       console.log("firstkey:", dobDate1)
       console.log("secondkey:", dobDate2)
 
       
+      // console.log("#####################################################")
+      // console.log(dobDate2)
+      //const person2 = Lunar.fromDate(dobDate2);
+      // console.log("YEAR:", person2.getYearZhi(), person2.getYearGan(), person2.getYear())
+
+      // console.log('年干支：'+person2.getYearInGanZhi(), 
+      //                 '月干支：'+person2.getMonthInGanZhiExact(),
+      //                 '日干支：'+person2.getDayInGanZhi(),
+      //                 '时辰干支：'+person2.getTimeInGanZhi()
+      // )
 
       sc1 = dayofbirthDetails(dobDate1);
       sc2 = dayofbirthDetails(dobDate2);
@@ -107,8 +126,29 @@
       console.log("YEAR")
       console.log(sc1year)
       console.log(sc2year)
+
       
-      yearKey.push(sc1year, sc2year)
+
+      function ifnotvisable(sc1year, sc2year) {
+          if (isSwitchedOn == false){
+            console.log("REMOVE THE SECOND KEY, second input is not visable")
+            sc2 = "";
+            sc2year = "";
+            yearKey.push(sc1year)
+
+          } else {
+            console.log("Maintain Operation, both input visable")
+            yearKey.push(sc1year, sc2year)
+
+          }
+          return yearKey
+      }
+      
+      ifnotvisable(sc1year, sc2year)   
+      console.log("year key:",yearKey) 
+      //yearKey.push(sc1year, sc2year)
+      
+      
 
 
       homekeys.push(sc1, sc2)
@@ -129,7 +169,13 @@
           
           {const dz1 = Lunar.fromDate(new Date(date));
 
-         
+          // let zdate = ""
+          // zdate = ('年干支:'+dz1.getYearInGanZhi() + 
+          //          ' 月干支:'+dz1.getMonthInGanZhiExact() +
+          //          ' 日干支:'+dz1.getDayInGanZhi())
+          
+          // console.log("Date:", zdate)
+          // console.log("#####################################################")
           let doThings = {can:"",
                           cannot:""}
 
@@ -151,7 +197,13 @@
 
               engDate = (engdate.getDay()+"/"+engdate.getMonth()+"/"+engdate.getYear())
               
-             
+              // console.log("looping:", dzt1, engdate.getDay(), engdate.getMonth(), engdate.getYear());
+              // console.log('年干支：'+dz2.getYearInGanZhi(), 
+              //         '月干支：'+dz2.getMonthInGanZhiExact(),
+              //         '日干支：'+dz2.getDayInGanZhi(),
+              //         '时辰干支：'+dz2.getTimeInGanZhi()
+                      
+              //         );
               
               dayElement = (DayElement(dz2.getDayGan()))
               gStems = (dz2.getYearGan()+" "+dz2.getMonthGan()+" "+dz2.getDayGan()+" "+dz2.getTimeGan())
@@ -181,6 +233,7 @@
         
 
     };
+    
 </script>
 
 
@@ -194,8 +247,10 @@
           <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
             <div class="text-gray-600">
               <p class="font-medium text-lg">Personal Details</p>
-              <p class="pb-4">Please fill out all the fields.</p>
+              <p class='pb-4'>Please fill out all the fields.</p>
+              
               <Newswitch bind:value={value} onSwitch={handleSwitch}/>
+              
             </div>
   
             <div class="lg:col-span-2">
@@ -203,6 +258,7 @@
               
                 <div class="md:col-span-5">
                   <label for="full_name">Date Period</label>
+                  <!-- <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" /> -->
                   <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" use:air_datepicker={options} />
                 </div>
 
@@ -217,6 +273,8 @@
                     <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" use:air_datepicker={options3} />
                   {/if}
                 </div>
+
+               
 
                 <div class="md:col-span-1">
                   <label for="TwentyFourMountain">Door Sector</label>
