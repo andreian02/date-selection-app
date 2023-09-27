@@ -47,31 +47,33 @@
 
   let result_details;
 
-  console.log("b-year",birthYear)
+  console.log("b-year",birthYear, "length:", birthYear.length)
   console.log("Testing cheatsheet and answersheet g1", birthYear[0].gYear)
   console.log("Testing cheatsheet and answersheet z1", birthYear[0].zYear)
   console.log("----------------------------------------------------")
-  result_details = transistor(birthYear)
+  // result_details = transistor(birthYear)
   
-  console.log("--ddd--------------------------------------------------")
-  console.log(result_details)
+  // console.log("--rddd-------------------------------------------------")
+  // console.log(result_details)
 
-  let 合_1 = answersheet(birthYear[0].gYear).合
-  let 冲_1 = answersheet(birthYear[0].gYear).冲
+  // let 合_1 = answersheet(birthYear[0].gYear).合
+  // let 冲_1 = answersheet(birthYear[0].gYear).冲
 
-  let 合_2 = answersheet(birthYear[1].gYear).合
-  let 冲_2 = answersheet(birthYear[1].gYear).冲
+  // let 合_2 = answersheet(birthYear[1].gYear).合
+  // let 冲_2 = answersheet(birthYear[1].gYear).冲
 
-  let 合_3 = answersheet(birthYear[0].zYear).L合
-  let 冲_3 = answersheet(birthYear[0].zYear).冲
+  // let 合_3 = answersheet(birthYear[0].zYear).L合
+  // let 冲_3 = answersheet(birthYear[0].zYear).冲
 
-  let 合_4 = answersheet(birthYear[1].zYear).L合
-  let 冲_4 = answersheet(birthYear[1].zYear).冲
+  // let 合_4 = answersheet(birthYear[1].zYear).L合
+  // let 冲_4 = answersheet(birthYear[1].zYear).冲
 
-  
+  console.log("--dd--------------------------------------------------")
+
   //Analying Tiangan
-  version2(payload, birthYear, 合_1,合_2,冲_1,冲_2) //version2 is to check 天干 合/冲 关系
-  version3(payload, birthYear, 合_3,合_4,冲_3,冲_4) //version3 is to check 地支 合/冲 关系
+  //version2(payload, birthYear, 合_1,合_2,冲_1,冲_2) //version2 is to check 天干 合/冲 关系
+  version2(payload, birthYear)
+  version3(payload, birthYear) //version3 is to check 地支 合/冲 关系
   version4(payload, birthYear) //version4 is to check 地支 三合/三会 关系
   version5(payload, birthYear) //version5 is to check 地支 刑,破,害 关系
   
@@ -83,8 +85,8 @@
 
 <div class="m-4">
 <p>sector: {sector} | {sectorElement}</p>
-<p>Owner1: {keys[0]}  ({birthYear[0].gYear}|{birthYear[1].gYear}) </p> 
-<p>Owner2: {keys[1]}  ({birthYear[0].zYear}|{birthYear[1].zYear}) </p>
+<!-- <p>Owner1: {keys[0]}  ({birthYear[0].gYear}|{birthYear[1].gYear}) </p> 
+<p>Owner2: {keys[1]}  ({birthYear[0].zYear}|{birthYear[1].zYear}) </p> -->
 </div>
 
 
@@ -100,7 +102,7 @@
         -
         {item.gValue}·{item.zValue} 
         -
-        P1: {birthYear[0].gYear}{birthYear[0].zYear} · P2: {birthYear[1].gYear} {birthYear[1].zYear}
+        <!-- P1: {birthYear[0].gYear}{birthYear[0].zYear} · P2: {birthYear[1].gYear} {birthYear[1].zYear} -->
         
         天干关系: {item.天干合冲}·{item.天干六合}·{item.天干合关系}
         地支关系: {item.地支合冲}·{item.地支合五行}·{item.地支合关系}

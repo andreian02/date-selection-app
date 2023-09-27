@@ -73,8 +73,9 @@
                         <p>{item.zValue}</p>
                       </td>
                       <td class="px-4 py-4 text-base">
-                        <p>{birthYear[0].gYear}·{birthYear[1].gYear}</p>
-                        <p>{birthYear[0].zYear}·{birthYear[1].zYear}</p>
+                        <p>{birthYear[0].gYear}{birthYear[0].zYear}</p>
+                        <!-- <p>{birthYear[0].gYear}·{birthYear[1].gYear}</p> -->
+                        <!-- <p>{birthYear[0].zYear}·{birthYear[1].zYear}</p> -->
                       </td>
                       <td class="px-4 py-4 text-base">
                         {item.score}
