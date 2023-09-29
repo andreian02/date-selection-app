@@ -150,11 +150,11 @@ export function rScore(relationship){
   if (relationship == '比旺'){
     scoring++;
   } else if (relationship == '生入 ▲'){
-    scoring+=2;
+    scoring++;
   } else if (relationship == '生出 ▼'){
-    scoring-=2;
+    scoring--;
   } else if (relationship == '◀ 剋入'){
-    scoring-=1;
+    scoring--;
   } else if (relationship == '剋出 ▶'){
     scoring++;
   }

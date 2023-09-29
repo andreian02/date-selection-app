@@ -16,6 +16,7 @@
 
 		<footer>
 			<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+			<span class="text-sm">© 2023 Andrei Lim</span>
 		</footer>
 	</div>
 </div>

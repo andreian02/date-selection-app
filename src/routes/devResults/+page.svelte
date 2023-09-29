@@ -35,15 +35,15 @@
   // export let data
   let sectorElement = checkElement(sector)
 
-  let 合1 = ""
-  let 冲1 = ""
-  let 合2 = ""
-  let 冲2 = ""
+  //let 合1 = ""
+  // let 冲1 = ""
+  // let 合2 = ""
+  // let 冲2 = ""
 
-  let 合3 = ""
-  let 冲3 = ""
-  let 合4 = ""
-  let 冲4 = ""
+  // let 合3 = ""
+  // let 冲3 = ""
+  // let 合4 = ""
+  // let 冲4 = ""
 
   let result_details;
 
