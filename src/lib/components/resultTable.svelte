@@ -73,9 +73,13 @@
                         <p>{item.zValue}</p>
                       </td>
                       <td class="px-4 py-4 text-base">
-                        <p>{birthYear[0].gYear}{birthYear[0].zYear}</p>
-                        <!-- <p>{birthYear[0].gYear}·{birthYear[1].gYear}</p> -->
-                        <!-- <p>{birthYear[0].zYear}·{birthYear[1].zYear}</p> -->
+                        {#if birthYear.length >1}
+                            <p>{birthYear[0].gYear}·{birthYear[1].gYear}</p>
+                            <p>{birthYear[0].zYear}·{birthYear[1].zYear}</p>
+                        {:else}
+                            <p>{birthYear[0].gYear}</p>
+                            <p>{birthYear[0].zYear}</p>
+                        {/if}
                       </td>
                       <td class="px-4 py-4 text-base">
                         {item.score}

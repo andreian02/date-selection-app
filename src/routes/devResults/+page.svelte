@@ -51,7 +51,7 @@
   console.log("Testing cheatsheet and answersheet g1", birthYear[0].gYear)
   console.log("Testing cheatsheet and answersheet z1", birthYear[0].zYear)
   console.log("----------------------------------------------------")
-  // result_details = transistor(birthYear)
+  result_details = transistor(birthYear)
   
   // console.log("--rddd-------------------------------------------------")
   // console.log(result_details)
@@ -68,7 +68,7 @@
   // let 合_4 = answersheet(birthYear[1].zYear).L合
   // let 冲_4 = answersheet(birthYear[1].zYear).冲
 
-  console.log("--dd--------------------------------------------------")
+  // console.log("--dd--------------------------------------------------")
 
   //Analying Tiangan
   //version2(payload, birthYear, 合_1,合_2,冲_1,冲_2) //version2 is to check 天干 合/冲 关系
@@ -85,8 +85,23 @@
 
 <div class="m-4">
 <p>sector: {sector} | {sectorElement}</p>
+
 <!-- <p>Owner1: {keys[0]}  ({birthYear[0].gYear}|{birthYear[1].gYear}) </p> 
 <p>Owner2: {keys[1]}  ({birthYear[0].zYear}|{birthYear[1].zYear}) </p> -->
+
+{#if birthYear.length >1}
+
+<ul>
+  <p>Owner1: {keys[0]}  ({birthYear[0].gYear}|{birthYear[1].gYear}) </p> 
+  <p>Owner2: {keys[1]}  ({birthYear[0].zYear}|{birthYear[1].zYear}) </p>
+</ul>
+
+{:else}
+  <p>Owner1: {keys[0]}  ({birthYear[0].gYear})</p> 
+  <p>Owner2: {keys[1]}  ({birthYear[0].zYear})</p>
+{/if}
+
+
 </div>
 
 
@@ -102,8 +117,13 @@
         -
         {item.gValue}·{item.zValue} 
         -
-        <!-- P1: {birthYear[0].gYear}{birthYear[0].zYear} · P2: {birthYear[1].gYear} {birthYear[1].zYear} -->
-        
+        {#if birthYear.length >1}
+            P1: {birthYear[0].gYear}{birthYear[0].zYear} · P2: {birthYear[1].gYear} {birthYear[1].zYear}
+        {:else}
+            P1: {birthYear[0].gYear}{birthYear[0].zYear}
+        {/if}
+
+
         天干关系: {item.天干合冲}·{item.天干六合}·{item.天干合关系}
         地支关系: {item.地支合冲}·{item.地支合五行}·{item.地支合关系}
         地支关系: {item.地支三合三会五行}·{item.地支三合三会关系}
