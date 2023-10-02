@@ -15,8 +15,8 @@
 
     Dcodes.subscribe((data)=>{
     payload = data
-    console.log("please work.")
-    console.log(payload)
+    
+    //console.log(payload)
     })
 
 
@@ -96,18 +96,32 @@
       <p class="text-blue-500  mx-3">得地</p>
       <p class="text-blue-500  mx-3">身旺</p>
     </div>
-    <div class="mt-5">
-      <h3 class="text-xl font-semibold">每日宜忌: </h3>
-      <h3 class="text-base my-2">十二值星: {zhixing}</h3>
-      <p class="text-gray-600">宜: {can}</p>
-      <p class="text-gray-600">忌: {cannot}</p>
 
-      <!-- <p class="text-gray-600 mt-2">{detail.t0}</p>
-      <p class="text-gray-600 mt-2">{detail.z0}</p>
-       -->
-      <!-- <p class="text-center text-gray-600 mt-1">{detail.t0}</p>
-      <p class="text-center text-gray-600 mt-1">{detail.z0}</p> -->
-      
+    <div class="flex flex-row">
+      <div class="grid grid-cols-2 gap-2 content-center">
+        <div>
+          <div class="mt-5 text-center">
+            <h3 class="text-2xl font-semibold">年月日时</h3>
+            <h3 class="text-lg text-gray-600 mt-1">{detail.t0}</h3>
+            <h3 class="text-lg text-gray-600 mt-1">{detail.z0}</h3>
+          </div>
+        </div>
+        <!-- <div>
+          <div class="mt-5 text-center">
+            <h3 class="text-2xl font-semibold">年月日时</h3>
+            <h3 class="text-lg text-gray-600 mt-1">{detail.t0}</h3>
+            <h3 class="text-lg text-gray-600 mt-1">{detail.z0}</h3>
+          </div>
+        </div> -->
+        <div>
+          <div class="mt-5">
+            <h3 class="text-xl font-semibold">每日宜忌: </h3>
+            <h3 class="text-base my-2">十二值星: {zhixing}</h3>
+            <p class="text-gray-600">宜: {can}</p>
+            <p class="text-gray-600">忌: {cannot}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>

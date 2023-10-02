@@ -213,7 +213,97 @@ export function transistor(birthYear) {
   };
 
 
-  //version2 is to check 天干 合/冲 关系 (合1,合2, 冲1,冲2)
+
+export function version1(payload){
+  for (let i = 0; i < payload.length; i++) {
+    const dayElement = (payload[i]['dayEl'])
+    const mydArray = (payload[i]['gValue']).split(" ") //date + time.
+    const myeArray = (payload[i]['zValue']).split(" ") //date + time.
+        
+        let totalScore = 0;
+        //let findings = "";
+        let input = "";
+        let combinedElements1 = [];
+        let combinedElements2 = [];
+        let combinedElement = "";
+        let relationship = "";
+        let result1 = [];
+        let result2 = [];
+        const dpairs = [];
+        const epairs = [];
+        console.log('----------------v1-1--Version1 天干 Dev-------------------')
+        for (let j = 0; j< mydArray.length; j++) {
+          for (let k = j+1; k<mydArray.length; k++){
+            let score = 0;
+            console.log(mydArray[j], mydArray[k])
+            dpairs.push([mydArray[j], mydArray[k]])
+
+            let binding =  answersheet(mydArray[j]).合
+            //spliting = answersheet().冲
+
+            if (binding === mydArray[k]){
+              console.log("Found dpairs!")
+              input = `${mydArray[j]}${mydArray[k]}`
+              combinedElement = ganzhihe(input)
+              console.log('x','v1-1', 'dpairs:', input, 'dayElement:', dayElement, 'res:',combinedElement)
+              relationship = elementRS(dayElement, combinedElement)
+              score = rScore(relationship)
+              totalScore += score
+              result1.push(relationship)
+              combinedElements1.push(combinedElement)
+              console.log('result of rs:', relationship, 'score:', score)
+              
+
+            }
+          }
+          //payload[i]['score'] = totalScore
+          console.log('1r:',totalScore)
+          
+        }
+        
+        console.log('----------------v1-2--Version1 地支 Dev-------------------')
+        console.log('dz')
+        
+        for (let j = 0; j< myeArray.length; j++) {
+          for (let k = j+1; k<myeArray.length; k++){
+            let score = 0;
+            console.log(myeArray[j], myeArray[k])
+            epairs.push([myeArray[j], myeArray[k]])
+            let binding1 =  answersheet(myeArray[j]).L合 
+            let binding2 =  answersheet(myeArray[j]).S合
+            
+            if (binding1 === myeArray[k] || binding2[0] === myeArray[k] || binding2[1] === myeArray[k]){
+              console.log("Found epairs!")
+              input = `${myeArray[j]}${myeArray[k]}`
+              combinedElement = ganzhihe(input)
+              console.log('x','v1-2', 'epairs:', input, 'dayElement:', dayElement, 'res:',combinedElement)
+              relationship = elementRS(dayElement, combinedElement)
+              score = rScore(relationship)
+              totalScore += score
+              result2.push(relationship)
+              combinedElements2.push(combinedElement)
+              console.log('result of rs:', relationship, 'score:', score)
+            }
+            // continue to check.... 
+          }
+          //let score = 0;
+          //console.log(myArray[j])
+          console.log('2r:',totalScore)
+        }
+        payload[i]['score'] = totalScore
+        payload[i]['z_天干合五行'] = combinedElements1
+        payload[i]['z_地支合五行'] = combinedElements2
+        payload[i]['z_天干合关系'] = result1
+        payload[i]['z_地支合关系'] = result2
+    }
+    console.log("v1.")
+    console.log(payload)
+  }
+
+
+
+
+//version2 is to check 天干 合/冲 关系 (合1,合2, 冲1,冲2)
 export function version2(payload, birthYear){
     
     let ownersArray = capacity_g(birthYear)
@@ -224,18 +314,15 @@ export function version2(payload, birthYear){
       //let score = 0;
       const dayElement = (payload[i]['dayEl'])
       const doorElement = checkElement((payload[i]['door']))
+      let totalScore = (payload[i]['score'])
       
       //const ownersArray = [birthYear[0]['gYear'], birthYear[1]['gYear']]
-      
-
-      
       //const owner1 = checkElement(birthYear[0]['gYear'])
       //const owner2 = checkElement(birthYear[1]['gYear'])
       //let owners = [owner1, owner2];
       
-      
       const myArray = (payload[i]['gValue']).split(" ") //date + time.
-        let totalScore = 0;
+        //let totalScore = 0;
         let findings = ""
         let input = ""
         let combinedElements = [];

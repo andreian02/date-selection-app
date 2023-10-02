@@ -19,7 +19,7 @@
       } return logofiller
     } 
     logofiller = (setURL(payload))
-    console.log("logo:" ,logofiller)
+    //console.log("logo:" ,logofiller)
 
     
 

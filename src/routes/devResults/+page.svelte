@@ -2,7 +2,7 @@
 <script>
   import ResultTable from "$lib/components/resultTable.svelte";
   import { Dcodes, doorSector, homeowners, yearKeys } from '../../Store.js';
-  import {answersheet, transistor, checkElement, version2, version3, version4, version5} from '../../Utils.js'
+  import {answersheet, transistor, checkElement, version1, version2, version3, version4, version5} from '../../Utils.js'
 
   export let sector
   export let payload 
@@ -68,14 +68,16 @@
   // let 合_4 = answersheet(birthYear[1].zYear).L合
   // let 冲_4 = answersheet(birthYear[1].zYear).冲
 
-  // console.log("--dd--------------------------------------------------")
 
   //Analying Tiangan
   //version2(payload, birthYear, 合_1,合_2,冲_1,冲_2) //version2 is to check 天干 合/冲 关系
+  version1(payload)
+
   version2(payload, birthYear)
   version3(payload, birthYear) //version3 is to check 地支 合/冲 关系
   version4(payload, birthYear) //version4 is to check 地支 三合/三会 关系
   version5(payload, birthYear) //version5 is to check 地支 刑,破,害 关系
+
   
 </script>
 

@@ -8,7 +8,7 @@
 
 <svelte:head>
 	<title>Calendar</title>
-	<meta name="description" content="Calendar App" />
+	<meta name="description" content="Date Selection App" />
 </svelte:head>
 
 <section>
