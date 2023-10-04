@@ -4,6 +4,7 @@
     export let sector
     export let birthYear
     export let sectorElement
+    export let period
 
     
     // function filterData() {
@@ -29,6 +30,9 @@
         <p class="text-gray-500 mx-2 mb-6">
           Door Sector: {sector} | {sectorElement}
         </p>
+        <!-- <p class="text-gray-500 mx-2 mb-6">
+          Current Period: {period}
+        </p> -->
   
   
         <div class="relative overflow-x-auto">

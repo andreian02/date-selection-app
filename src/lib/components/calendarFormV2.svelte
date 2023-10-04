@@ -7,13 +7,21 @@
   import localeEn from 'air-datepicker/locale/en';
   import { DayElement, dayofbirthDetails, yearofBirthdate } from '../../Utils.js';
   
+  import Calswitch from './calswitch.svelte';
   import Newswitch from './newswitch.svelte';
   export let value = 'couple';
-	let isSwitchedOn = true;
+  export let mode = 'off';
+	
+  let isSwitchedOn = true;
+  let isCalendarOn = true;
 
 	function handleSwitch() {
     isSwitchedOn = !isSwitchedOn;
 		console.log(isSwitchedOn)}
+  
+  function handleSwitch2() {
+    isCalendarOn = !isCalendarOn;
+		console.log(isCalendarOn)}
 
 	let isExpanded = false
   let isInputVisible = true;
@@ -250,7 +258,9 @@
               <p class='pb-4'>Please fill out all the fields.</p>
               
               <Newswitch bind:value={value} onSwitch={handleSwitch}/>
-              
+              <p class="pt-4"></p>
+              <Calswitch bind:mode={mode} onSwitch2={handleSwitch2}/>
+
             </div>
   
             <div class="lg:col-span-2">
@@ -262,6 +272,7 @@
                   <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" use:air_datepicker={options} />
                 </div>
 
+                {#if isCalendarOn}
                 <div class="md:col-span-2">
                   <label for="address">Date of Birth 1</label>
                   <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" use:air_datepicker={options2} />
@@ -273,6 +284,7 @@
                     <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" use:air_datepicker={options3} />
                   {/if}
                 </div>
+                {/if}
 
                
 

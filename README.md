@@ -38,11 +38,33 @@ You can preview the production build with `npm run preview`.
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
 
 
+## Things to add / Features to build and complete v1 
+
+Finish up scoring system 
+To complete version1 function 
+Gui Ren Feature to implement (1/4 Done.)
+Install calendar feature, button installed, backend to be updated
+Decide what to show in cards and result table 
+Filter option in table? 
+Navigation + Breadcrumbs? 
+
+For V2 
+implement radialchart to analyze all five element of the day
+feature to be added individual cards 
+
+Run analysis without owners
+
+
+
+
 ## Resource
 https://tailwindcomponents.com/component/responsive-form-1
 https://unsplash.com/photos/3OdGZzTt1fM
 https://air-datepicker.com/
 https://www.amp-what.com/
+
+Card：https://tailwindcomponents.com/component/social-media-bio-card
+
 
 We will add this eventually: 
 https://layercake.graphics/example/Radar

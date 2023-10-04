@@ -1,12 +1,12 @@
 <script>
     
-    export let onSwitch;
-    export let options = ['single', 'couple'];
+    export let onSwitch2;
+    export let options = ['on', 'off'];
 	export let fontSize = 16;
-	export let value = 'couple';
+	export let mode = 'off';
     
     
-    let label="Select Mode";
+    let label="Calendar Mode";
 
     const uniqueID = Math.floor(Math.random() * 100)
 </script>
@@ -18,12 +18,15 @@
 				 style="font-size:{fontSize}px" 
 				 id={`group-${uniqueID}`}>
     <div class='legend' id={`label-${uniqueID}`}>{label}</div>
+    <div class='px-6'>
         {#each options as option}
-            <input type="radio" id={`${option}-${uniqueID}`} on:change={onSwitch} value={option} bind:group={value}>
+        
+            <input type="radio" id={`${option}-${uniqueID}`} on:change={onSwitch2} value={option} bind:group={mode}>
             <label for={`${option}-${uniqueID}`}>
                 {option}
             </label> 
         {/each}
+    </div>
     </div>
 </div>
 
@@ -35,7 +38,7 @@
 
 .s--multi {
     --accent-color: CornflowerBlue;
-    --gray: #ccc;
+    --onSwitch: rebeccapurple;
 }
 
 /* Multi Design Option */
@@ -115,7 +118,7 @@ height: 1.6em;
 }
 
 .s--multi input:first-of-type:checked ~ label:first-of-type:after {
-background: var(--gray);
+background: var(--onSwitch);
 }
 
 .s--multi input:first-of-type:checked ~ label:first-of-type:before {

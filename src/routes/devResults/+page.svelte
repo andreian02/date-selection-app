@@ -3,6 +3,7 @@
   import ResultTable from "$lib/components/resultTable.svelte";
   import { Dcodes, doorSector, homeowners, yearKeys } from '../../Store.js';
   import {answersheet, transistor, checkElement, version1, version2, version3, version4, version5} from '../../Utils.js'
+  import {defaultDates, jieQidetect} from '../../dtools.js'
 
   export let sector
   export let payload 
@@ -44,12 +45,31 @@
   // let 冲3 = ""
   // let 合4 = ""
   // let 冲4 = ""
-
+  let protocol;
+  let period;
   let result_details;
 
+
+  console.log("$PAYLOD:", payload, )
+  period = jieQidetect(payload) // insert period to result table. 
+  
+  console.log("check for default dates")
+  
+
   console.log("b-year",birthYear, "length:", birthYear.length)
-  console.log("Testing cheatsheet and answersheet g1", birthYear[0].gYear)
-  console.log("Testing cheatsheet and answersheet z1", birthYear[0].zYear)
+  if (birthYear.length >1){
+    protocol = defaultDates(birthYear)
+    console.log("Testing cheatsheet and answersheet g1", birthYear[0].gYear)
+    console.log("Testing cheatsheet and answersheet z1", birthYear[0].zYear)
+    console.log("Testing cheatsheet and answersheet g2", birthYear[1].gYear)
+    console.log("Testing cheatsheet and answersheet z2", birthYear[1].zYear)
+
+  } else {
+    console.log("Testing cheatsheet and answersheet g1", birthYear[0].gYear)
+    console.log("Testing cheatsheet and answersheet z1", birthYear[0].zYear)
+  }
+  
+
   console.log("----------------------------------------------------")
   result_details = transistor(birthYear)
   
@@ -68,17 +88,31 @@
   // let 合_4 = answersheet(birthYear[1].zYear).L合
   // let 冲_4 = answersheet(birthYear[1].zYear).冲
 
+  
+  console.log('p:',protocol)
+  if (protocol === 'same'){
+      console.log("running protocol 1")
+      version1(payload)
 
+  } 
+  else {
+    console.log("running protocol 2")
+    version1(payload)
+    version2(payload, birthYear)
+    version3(payload, birthYear) //version3 is to check 地支 合/冲 关系
+    version4(payload, birthYear) //version4 is to check 地支 三合/三会 关系
+    version5(payload, birthYear) //version5 is to check 地支 刑,破,害 关系
+    
+  }
   //Analying Tiangan
   //version2(payload, birthYear, 合_1,合_2,冲_1,冲_2) //version2 is to check 天干 合/冲 关系
-  version1(payload)
+  //version1(payload)
 
-  version2(payload, birthYear)
-  version3(payload, birthYear) //version3 is to check 地支 合/冲 关系
-  version4(payload, birthYear) //version4 is to check 地支 三合/三会 关系
-  version5(payload, birthYear) //version5 is to check 地支 刑,破,害 关系
+  // version2(payload, birthYear)
+  // version3(payload, birthYear) //version3 is to check 地支 合/冲 关系
+  // version4(payload, birthYear) //version4 is to check 地支 三合/三会 关系
+  // version5(payload, birthYear) //version5 is to check 地支 刑,破,害 关系
 
-  
 </script>
 
 
