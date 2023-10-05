@@ -41,9 +41,11 @@ You can preview the production build with `npm run preview`.
 ## Things to add / Features to build and complete v1 
 
 Finish up scoring system 
-To complete version1 function 
-Gui Ren Feature to implement (1/4 Done.)
-Install calendar feature, button installed, backend to be updated
+To complete version1 function, this function supports Calendar Feature
+
+Gui Ren Feature to implement (1/4 Done.) 
+Install the logic 
+
 Decide what to show in cards and result table 
 Filter option in table? 
 Navigation + Breadcrumbs? 
@@ -52,8 +54,11 @@ For V2
 implement radialchart to analyze all five element of the day
 feature to be added individual cards 
 
-Run analysis without owners
 
+STATUS DONE! 
+
+Run analysis without owners > Calendar Feature. - DONE! 
+Install calendar feature, button installed, backend to be updated - DONE!
 
 
 

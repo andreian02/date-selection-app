@@ -8,3 +8,5 @@ export const Basin = writable([]);
 export const homeowners = writable([]);
 export const yearKeys =  writable([]);
 export const doorSector = writable()
+
+export const protocolMode = writable()

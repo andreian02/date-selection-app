@@ -1,6 +1,6 @@
 <script>
   import { goto } from '$app/navigation';
-  import { Dcodes, homeowners, doorSector, yearKeys } from '../../Store.js';
+  import { Dcodes, homeowners, doorSector, yearKeys, protocolMode } from '../../Store.js';
   import {Solar, Lunar} from 'lunar-javascript'
   
   import {air_datepicker}  from "$lib/components/calendarItem";
@@ -15,12 +15,15 @@
   let isSwitchedOn = true;
   let isCalendarOn = true;
 
+  let protocolM;
+
 	function handleSwitch() {
     isSwitchedOn = !isSwitchedOn;
 		console.log(isSwitchedOn)}
   
   function handleSwitch2() {
     isCalendarOn = !isCalendarOn;
+    protocolM = 'protocol-one'
 		console.log(isCalendarOn)}
 
 	let isExpanded = false
@@ -35,7 +38,7 @@
 		isExpanded = !isExpanded
 	}
 
-  let selected  
+  let selected;  
   let sectors = ['震', '巽','离', '坤', '兑',  '乾', '坎', '艮' ];
   
 
@@ -75,7 +78,7 @@
                       console.log(event);}
                     }
                   
-  
+  $: protocolM = protocolM
   $: selectedM = selected
   $: startDate = new Date(range.start);
   $: endDate = new Date(range.end);
@@ -172,6 +175,10 @@
         return(selected)
       })
 
+      protocolMode.update(()=>{
+        return(protocolM)
+      })
+
 
       for (let date = startDate; date <= endDate;  date.setDate(date.getDate() + 1)) 
           
@@ -257,10 +264,13 @@
               <p class="font-medium text-lg">Personal Details</p>
               <p class='pb-4'>Please fill out all the fields.</p>
               
-              <Newswitch bind:value={value} onSwitch={handleSwitch}/>
-              <p class="pt-4"></p>
               <Calswitch bind:mode={mode} onSwitch2={handleSwitch2}/>
+              <p class="pt-4"></p>
 
+              {#if isCalendarOn}
+              <Newswitch bind:value={value} onSwitch={handleSwitch}/>
+              {/if}
+              
             </div>
   
             <div class="lg:col-span-2">
@@ -284,7 +294,7 @@
                     <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" use:air_datepicker={options3} />
                   {/if}
                 </div>
-                {/if}
+                
 
                
 
@@ -298,6 +308,7 @@
                         {/each}
                     </select>
                 </div>
+                {/if}
   
                 <br />
                 <br />

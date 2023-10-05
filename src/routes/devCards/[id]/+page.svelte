@@ -86,7 +86,7 @@
 <!-- Id:{cardId} -->
 
 <body>
-  <div class="max-w-lg mx-auto my-10 bg-white rounded-lg p-5">
+  <div class="max-w-lg mx-auto my-5 bg-white rounded-lg p-1">
     <img class="w-24 h-24 rounded-full mx-auto" src={url} alt="element">
     <h2 class="text-center text-2xl font-semibold mt-3">{result.date}</h2>
     <!-- <p class="text-center text-gray-600 mt-1">{detail.t0}</p>

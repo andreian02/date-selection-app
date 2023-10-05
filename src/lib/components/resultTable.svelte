@@ -5,6 +5,7 @@
     export let birthYear
     export let sectorElement
     export let period
+    export let protocolM
 
     
     // function filterData() {
@@ -21,6 +22,9 @@
         <h4 class="font-medium text-gray-600 m-2">
           Input Details:
         </h4>
+        {#if protocolM == 'protocol-one'}
+          <p class="mx-2 mb-6"></p>
+        {:else}
         <p class="text-gray-500 m-2">
           Person 1 DOB: {keys[0]}
         </p>
@@ -30,6 +34,7 @@
         <p class="text-gray-500 mx-2 mb-6">
           Door Sector: {sector} | {sectorElement}
         </p>
+        {/if}
         <!-- <p class="text-gray-500 mx-2 mb-6">
           Current Period: {period}
         </p> -->
@@ -77,12 +82,16 @@
                         <p>{item.zValue}</p>
                       </td>
                       <td class="px-4 py-4 text-base">
+                        {#if protocolM == 'protocol-one'}
+                          <p></p>
+                        {:else}
                         {#if birthYear.length >1}
                             <p>{birthYear[0].gYear}·{birthYear[1].gYear}</p>
                             <p>{birthYear[0].zYear}·{birthYear[1].zYear}</p>
                         {:else}
                             <p>{birthYear[0].gYear}</p>
                             <p>{birthYear[0].zYear}</p>
+                        {/if}
                         {/if}
                       </td>
                       <td class="px-4 py-4 text-base">
