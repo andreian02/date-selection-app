@@ -1,40 +1,20 @@
 import { Lunar } from 'lunar-javascript'
-import { cheatsheet } from './helper'
+import { cheatsheet, checkElement } from './helper'
 
 
 // '甲','卯','乙','辰','巽','巳','丙', '午', '丁', '未', '坤', '申', '庚', '酉', "辛", '戌','乾','亥','壬','子','癸','丑','艮','寅'
-export function checkElement(input){
-  
-  let element =  ""
-  if (input == "壬" || input == "癸" || input == "亥" || input == "子" || input == "坎") {
-    element = "水"
-  } else if (input == "甲" || input == "乙" || input == "寅" || input == "卯" || input == "巽" || input == "震") {
-    element = "木"
-  } else if (input == "丙" || input == "丁" || input == "巳" || input == "午" || input == "离") {
-    element = "火"
-  } else if (input == "戊" || input == "己" || input == "丑" || input == "辰" || input == "未" || input == "戌" || input == "艮" || input == "坤") {
-    element = "土"
-  } else if (input == "庚" || input == "辛" || input == "申" || input == "酉" || input == "兑" || input == "乾") {
-    element = "金"
-  }
-    return element
+export function capacity_g(birthYear) {
+  let ownersArray;
+  if (birthYear.length > 1){
+    ownersArray = [birthYear[0]['gYear'], birthYear[1]['gYear']]     
+  } else {
+    ownersArray = [birthYear[0]['gYear']] 
+  } 
+    return ownersArray
   };
 
 
-  export function capacity_g(birthYear) {
-    let ownersArray;
-    if (birthYear.length > 1){
-      ownersArray = [birthYear[0]['gYear'], birthYear[1]['gYear']]     
-    } else {
-      ownersArray = [birthYear[0]['gYear']] 
-    } 
-      return ownersArray
-    };
-
-
-
-
-  export function capacity_z(birthYear) {
+export function capacity_z(birthYear) {
   let ownersArray;
   if (birthYear.length > 1){
     ownersArray = [birthYear[0]['zYear'], birthYear[1]['zYear']]     
@@ -252,8 +232,6 @@ export function version1(payload){
               result1.push(relationship)
               combinedElements1.push(combinedElement)
               console.log('result of rs:', relationship, 'score:', score)
-              
-
             }
           }
           //payload[i]['score'] = totalScore
@@ -269,14 +247,15 @@ export function version1(payload){
             let score = 0;
             console.log(myeArray[j], myeArray[k])
             epairs.push([myeArray[j], myeArray[k]])
-            let binding1 =  answersheet(myeArray[j]).L合 
-            let binding2 =  answersheet(myeArray[j]).S合
+            //合
+            let binding1 =  answersheet(myeArray[j])?.L合 
+            let binding2 =  answersheet(myeArray[j])?.S合
             
             if (binding1 === myeArray[k] || binding2[0] === myeArray[k] || binding2[1] === myeArray[k]){
               console.log("Found epairs!")
               input = `${myeArray[j]}${myeArray[k]}`
               combinedElement = ganzhihe(input)
-              console.log('x','v1-2', 'epairs:', input, 'dayElement:', dayElement, 'res:',combinedElement)
+              console.log('binding','v1-2', 'epairs:', input, 'dayElement:', dayElement, 'res:',combinedElement)
               relationship = elementRS(dayElement, combinedElement)
               score = rScore(relationship)
               totalScore += score
@@ -285,11 +264,59 @@ export function version1(payload){
               console.log('result of rs:', relationship, 'score:', score)
             }
             // continue to check.... 
+            let clashing1 = answersheet(myeArray[j])?.冲
+            if (clashing1 === myeArray[k]){
+              console.log("Found epairs!")
+              input = `${myeArray[j]}${myeArray[k]}`
+              console.log("-------------------------------------------------")
+              console.log('clashing','v1-2', 'epairs:', input, 'resc:',clashing1)
+            }
+
+            let breaking1 = answersheet(myeArray[j])?.破
+            if (breaking1 === myeArray[k]){
+              console.log("Found epairs!")
+              input = `${myeArray[j]}${myeArray[k]}`
+              console.log("-------------------------------------------------")
+              console.log('breaking','v1-2', 'epairs:', input, 'resc:',breaking1)
+            }
+            let harming1 = answersheet(myeArray[j])?.害
+            if (harming1 === myeArray[k]){
+              console.log("Found epairs!")
+              input = `${myeArray[j]}${myeArray[k]}`
+              console.log("-------------------------------------------------")
+              console.log('harming','v1-2', 'epairs:', input, 'resc:',harming1)
+            }
+            let execute = answersheet(myeArray[j])?.刑
+            if (execute === myeArray[k]){
+              console.log("Found epairs!")
+              input = `${myeArray[j]}${myeArray[k]}`
+              console.log("-------------------------------------------------")
+              console.log('execute','v1-2', 'epairs:', input,)
+            }
           }
+
           //let score = 0;
           //console.log(myArray[j])
           console.log('2r:',totalScore)
         }
+        console.log("----------------------三刑---------------------------")
+        const myeArray_o = (payload[i]['zValue']) //date + time.
+        for (let j = 0; j< myeArray.length; j++) {
+          
+          console.log(myeArray_o)
+          let execute2 = answersheet(myeArray[j])?.刑2 ?? "blank";
+          console.log("execute2",myeArray[j], execute2)
+          
+          if (execute2[0] === myeArray[j] && execute2[1] === myeArray[j]){
+            console.log('caught all 3', )
+          } else {
+            console.log('didnt caught any')
+          }
+
+          
+        }
+
+
         payload[i]['score'] = totalScore
         payload[i]['z_天干合五行'] = combinedElements1
         payload[i]['z_地支合五行'] = combinedElements2
@@ -329,6 +356,7 @@ export function version2(payload, birthYear){
         let combinedElement = "";
         let relationship = "";
         let result = [];
+        let effect = [];
 
         console.log('----------------v2--天干合冲关系-------------------')
         console.log('dayElement:', dayElement, 'owners:', ownersArray, 'doorSector:', doorElement)
@@ -377,7 +405,7 @@ export function version2(payload, birthYear){
             if (myArray[j] === 合1) {
               const owner1 = checkElement(ownersArray[0])
               
-              findings += "有合"
+              findings = "有合"
               console.log(`${i} 有合 Value ${合1} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
               console.log('h1',findings, myArray[j], 合1)
               //let input = ""
@@ -387,6 +415,7 @@ export function version2(payload, birthYear){
               console.log('x','o1',owner1, input, 'res:',combinedElement)
 
               relationship = elementRS(owner1, combinedElement)
+              effect.push(findings)
               result.push(relationship)
               score = rScore(relationship)
               totalScore += score
@@ -396,15 +425,16 @@ export function version2(payload, birthYear){
             }
             if (myArray[j] === 冲1) {
               
-              findings += "有冲"
+              findings = "有冲"
               console.log(`${i} 有冲 Value ${冲1} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
               console.log('x1',findings)
+              effect.push(findings)
 
             }
 
             if (myArray[j] === 合2) {
               const owner2 = checkElement(ownersArray[1])
-              findings += "有合"
+              findings = "有合"
               console.log(`${i} 有合 Value ${合2} found at index ${j}, ${myArray[j]}, ${ownersArray[1]}`);
               console.log('h2',findings, myArray[j], 合2)
               //let input = ""
@@ -415,6 +445,7 @@ export function version2(payload, birthYear){
               
 
               relationship = elementRS(owner2, combinedElement)
+              effect.push(findings)
               result.push(relationship)
               score = rScore(relationship)
               totalScore += score
@@ -424,13 +455,14 @@ export function version2(payload, birthYear){
 
             }
             if (myArray[j] === 冲2) {
-              findings += "有冲"
+              findings = "有冲"
               console.log(`${i} 有冲 Value ${冲2} found at index ${j}, ${myArray[j]}, ${ownersArray[1]}`);
               console.log('x2',findings)
+              effect.push(findings)
 
             } 
             else {
-              findings += ""
+              findings = ""
               relationship += ""
             }
           }   else {
@@ -440,7 +472,7 @@ export function version2(payload, birthYear){
             if (myArray[j] === 合1) {
               const owner1 = checkElement(ownersArray[0])
               
-              findings += "有合"
+              findings = "有合"
               console.log(`${i} 有合 Value ${合1} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
               console.log('h1',findings, myArray[j], 合1)
               //let input = ""
@@ -450,6 +482,7 @@ export function version2(payload, birthYear){
               console.log('x','o1',owner1, input, 'res:',combinedElement)
 
               relationship = elementRS(owner1, combinedElement)
+              effect.push(findings)
               result.push(relationship)
               score = rScore(relationship)
               totalScore += score
@@ -459,18 +492,20 @@ export function version2(payload, birthYear){
             }
             if (myArray[j] === 冲1) {
               
-              findings += "有冲"
+              findings = "有冲"
               console.log(`${i} 有冲 Value ${冲1} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
               console.log('x1',findings)
+              effect.push(findings)
 
             } else {
-              findings += ""
+              findings = ""
               relationship += ""
             }
 
           }
 
-        payload[i]['天干合冲'] = findings
+        // payload[i]['天干合冲'] = findings
+        payload[i]['天干合冲'] = effect
         payload[i]['天干六合'] = combinedElements
         payload[i]['天干合关系'] = result
         payload[i]['score'] = totalScore
@@ -512,6 +547,7 @@ export function version3(payload, birthYear){
     let combinedElement = "";
     let relationship = "";
     let result = [];
+    let effect = [];
 
     console.log('--------------v3----地支合冲关系-------------------')
     console.log('date:', (payload[i]['zValue'])  ,'dayElement:', dayElement, 'owners:' ,ownersArray , 'doorSector:', doorElement)
@@ -567,7 +603,7 @@ export function version3(payload, birthYear){
       if (myArray[j] === 合3 || sanhe3[0] || sanhe3[1]) {
 
         const owner1 = checkElement(ownersArray[0])
-        findings += "有合"
+        findings = "有合"
         console.log(`${i} 有合 Value ${合3} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
         console.log('x',findings)
         //let input = ""
@@ -584,22 +620,23 @@ export function version3(payload, birthYear){
         
         score = rScore(relationship)
         totalScore += score
-        
+        effect.push(findings)
         result.push(relationship)
         combinedElements.push(combinedElement)
         console.log('xr1:',owner1, combinedElement ,relationship)
 
       }
       if (myArray[j] === 冲3) {
-        findings += "有冲"
+        findings = "有冲"
         console.log(`${i} 有冲 Value ${冲3} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
         console.log('x',findings)
+        effect.push(findings)
 
       }
       if (myArray[j] === 合4 || sanhe4[0] || sanhe4[1]) {
 
         const owner2 = checkElement(ownersArray[1])
-        findings += "有合"
+        findings = "有合"
         console.log(`${i} 有合 Value ${合4} found at index ${j}, ${myArray[j]}, ${ownersArray[1]}`);
         console.log('x',findings)
         //let input = ""
@@ -616,20 +653,21 @@ export function version3(payload, birthYear){
 
         score = rScore(relationship)
         totalScore += score
-
+        effect.push(findings)
         result.push(relationship)
         combinedElements.push(combinedElement)
         console.log('xr2:',owner2, combinedElement ,relationship)
 
       }
       if (myArray[j] === 冲4) {
-        findings += "有冲"
+        findings = "有冲"
         console.log(`${i} 有冲 Value ${冲4} found at index ${j}, ${myArray[j]}, ${ownersArray[1]}`);
         console.log('x',findings)
+        effect.push(findings)
 
       } 
       else {
-        findings += ""
+        findings = ""
         relationship += ""
       }
     } else {
@@ -647,7 +685,7 @@ export function version3(payload, birthYear){
 
 
         const owner1 = checkElement(ownersArray[0])
-        findings += "有合"
+        findings = "有合"
         console.log(`${i} 有合 Value ${合3}} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
         console.log('x',findings)
         //let input = ""
@@ -664,25 +702,27 @@ export function version3(payload, birthYear){
         
         score = rScore(relationship)
         totalScore += score
-        
+        effect.push(findings)
         result.push(relationship)
         combinedElements.push(combinedElement)
         console.log('xr1:',owner1, combinedElement ,relationship)
 
       }
       if (myArray[j] === 冲3) {
-        findings += "有冲"
+        findings = "有冲"
         console.log(`${i} 有冲 Value ${冲3} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
         console.log('x',findings)
+        effect.push(findings)
 
       }  else {
-        findings += ""
+        findings = ""
         relationship += ""
       }
 
     }
 
-      payload[i]['地支合冲'] = findings
+      //payload[i]['地支合冲'] = findings
+      payload[i]['地支合冲'] = effect
       payload[i]['地支合五行'] = combinedElements
       payload[i]['地支合关系'] = result
       payload[i]['score'] = totalScore
@@ -1015,4 +1055,22 @@ export function version5(payload, birthYear){
     return (payload)
 
 
+}
+
+export function cleanup(payload){
+  for (let i = 0; i < payload.length; i++) {
+    //console.log(payload[i]['地支合五行'].filter((item) => item !== ""))
+    //console.log(payload[i]['地支合关系'].filter((item) => item !== ""))
+    if (payload[i]['地支合五行'].length === 0 || payload[i]['地支合关系'].length ===0) {
+      console.log("array empty, skipping cleanup") 
+    } else {
+    payload[i]['地支合五行'] = payload[i]['地支合五行'].filter((item) => item !== "")
+    payload[i]['地支合关系'] = payload[i]['地支合关系'].filter((item) => item !== "")
+    }
+
+  }
+
+  console.log("clean up done.")
+  console.log(payload)
+  return payload
 }

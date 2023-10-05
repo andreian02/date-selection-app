@@ -15,16 +15,20 @@
   let isSwitchedOn = true;
   let isCalendarOn = true;
 
-  let protocolM;
+  let protocolM = 'main';
 
 	function handleSwitch() {
     isSwitchedOn = !isSwitchedOn;
 		console.log(isSwitchedOn)}
   
   function handleSwitch2() {
-    isCalendarOn = !isCalendarOn;
-    protocolM = 'protocol-one'
-		console.log(isCalendarOn)}
+    if (isCalendarOn = !isCalendarOn){
+      protocolM = 'main'
+    } else {
+      protocolM = 'protocol-one'
+    }
+    
+		console.log(isCalendarOn, protocolM)}
 
 	let isExpanded = false
   let isInputVisible = true;

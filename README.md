@@ -43,22 +43,26 @@ You can preview the production build with `npm run preview`.
 Finish up scoring system 
 To complete version1 function, this function supports Calendar Feature
 
+
 Gui Ren Feature to implement (1/4 Done.) 
 Install the logic 
 
 Decide what to show in cards and result table 
 Filter option in table? 
 Navigation + Breadcrumbs? 
+Layout in the individual cards
+
 
 For V2 
 implement radialchart to analyze all five element of the day
 feature to be added individual cards 
 
 
-STATUS DONE! 
+## STATUS COMPLETED! 
 
 Run analysis without owners > Calendar Feature. - DONE! 
 Install calendar feature, button installed, backend to be updated - DONE!
+Clean up empty strings in final payload  > Logic Built! - DONE!
 
 
 

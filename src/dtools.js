@@ -45,7 +45,7 @@ export function jieQidetect(payload){
     let period = ""; 
     let todayDate = new Date(); 
 
-    const startDate = payload[0]['date'];
+    //const startDate = payload[0]['date'];
     const endDate = payload[payload.length - 1]['date'];
     
     //console.log("first", startDate)

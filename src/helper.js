@@ -9,6 +9,7 @@ export function cheatsheet(input){
             L合: "丑",
             刑: ["卯"],
             破: "酉",
+            害: "未"
         }
     } else if (input == "丑"){
         details = { 
@@ -16,8 +17,9 @@ export function cheatsheet(input){
             S合: ["酉","巳"],
             冲: "未",
             L合: "子",
-            刑: ["戌","未"],
+            刑2: ["戌","未"],
             破: "辰",
+            害: "午"
         }
     } else if (input == "寅"){
         details = {
@@ -25,8 +27,9 @@ export function cheatsheet(input){
             S合: ["午","戌"],
             冲: "申",
             L合: "亥",
-            刑: ["巳", "申"],
+            刑2: ["巳", "申"],
             破: "",
+            害: "巳"
         }
     } else if (input == "卯"){
         details = {
@@ -36,6 +39,7 @@ export function cheatsheet(input){
             L合: "戌",
             刑: "子",
             破: "午",
+            害: "辰"
         }
     } else if (input == "辰"){
         details = {
@@ -45,6 +49,7 @@ export function cheatsheet(input){
             L合: "酉",
             刑: "辰",
             破: "丑",
+            害: "卯"
         }
     } else if (input == "巳"){
         details = {
@@ -52,8 +57,9 @@ export function cheatsheet(input){
             S合: ["丑","酉"],
             冲: "亥",
             L合: "申",
-            刑: ["寅","申"],
+            刑2: ["寅","申"],
             破: "",
+            害: "寅"
         }
     } else if (input == "午"){
         details = {
@@ -63,6 +69,7 @@ export function cheatsheet(input){
             L合: "未",
             刑: "午",
             破: "卯",
+            害: "丑"
         }
     } else if (input == "未"){
         details = {
@@ -70,8 +77,9 @@ export function cheatsheet(input){
             S合: ["亥","卯"],
             冲: "丑",
             L合: "午",
-            刑: ["戌","丑"],
+            刑2: ["戌","丑"],
             破: "戌",
+            害: "子"
         }
     } else if (input == "申"){
         details = {
@@ -79,8 +87,9 @@ export function cheatsheet(input){
             S合: ["子","辰"],
             冲: "寅",
             L合: "巳",
-            刑: ["寅","巳"],
+            刑2: ["寅","巳"],
             破: "",
+            害: "亥"
         } 
     } else if (input == "酉"){
         details = { 
@@ -90,6 +99,7 @@ export function cheatsheet(input){
             L合: "辰",
             刑: "酉",
             破: "子",
+            害: "戌"
         }
     } else if (input == "戌"){
         details = {
@@ -97,8 +107,9 @@ export function cheatsheet(input){
             S合: ["午","寅"],
             冲: "辰",
             L合: "卯",
-            刑: ["丑", "未",],
+            刑2: ["丑", "未",],
             破: "未",
+            害: "酉"
         }
     } else if (input == "亥"){
         details = {
@@ -108,6 +119,7 @@ export function cheatsheet(input){
             L合: "寅",
             刑: "亥",
             破: "",
+            害: "申"
         } 
     } else if (input == "甲"){
         details = {
@@ -163,3 +175,22 @@ export function cheatsheet(input){
 
     return details
 }
+
+
+export function checkElement(input){
+  
+    let element =  ""
+    if (input == "壬" || input == "癸" || input == "亥" || input == "子" || input == "坎") {
+      element = "水"
+    } else if (input == "甲" || input == "乙" || input == "寅" || input == "卯" || input == "巽" || input == "震") {
+      element = "木"
+    } else if (input == "丙" || input == "丁" || input == "巳" || input == "午" || input == "离") {
+      element = "火"
+    } else if (input == "戊" || input == "己" || input == "丑" || input == "辰" || input == "未" || input == "戌" || input == "艮" || input == "坤") {
+      element = "土"
+    } else if (input == "庚" || input == "辛" || input == "申" || input == "酉" || input == "兑" || input == "乾") {
+      element = "金"
+    }
+      return element
+    };
+  
