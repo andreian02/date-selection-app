@@ -41,8 +41,8 @@ You can preview the production build with `npm run preview`.
 ## Things to add / Features to build and complete v1 
 
 Finish up scoring system 
-To complete version1 function, this function supports Calendar Feature
-
+Need to test calendar results
+Need to think how to pass calendar results into cards...
 
 Gui Ren Feature to implement (1/4 Done.) 
 Install the logic 
@@ -63,6 +63,7 @@ feature to be added individual cards
 Run analysis without owners > Calendar Feature. - DONE! 
 Install calendar feature, button installed, backend to be updated - DONE!
 Clean up empty strings in final payload  > Logic Built! - DONE!
+To complete version1 function, this function supports Calendar Feature - DONE!
 
 
 
