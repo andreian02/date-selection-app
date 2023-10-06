@@ -54,18 +54,6 @@
                         命主 (年柱)
                       </th>
                       <th scope="col" class="px-4 py-4">
-                        TBC 1
-                      </th>
-                      <th scope="col" class="px-4 py-4">
-                        TBC 2
-                      </th>
-                      <th scope="col" class="px-4 py-4">
-                        TBC 3
-                      </th>
-                      <th scope="col" class="px-4 py-4">
-                        TBC 4
-                      </th>
-                      <th scope="col" class="px-4 py-4">
                         Score
                       </th>
                   </tr>
@@ -93,18 +81,6 @@
                             <p>{birthYear[0].zYear}</p>
                         {/if}
                         {/if}
-                      </td>
-                      <td class="px-4 py-4 text-base">
-                        {item.score}
-                      </td>
-                      <td class="px-4 py-4 text-base">
-                        xxx
-                      </td>
-                      <td class="px-4 py-4 text-base">
-                        yyy
-                      </td>
-                      <td class="px-4 py-4 text-base">
-                        zzz
                       </td>
                       <td class="px-4 py-4 text-base">
                         {item.score}

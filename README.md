@@ -42,6 +42,7 @@ You can preview the production build with `npm run preview`.
 
 Finish up scoring system 
 Need to test calendar results
+To complete version1 function, this function supports Calendar Feature - DONE! but realised haven push results so not done.
 Need to think how to pass calendar results into cards...
 
 Gui Ren Feature to implement (1/4 Done.) 
@@ -63,7 +64,6 @@ feature to be added individual cards
 Run analysis without owners > Calendar Feature. - DONE! 
 Install calendar feature, button installed, backend to be updated - DONE!
 Clean up empty strings in final payload  > Logic Built! - DONE!
-To complete version1 function, this function supports Calendar Feature - DONE!
 
 
 

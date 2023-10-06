@@ -129,28 +129,21 @@
   <ResultTable {payload} {sector} {sectorElement} {keys} {birthYear}/>
 {/if}
 
-<div class="m-4">
+<!-- <div class="m-4">
 <p>sector: {sector} | {sectorElement}</p>
-
-<!-- <p>Owner1: {keys[0]}  ({birthYear[0].gYear}|{birthYear[1].gYear}) </p> 
-<p>Owner2: {keys[1]}  ({birthYear[0].zYear}|{birthYear[1].zYear}) </p> -->
-
 {#if birthYear.length >1}
-
 <ul>
   <p>Owner1: {keys[0]}  ({birthYear[0].gYear}|{birthYear[1].gYear}) </p> 
   <p>Owner2: {keys[1]}  ({birthYear[0].zYear}|{birthYear[1].zYear}) </p>
 </ul>
-
 {:else}
   <p>Owner1: {keys[0]}  ({birthYear[0].gYear})</p> 
   <p>Owner2: {keys[1]}  ({birthYear[0].zYear})</p>
 {/if}
+</div> -->
 
-</div>
 
-
-<div class="m-4">
+<!-- <div class="m-4">
 
     <div>Select Date / DayE / HStm / O1 & O2 / Analysis Score / DrE </div> 
     {#each payload as item}
@@ -179,7 +172,7 @@
 
       </div>  
     {/each}
-</div>
+</div> -->
 
 
 
