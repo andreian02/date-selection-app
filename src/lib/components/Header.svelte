@@ -21,9 +21,9 @@
 			</li>
 			<!-- <li aria-current={$page.url.pathname.startsWith('/calendarForm') ? 'page' : undefined}>
 				<a href="/calendarForm">DS</a>
-			</li> -->
+			</li> devCalendar / calendar    --> 
 			<li aria-current={$page.url.pathname.startsWith('/devCalendar') ? 'page' : undefined}>
-				<a href="/devCalendar">Dev</a>
+				<a href="/calendar">Dev</a>
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/devResults') ? 'page' : undefined}>
 				<a href="/devResults">Results</a>
@@ -31,7 +31,6 @@
 			<li aria-current={$page.url.pathname.startsWith('/devCards') ? 'page' : undefined}>
 				<a href="/devCards">Cards</a>
 			</li>
-			
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 				<a href="/about">About</a>
 			</li>
