@@ -16,10 +16,10 @@
 				<thead class="bg-gray-800 text-white">
 					<tr>
 						<th class="p-3">Sd</th>
-						<th class="p-3 text-left">Date</th>
+						<th class="p-3 text-left">日期</th>
 						<th class="p-3 text-left">年月日时</th>
-						<th class="p-3 text-left">命主·年柱</th>
-						<th class="p-3 text-left">Score</th>
+						<th class="p-3 text-left">命主</th>
+						<th class="p-3 text-left">分数</th>
 					</tr>
 				</thead>
 				<tbody>
