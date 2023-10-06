@@ -10,16 +10,16 @@
 </script>
 
 <div class="flex justify-center min-h-screen">
-	<div class="col-span-12">
-		<div class="overflow-auto lg:overflow-visible ">
-			<table class="table text-gray-400 border-separate space-y-6 text-sm">
+	<div class="col-span-10">
+		<div class="">
+			<table class="table text-gray-400 border-separate space-y-2 text-sm">
 				<thead class="bg-gray-800 text-white">
 					<tr>
-						<th class="p-3">Index</th>
-						<th class="p-3 text-left">Date (五行)</th>
-						<th class="p-3 text-left">年 月 日 时</th>
-						<th class="p-3 text-left">命主 (年柱)</th>
-						<th class="p-3 text-left">Scoring</th>
+						<th class="p-3">Sd</th>
+						<th class="p-3 text-left">Date</th>
+						<th class="p-3 text-left">年月日时</th>
+						<th class="p-3 text-left">命主·年柱</th>
+						<th class="p-3 text-left">Score</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -32,8 +32,8 @@
 							<div class="flex align-items-center">
 								<!-- <img class="rounded-full h-12 w-12  object-cover" src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="unsplash image"> -->
 								<div class="ml-3">
-									<div class="">{item.date}</div>
-									<div class="">mail@rgmail.com</div>
+									<div class="text-xs">{item.date}</div>
+									<div class="">gmail</div>
 								</div>
 							</div>
 						</td>
@@ -42,12 +42,12 @@
 							<p>{item.zValue}</p>
 						</td>
 						{#if birthYear.length >1}
-						<td class="p-3 font-bold">
-							<p>{birthYear[0].gYear}·{birthYear[1].gYear}</p>
-							<p>{birthYear[0].zYear}·{birthYear[1].zYear}</p>
+						<td class="p-3">
+							<p>{birthYear[0].gYear}{birthYear[1].gYear}</p>
+							<p>{birthYear[0].zYear}{birthYear[1].zYear}</p>
 						</td>
 						{:else}
-						<td class="p-3 font-bold">
+						<td class="p-3">
 							<p>{birthYear[0].gYear}</p>
 							<p>{birthYear[0].zYear}</p>
 						</td>
@@ -71,10 +71,6 @@
 <style>
 	.table {
 		border-spacing: 0 15px;
-	}
-
-	i {
-		font-size: 1rem !important;
 	}
 
 	.table tr {
