@@ -6,9 +6,9 @@
 
 <header>
 	<div class="corner">
-		<a href="https://kit.svelte.dev">
+		<!-- <a href="https://kit.svelte.dev">
 			<img src={logo} alt="SvelteKit" />
-		</a>
+		</a> -->
 	</div>
 
 	<nav>
@@ -26,10 +26,10 @@
 				<a href="/calendar">Cal</a>
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/devResults') ? 'page' : undefined}>
-				<a href="/devResults">Result</a>
+				<a href="/devResults">Res</a>
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/devCards') ? 'page' : undefined}>
-				<a href="/devCards">Card</a>
+				<a href="/devCards">Crd</a>
 			</li>
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 				<a href="/about">About</a>
@@ -41,16 +41,17 @@
 	</nav>
 
 	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
+		<!-- <a href="https://github.com/sveltejs/kit">
 			<img src={github} alt="GitHub" />
-		</a>
+		</a> -->
 	</div>
 </header>
 
 <style>
 	header {
 		display: flex;
-		justify-content: space-between;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.corner {
@@ -74,6 +75,7 @@
 
 	nav {
 		display: flex;
+		align-items: center;
 		justify-content: center;
 		--background: rgba(255, 255, 255, 0.7);
 	}
