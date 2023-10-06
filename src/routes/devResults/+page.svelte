@@ -61,17 +61,16 @@
   console.log("$PAYLOD:", payload, )
   period = jieQidetect(payload) // insert period to result table. 
   
-  console.log("check protocol:", protocolM)
-  if (protocolM == "protocol-one"){
-      let protocolone = true
-      console.log(protocolone)
-  } 
+  // console.log("check protocol:", protocolM)
+  // if (protocolM == "protocol-one"){
+  //     let protocolone = true
+  //     console.log(protocolone)
+  // } 
 
 
 
   console.log("check for default dates")
   
-
   console.log("b-year",birthYear, "length:", birthYear.length)
   
   // if (birthYear.length >1){
@@ -90,45 +89,47 @@
   console.log("----------------------------------------------------")
   result_details = transistor(birthYear)
   
-  console.log('p:',protocolM)
-  if (protocolM === 'protocol-one'){
-      console.log("running protocol 1")
-      version1(payload)
+  // console.log('p:',protocolM)
+  // if (protocolM === 'protocol-one'){
+  //     console.log("running protocol 1")
+  //     version1(payload)
 
-  } 
-  else {
-    console.log("running protocol 2")
-    version1(payload)
-    version2(payload, birthYear)
-    version3(payload, birthYear) //version3 is to check 地支 合/冲 关系
-    version4(payload, birthYear) //version4 is to check 地支 三合/三会 关系
-    version5(payload, birthYear) //version5 is to check 地支 刑,破,害 关系
+  // } 
+  // else {
+  //   console.log("running protocol 2")
+  //   version1(payload)
+  //   version2(payload, birthYear)
+  //   version3(payload, birthYear) //version3 is to check 地支 合/冲 关系
+  //   version4(payload, birthYear) //version4 is to check 地支 三合/三会 关系
+  //   version5(payload, birthYear) //version5 is to check 地支 刑,破,害 关系
 
-    console.log("doing clean up")
-    cleanup(payload)
+  //   console.log("doing clean up")
+  //   cleanup(payload)
     
-  }
+  // }
 
   
   //Analying Tiangan
   //version2(payload, birthYear, 合_1,合_2,冲_1,冲_2) //version2 is to check 天干 合/冲 关系
   
-  // //default runs
-  // version1(payload)
+  //default runs
+  version1(payload)
 
-  // version2(payload, birthYear)
-  // version3(payload, birthYear) //version3 is to check 地支 合/冲 关系
-  // version4(payload, birthYear) //version4 is to check 地支 三合/三会 关系
-  // version5(payload, birthYear) //version5 is to check 地支 刑,破,害 关系
+  version2(payload, birthYear)
+  version3(payload, birthYear) //version3 is to check 地支 合/冲 关系
+  version4(payload, birthYear) //version4 is to check 地支 三合/三会 关系
+  version5(payload, birthYear) //version5 is to check 地支 刑,破,害 关系
+  cleanup(payload)
 
 </script>
 
-{#if protocolM == 'protocol-one'}
+<!-- {#if protocolM == 'protocol-one'}
   <ResultTable {payload} {protocolM}/>
 {:else}
   <ResultTable {payload} {sector} {sectorElement} {keys} {birthYear}/>
-{/if}
+{/if} -->
 
+<ResultTable {payload} {sector} {sectorElement} {keys} {birthYear}/>
 <!-- <div class="m-4">
 <p>sector: {sector} | {sectorElement}</p>
 {#if birthYear.length >1}

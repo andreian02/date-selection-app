@@ -9,7 +9,7 @@
 	console.log(isSwitchedOn)
   }
 
-	
+	import NewTable from '$lib/components/newTable.svelte';
 </script>
 
 
@@ -29,5 +29,7 @@
 	<br>
 
 	<Newswitch bind:value={value} onSwitch={handleSwitch} label="Select Mode:"/>
+
+	<NewTable />
  
 </div>
