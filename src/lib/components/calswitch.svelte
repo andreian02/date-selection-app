@@ -2,7 +2,7 @@
     
     export let onSwitch2;
     export let options = ['on', 'off'];
-	export let fontSize = 16;
+	export let fontSize = 13;
 	export let mode = 'off';
     
     

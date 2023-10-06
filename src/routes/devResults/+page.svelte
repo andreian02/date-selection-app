@@ -1,6 +1,5 @@
 <!-- this is result page.  -->
 <script>
-  import ResultTable from "$lib/components/resultTable.svelte";
   import { Dcodes, doorSector, homeowners, yearKeys, protocolMode } from '../../Store.js';
   import {answersheet, transistor, version1, version2, version3, version4, version5, cleanup} from '../../Utils.js'
   import {checkElement} from '../../helper.js'

@@ -260,13 +260,13 @@
     <div class="container max-w-screen-md mx-auto">
       <div>
         <h2 class="font-semibold text-xl text-gray-600">择日表格 ｜ Date Selection Form V1</h2>
-        <p class="text-gray-500 mb-6">Form is mobile responsive. Give it a try.</p>
+        <p class="text-gray-500 mb-6"></p>
   
         <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
           <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
             <div class="text-gray-600">
-              <p class="font-medium text-lg">Personal Details</p>
-              <p class='pb-4'>Please fill out all the fields.</p>
+              <p class="font-medium text-lg">Date Details</p>
+              <p class='pb-4'>Please fill in necessary the fields.</p>
               
               <Calswitch bind:mode={mode} onSwitch2={handleSwitch2}/>
               <p class="pt-4"></p>

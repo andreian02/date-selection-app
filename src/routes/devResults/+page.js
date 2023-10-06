@@ -1,10 +1,9 @@
 
+
+
 // import BiDirectionalStems from '$lib/CustomClass';
-
-
 // export async function load() {
 //     const stemMap = new BiDirectionalStems();
-
 //     stemMap.addStem("甲", {
 //       合: "己",
 //       冲: "庚",

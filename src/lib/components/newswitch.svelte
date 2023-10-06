@@ -2,7 +2,7 @@
     
     export let onSwitch;
     export let options = ['single', 'couple'];
-	export let fontSize = 16;
+	export let fontSize = 13;
 	export let value = 'couple';
     
     
