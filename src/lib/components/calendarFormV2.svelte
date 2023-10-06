@@ -188,19 +188,6 @@
           
           {const dz1 = Lunar.fromDate(new Date(date));
 
-          // let zdate = ""
-          // zdate = ('年干支:'+dz1.getYearInGanZhi() + 
-          //          ' 月干支:'+dz1.getMonthInGanZhiExact() +
-          //          ' 日干支:'+dz1.getDayInGanZhi())
-          
-          // console.log("Date:", zdate)
-          // console.log("#####################################################")
-          let doThings = {can:"",
-                          cannot:""}
-
-          doThings.can = (dz1.getDayYi())
-          doThings.cannot = (dz1.getDayJi())
-
           for (let i = 0; i <24; i+=2) {
               const dzt1 = new Date(date.setHours(i))
               //console.log(dzt1)
@@ -259,13 +246,13 @@
 <div class="p-2 flex">
     <div class="container max-w-screen-md mx-auto">
       <div>
-        <h2 class="font-semibold text-xl text-gray-600">择日表格 ｜ Date Selection Form V1</h2>
-        <p class="text-gray-500 mb-6"></p>
+        <h2 class="font-semibold text-xl text-gray-600">择日表格 ｜ Date Selection V1</h2>
+        <p class="text-gray-500 mb-2"></p>
   
         <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
           <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
             <div class="text-gray-600">
-              <p class="font-medium text-lg">Date Details</p>
+              <p class="font-medium text-lg">Date Details:</p>
               <p class='pb-4'>Please fill in necessary the fields.</p>
               
               <Calswitch bind:mode={mode} onSwitch2={handleSwitch2}/>

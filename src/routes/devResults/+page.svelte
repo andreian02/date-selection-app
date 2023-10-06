@@ -38,16 +38,6 @@
   // export let data
   let sectorElement = checkElement(sector)
 
-  //let 合1 = ""
-  // let 冲1 = ""
-  // let 合2 = ""
-  // let 冲2 = ""
-
-  // let 合3 = ""
-  // let 冲3 = ""
-  // let 合4 = ""
-  // let 冲4 = ""
-  let protocol;
   let period;
   let result_details;
 
@@ -55,22 +45,17 @@
     protocolM = data
   })
 
-
-
-
   console.log("$PAYLOD:", payload, )
-  //period = jieQidetect(payload) // insert period to result table. 
+  period = jieQidetect(payload) // insert period to result table. 
   
   console.log("check protocol:", protocolM)
   if (protocolM == "protocol-one"){
-      let protocolone = true
-      console.log(protocolone)
+      let protocol_one = true
+      console.log(protocol_one)
   } 
 
 
-
-  console.log("check for default dates")
-  
+  console.log("check for default dates")  
   console.log("b-year",birthYear, "length:", birthYear.length)
   
   // if (birthYear.length >1){
@@ -123,14 +108,14 @@
 
 </script>
 
-<!-- {#if protocolM == 'protocol-one'}
-  <ResultTable {payload} {protocolM}/>
+{#if protocolM == 'protocol-one'}
+  <!-- <ResultTable {payload} {protocolM}/> -->
+  <NewTable {payload} {protocolM}/>
 {:else}
-  <ResultTable {payload} {sector} {sectorElement} {keys} {birthYear}/>
-{/if} -->
+  <NewTable {payload} {sector} {sectorElement} {keys} {birthYear}/>
+{/if}
 
-<!-- <ResultTable {payload} {sector} {sectorElement} {keys} {birthYear}/> -->
-<NewTable {payload} {sector} {sectorElement} {keys} {birthYear}/>
+<!-- <NewTable {payload} {sector} {sectorElement} {keys} {birthYear}/> -->
 
 
 

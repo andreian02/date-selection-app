@@ -49,7 +49,7 @@ export function jieQidetect(payload){
     const endDate = payload[payload.length - 1]['date'];
     
     //console.log("first", startDate)
-    //console.log("last", endDate)
+    console.log("last", endDate)
     console.log('todayDate:',formatDateToYmd(todayDate))
     
     //var l = dt1.getJieQiList();
@@ -62,18 +62,22 @@ export function jieQidetect(payload){
     console.log('夏至:'+xiazhi_current);
 
     const currentDate = formatDate(endDate)
-    //console.log(currentDate)
+    console.log('cdate:',currentDate)
 
     //calculating the next cycle.
-    const [day, month, year] = endDate.split('/');
-    const dateObject = new Date(`${year}-${month}-${day}`);
-    dateObject.setDate(dateObject.getDate() + 182);
-    const newDay = dateObject.getDate();
-    const newMonth = dateObject.getMonth() + 1; // Month is zero-based, so add 1
-    const newYear = dateObject.getFullYear();
-    const formattedDate = `${newDay}/${newMonth.toString().padStart(2, '0')}/${newYear}`;
-    
-    const dt2 = Lunar.fromDate(new Date(formattedDate));
+    // const [day, month, year] = endDate.split('/');
+    // const dateObject = new Date(`${year}-${month}-${day}`);
+    // dateObject.setDate(dateObject.getDate() + 182);
+    // const newDay = dateObject.getDate();
+    // const newMonth = dateObject.getMonth() + 1; // Month is zero-based, so add 1
+    // const newYear = dateObject.getFullYear();
+    // const nextDate = `${newDay}/${newMonth.toString().padStart(2, '0')}/${newYear}`;
+    // console.log('fdate:',nextDate)
+    const nextDate = todayDate.setDate(todayDate.getDate() + 182);
+
+
+
+    const dt2 = Lunar.fromDate(new Date(nextDate));
     const dongzhi_next = (dt2.getJieQiTable()['冬至'].toYmd()) //string
     const xiazhi_next = (dt2.getJieQiTable()['夏至'].toYmd())  //string
     console.log('下一个冬至:'+dongzhi_next);

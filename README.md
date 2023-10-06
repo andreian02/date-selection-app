@@ -48,8 +48,7 @@ Need to think how to pass calendar results into cards...
 Gui Ren Feature to implement (1/4 Done.) 
 Install the logic 
 
-Decide what to show in cards and result table 
-Filter option in table? 
+Using new table format, confirmed on the details to show on table. (may change)
 Navigation + Breadcrumbs? 
 Layout in the individual cards
 
@@ -60,6 +59,7 @@ feature to be added individual cards
 
 
 ## STATUS COMPLETED! 
+
 
 Run analysis without owners > Calendar Feature. - DONE! 
 Install calendar feature, button installed, backend to be updated - DONE!
@@ -72,6 +72,7 @@ https://tailwindcomponents.com/component/responsive-form-1
 https://unsplash.com/photos/3OdGZzTt1fM
 https://air-datepicker.com/
 https://www.amp-what.com/
+https://symbl.cc/en/collections/arrow-symbols/
 
 Card：https://tailwindcomponents.com/component/social-media-bio-card
 

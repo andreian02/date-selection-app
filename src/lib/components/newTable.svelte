@@ -1,11 +1,13 @@
 <script>
     export let payload
-    export let keys
+	export let sectorElement
     export let sector
     export let birthYear
-    export let sectorElement
+	export let keys
     export let period
     export let protocolM
+
+	let path = '/devCards/'
 
     import { logoHandle } from "$lib/components/logoHandle";
 	let logofiller = [];
@@ -14,10 +16,10 @@
 		for (let i=0; i<payload.length; i++) {
 			let index = (payload[i].andex)
       		let elem = (payload[i]['dayEl'])
-			console.log("index:",index)
-      		console.log("s:", elem)
+			//console.log("index:",index)
+      		//console.log("s:", elem)
       		let url = logoHandle(elem)
-      		console.log(url)
+      		//console.log(url)
 			logofiller.push({id:index, e:elem, eLink:url,
 		})
  	   }return logofiller
@@ -34,7 +36,11 @@
 					<th class="p-3">#</th>
 					<th class="p-3 text-center">日期</th>
 					<th class="p-3 text-left">年月日时</th>
+					{#if protocolM == 'protocol-one'}
+					<th class="p-3 text-left"></th>
+				  	{:else}
 					<th class="p-3 text-left">命主</th>
+					{/if}
 					<th class="p-3 text-left">分数</th>
 				</tr>
 			</thead>
@@ -42,35 +48,40 @@
 				<!-- {#each payload as item1 } -->
 			{#each payload as item1 (item1.andex)}
       			{#each logofiller as item2 (item2.id)}
-				<tr class="bg-slate-200">
+				<tr class="bg-slate-300">
+					
 					<td class="p-3 text-center">
 						<span>{item2.id}</span>
 						<p></p>
 					</td>
-					<td class="p-2">						
+					<td class="p-3">						
 							<div class="max-w-lg mx-auto rounded-lg px-6">
 							<img class="rounded-full h-5 w-5" alt="element" src={item2.eLink}/>	
-						</div>
+							</div>
 							<div class="text-xs">{item1.date}</div>
-						
 					</td>
-					<td class="p-2">
+					<td class="p-3">
 						<p>{item1.gValue}</p>
 						<p>{item1.zValue}</p>
 					</td>
-					{#if birthYear.length >1}
-					<td class="p-2">
-						<p>{birthYear[0].gYear}{birthYear[1].gYear}</p>
-						<p>{birthYear[0].zYear}{birthYear[1].zYear}</p>
-					</td>
-					{:else}
-					<td class="p-2">
-						<p>{birthYear[0].gYear}</p>
-						<p>{birthYear[0].zYear}</p>
-					</td>
+					{#if protocolM == 'protocol-one'}
+						<p></p>
+				  	{:else}
+						{#if birthYear.length >1}
+						<td class="p-3">
+							<p>{birthYear[0].gYear}{birthYear[1].gYear}</p>
+							<p>{birthYear[0].zYear}{birthYear[1].zYear}</p>
+						</td>
+						{:else}
+						<td class="p-3">
+							<p>{birthYear[0].gYear}</p>
+							<p>{birthYear[0].zYear}</p>
+						</td>
+						{/if}
 					{/if}
-					<td class="p-2">
+					<td class="p-3">
 						<span class="bg-green-400 text-gray-50 rounded-md px-2">{item1.score}</span>
+						<a href={path + item2.id}>⁞</a>
 					</td>
 				</tr>
 				{/each}
