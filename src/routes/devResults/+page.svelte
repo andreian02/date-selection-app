@@ -130,7 +130,10 @@
   <ResultTable {payload} {sector} {sectorElement} {keys} {birthYear}/>
 {/if} -->
 
-<ResultTable {payload} {sector} {sectorElement} {keys} {birthYear}/>
+<!-- <ResultTable {payload} {sector} {sectorElement} {keys} {birthYear}/> -->
+<NewTable {payload} {sector} {sectorElement} {keys} {birthYear}/>
+
+
 
 <!-- <div class="m-4">
 <p>sector: {sector} | {sectorElement}</p>
