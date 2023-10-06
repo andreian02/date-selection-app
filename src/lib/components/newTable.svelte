@@ -6,55 +6,74 @@
     export let sectorElement
     export let period
     export let protocolM
-    
+
+    import { logoHandle } from "$lib/components/logoHandle";
+	let logofiller = [];
+
+	function getUrl(payload){
+		for (let i=0; i<payload.length; i++) {
+			let index = (payload[i].andex)
+      		let elem = (payload[i]['dayEl'])
+			console.log("index:",index)
+      		console.log("s:", elem)
+      		let url = logoHandle(elem)
+      		console.log(url)
+			logofiller.push({id:index, e:elem, eLink:url,
+		})
+ 	   }return logofiller
+	}
+	logofiller = (getUrl(payload))
+	
 </script>
 
 <div class="flex justify-center min-h-screen">
 	<div class="col-span-10">
-		<table class="table text-white border-separate space-y-2 text-sm">
+		<table class="table text-black border-separate space-y-2 text-sm">
 			<thead class="text-black">
 				<tr>
 					<th class="p-3">#</th>
-					<th class="p-3 text-left">日期</th>
+					<th class="p-3 text-center">日期</th>
 					<th class="p-3 text-left">年月日时</th>
 					<th class="p-3 text-left">命主</th>
 					<th class="p-3 text-left">分数</th>
 				</tr>
 			</thead>
 			<tbody>
-				{#each payload as item} 
-				<tr class="bg-gray-800 border-rose-500	">
-					<td class="p-3">
-						<p>{item.andex}</p>
+				<!-- {#each payload as item1 } -->
+			{#each payload as item1 (item1.andex)}
+      			{#each logofiller as item2 (item2.id)}
+				<tr class="bg-slate-200">
+					<td class="p-3 text-center">
+						<span>{item2.id}</span>
+						<p></p>
 					</td>
-					<td class="p-3">
-						<div class="flex align-items-center">
-							<!-- <img class="rounded-full h-12 w-12  object-cover" src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="unsplash image"> -->
-							<div class="ml-3">
-								<div class="text-xs">{item.date}</div>
-								<div class="">gmail</div>
-							</div>
+					<td class="p-2">						
+							<div class="max-w-lg mx-auto rounded-lg px-6">
+							<img class="rounded-full h-5 w-5" alt="element" src={item2.eLink}/>	
 						</div>
+							<div class="text-xs">{item1.date}</div>
+						
 					</td>
-					<td class="p-3">
-						<p>{item.gValue}</p>
-						<p>{item.zValue}</p>
+					<td class="p-2">
+						<p>{item1.gValue}</p>
+						<p>{item1.zValue}</p>
 					</td>
 					{#if birthYear.length >1}
-					<td class="p-3">
+					<td class="p-2">
 						<p>{birthYear[0].gYear}{birthYear[1].gYear}</p>
 						<p>{birthYear[0].zYear}{birthYear[1].zYear}</p>
 					</td>
 					{:else}
-					<td class="p-3">
+					<td class="p-2">
 						<p>{birthYear[0].gYear}</p>
 						<p>{birthYear[0].zYear}</p>
 					</td>
 					{/if}
-					<td class="p-3">
-						<span class="bg-green-400 text-gray-50 rounded-md px-2">{item.score}</span>
+					<td class="p-2">
+						<span class="bg-green-400 text-gray-50 rounded-md px-2">{item1.score}</span>
 					</td>
 				</tr>
+				{/each}
 			{/each}
 			</tbody>
 		</table>
