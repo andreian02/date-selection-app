@@ -1,6 +1,7 @@
 <!-- individual card page -->
 
 <script>
+    import { goto } from '$app/navigation';    
     import { Dcodes } from '../../../Store';
     import { page } from '$app/stores'
     import {Solar, Lunar} from 'lunar-javascript'
@@ -123,7 +124,17 @@
         </div>
       </div>
     </div>
+
+    <br/>
+    
+    <div class="justify-center text-center py-20">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        on:click={()=> goto('/devResults')}>
+        return to results
+      </button>
+    </div>
   </div>
+ 
 </body>
 
 

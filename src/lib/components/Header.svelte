@@ -23,11 +23,11 @@
 				<a href="/calendarForm">DS</a>
 			</li> devCalendar / calendar    --> 
 			<li aria-current={$page.url.pathname.startsWith('/devCalendar') ? 'page' : undefined}>
-				<a href="/calendar">Cal</a>
+				<a href="/calendar">Select Dates</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/devResults') ? 'page' : undefined}>
+			<!-- <li aria-current={$page.url.pathname.startsWith('/devResults') ? 'page' : undefined}>
 				<a href="/devResults">Res</a>
-			</li>
+			</li> -->
 			<!-- <li aria-current={$page.url.pathname.startsWith('/devCards') ? 'page' : undefined}>
 				<a href="/devCards">Crd</a>
 			</li> -->
