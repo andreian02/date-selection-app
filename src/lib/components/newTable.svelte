@@ -16,11 +16,16 @@
 		for (let i=0; i<payload.length; i++) {
 			let index = (payload[i].andex)
       		let elem = (payload[i]['dayEl'])
+
+			let gyalue = payload[i]['gValue']
+			let zyalue = payload[i]['zValue']
+			let aScore = payload[i]['score']
+
 			//console.log("index:",index)
       		//console.log("s:", elem)
       		let url = logoHandle(elem)
       		//console.log(url)
-			logofiller.push({id:index, e:elem, eLink:url,
+			logofiller.push({id:index, e:elem, eLink:url, g:gyalue, z:zyalue, a:aScore
 		})
  	   }return logofiller
 	}
@@ -48,7 +53,7 @@
 				<!-- {#each payload as item1 } -->
 			{#each payload as item1 (item1.andex)}
       			{#each logofiller as item2 (item2.id)}
-				<tr class="bg-slate-300">
+				<tr class="bg-slate-200">
 					
 					<td class="p-3 text-center">
 						<span>{item2.id}</span>
@@ -61,8 +66,10 @@
 							<div class="text-xs">{item1.date}</div>
 					</td>
 					<td class="p-3">
-						<p>{item1.gValue}</p>
-						<p>{item1.zValue}</p>
+						<!-- <p>{item1.gValue}</p>
+						<p>{item1.zValue}</p> -->
+						<p>{item2.g}</p>
+						<p>{item2.z}</p>
 					</td>
 					{#if protocolM == 'protocol-one'}
 						<p></p>
@@ -80,8 +87,8 @@
 						{/if}
 					{/if}
 					<td class="p-3">
-						<span class="bg-green-400 text-gray-50 rounded-md px-2">{item1.score}</span>
-						<a href={path + item2.id}>⁞</a>
+						<span class="bg-green-400 text-gray-50 rounded-md px-2">{item2.a}</span>
+						<a href={path + item1.andex}>⁞</a>
 					</td>
 				</tr>
 				{/each}

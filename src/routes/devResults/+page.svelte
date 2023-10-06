@@ -5,6 +5,7 @@
   import {checkElement} from '../../helper.js'
   import {defaultDates, jieQidetect} from '../../dtools.js'
 	import NewTable from "$lib/components/newTable.svelte";
+	import ResultTable from '$lib/components/resultTable.svelte';
 
   export let sector
   export let payload 
@@ -109,7 +110,6 @@
 </script>
 
 {#if protocolM == 'protocol-one'}
-  <!-- <ResultTable {payload} {protocolM}/> -->
   <NewTable {payload} {protocolM}/>
 {:else}
   <NewTable {payload} {sector} {sectorElement} {keys} {birthYear}/>

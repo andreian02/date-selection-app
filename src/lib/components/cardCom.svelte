@@ -37,7 +37,7 @@
               <div class="m-2 flex gap-4 items-center">
                 <img class="h-12 w-12 rounded-full" alt="element" src={item2.eLink} />
                 <div>
-                  <h3 class="text-lg font-medium text-gray-700 dark:text-white">{item1.date}</h3>
+                  <h3 class="text-lg text-sm text-gray-700 dark:text-white">{item1.andex} ▶ {item1.date}</h3>
                   <span class="text-sm tracking-wide text-gray-600 dark:text-gray-400">TBC</span>
                 </div>
               </div>
