@@ -10,19 +10,11 @@
 
 <section>
 	<h1 class="mb-2 text-3xl font-bold tracking-tight md:text-5xl py-2">Hello World</h1>
-
-	<h1>
-		<span>
-			<picture class="items-center justify-center">
-				<!-- <source srcset={welcome_sky} type="image/webp" /> -->
-				<!-- <img src={welcome_fallback} alt="Welcome" /> -->
-				<img src='https://images.unsplash.com/photo-1494537145451-0503649ed805?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3264&q=80'
+			<picture class="flex">
+				<img src='https://i.pinimg.com/564x/4b/d7/b5/4bd7b55b6d72ba73b6a1fc0c8ffa62b1.jpg'
 				alt="welcome">
 			</picture>
-		</span>		
-	</h1>
-	<br />
-	
+
 	<h2 class="font-semibold text-xl text-gray-600">择日</h2>
 		<div class="h-10 text-gray-500 m-8 p-8 text-center items-center mt-2">
 			<p>择日是将选日期人的出生干支信息与当日的五行干支信息进行运算，去掉冲、克、刑、害对自身不好的日子，挑选出生助自身的好日子。</p>
@@ -37,9 +29,9 @@
 	section {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		align-items: center;
 		flex: 0.6;
+		/* justify-content: center; */
 	}
 
 	h1 {
@@ -47,9 +39,8 @@
 	}
 
 	picture {
-		
-		width: 100%;
-		height: 100%;
+		width: 50%;
+		height: 50%;
 		top: 0;
 		display: block;
 	}
