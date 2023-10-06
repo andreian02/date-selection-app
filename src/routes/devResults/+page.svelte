@@ -5,6 +5,7 @@
   import {answersheet, transistor, version1, version2, version3, version4, version5, cleanup} from '../../Utils.js'
   import {checkElement} from '../../helper.js'
   import {defaultDates, jieQidetect} from '../../dtools.js'
+	import NewTable from "$lib/components/newTable.svelte";
 
   export let sector
   export let payload 
@@ -130,6 +131,7 @@
 {/if} -->
 
 <ResultTable {payload} {sector} {sectorElement} {keys} {birthYear}/>
+
 <!-- <div class="m-4">
 <p>sector: {sector} | {sectorElement}</p>
 {#if birthYear.length >1}
