@@ -16,6 +16,7 @@
 		for (let i=0; i<payload.length; i++) {
 			let index = (payload[i].andex)
       		let elem = (payload[i]['dayEl'])
+			let ddate = (payload[i]['date'])
 
 			let gyalue = payload[i]['gValue']
 			let zyalue = payload[i]['zValue']
@@ -25,7 +26,8 @@
       		//console.log("s:", elem)
       		let url = logoHandle(elem)
       		//console.log(url)
-			logofiller.push({id:index, e:elem, eLink:url, g:gyalue, z:zyalue, a:aScore
+			logofiller.push({id:index, e:elem, dd:ddate,
+				 eLink:url, g:gyalue, z:zyalue, a:aScore
 		})
  	   }return logofiller
 	}
@@ -63,7 +65,7 @@
 							<div class="max-w-lg mx-auto rounded-lg px-6">
 							<img class="rounded-full h-5 w-5" alt="element" src={item2.eLink}/>	
 							</div>
-							<div class="text-xs">{item1.date}</div>
+							<div class="text-xs">{item2.dd}</div>
 					</td>
 					<td class="p-3">
 						<!-- <p>{item1.gValue}</p>

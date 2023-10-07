@@ -160,18 +160,6 @@
       console.log("firstkey:", dobDate1)
       console.log("secondkey:", dobDate2)
 
-      
-      // console.log("#####################################################")
-      // console.log(dobDate2)
-      //const person2 = Lunar.fromDate(dobDate2);
-      // console.log("YEAR:", person2.getYearZhi(), person2.getYearGan(), person2.getYear())
-
-      // console.log('年干支：'+person2.getYearInGanZhi(), 
-      //                 '月干支：'+person2.getMonthInGanZhiExact(),
-      //                 '日干支：'+person2.getDayInGanZhi(),
-      //                 '时辰干支：'+person2.getTimeInGanZhi()
-      // )
-
       sc1 = dayofbirthDetails(dobDate1);
       sc2 = dayofbirthDetails(dobDate2);
 
@@ -182,7 +170,6 @@
       console.log(sc1year)
       console.log(sc2year)
 
-      
 
       function ifnotvisable(sc1year, sc2year) {
           if (isSwitchedOn == false){
