@@ -43,13 +43,13 @@ You can preview the production build with `npm run preview`.
 Finish up scoring system 
 Need to test calendar results
 To complete version1 function, this function supports Calendar Feature - DONE! but realised haven push results so not done.
-Need to think how to pass calendar results into cards...
+Able to pass calendar results into cards...decide what to show in cards. 
 
 Gui Ren Feature to implement (1/4 Done.) 
 Install the logic 
 
 Using new table format, confirmed on the details to show on table. (may change)
-Navigation + Breadcrumbs? 
+Navigation + Breadcrumbs?  > adding some navigations. 
 Layout in the individual cards
 
 

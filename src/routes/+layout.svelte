@@ -45,7 +45,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding: 12px;
+		padding: 10px;
 	}
 
 	footer a {

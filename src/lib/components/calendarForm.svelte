@@ -49,7 +49,7 @@
     h2: null
   }
 
-  let options = {locale: localeEn, range: true, timepicker: true, 
+  let options = {locale: localeEn, range: true, timepicker: false, 
                   multipleDatesSeparator: ' - ',  
                   onSelect: (event) => {
                       range.start = event.formattedDate[0];

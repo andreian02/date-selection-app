@@ -1,16 +1,12 @@
 <script>
-    
     import CalendarForm from '$lib/components/calendarFormV2.svelte';
-    
 </script>
-
 
 
 <svelte:head>
 	<title>Calendar</title>
 	<meta name="description" content="Date Selection App" />
 </svelte:head>
-
 
 
 <section>

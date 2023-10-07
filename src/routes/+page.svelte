@@ -1,15 +1,16 @@
 <script>
+	
 	import { goto } from '$app/navigation';    
 	export let data
 </script>
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="description" content="Date Selection App" />
 </svelte:head>
 
 <section>
-	<h1 class="mb-2 text-3xl font-bold tracking-tight md:text-5xl py-2">Hello World</h1>
+	<h1 class="text-3xl font-bold tracking-tight md:text-5xl py-2">Hello World</h1>
 			<picture class="flex">
 				<img src='https://i.pinimg.com/564x/4b/d7/b5/4bd7b55b6d72ba73b6a1fc0c8ffa62b1.jpg'
 				alt="welcome">
@@ -23,8 +24,8 @@
 				{data.Year}年 · {data.Month}月 · {data.Day}日
 			</p>
 			<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                      on:click={()=> goto('/calendar')}>
-                      start
+					on:click={()=> goto('/calendar')}>
+					start
             </button>
 		</div>
 </section>
@@ -43,8 +44,8 @@
 	}
 
 	picture {
-		width: 50%;
-		height: 50%;
+		width: 40%;
+		height: 40%;
 		top: 0;
 		display: block;
 	}
