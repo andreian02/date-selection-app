@@ -45,9 +45,6 @@
   let selected;  
   let sectors = ['震', '巽','离', '坤', '兑',  '乾', '坎', '艮' ];
   
-
-  let todayDate = new Date(); 
-  
   const range = {
     start: null, 
     end: null
@@ -62,6 +59,7 @@
   }
 
   let options = {locale: localeEn, range: true, timepicker: false, 
+                  buttons: ['clear'],
                   multipleDatesSeparator: ' - ',  
                   onSelect: (event) => {
                       range.start = event.formattedDate[0];
@@ -69,13 +67,55 @@
                       console.log(event);}
                     }
 
-  let options2 = {locale: localeEn, timepicker: true,
+  let options2 = {locale: localeEn, timepicker: false,
+                  buttons: [{
+                    content(dp) {
+                        return dp.opts.timepicker 
+                            ? 'Turn OFF timepicker'
+                            : 'Turn ON timepicker'
+                    },
+                    onClick(dp) {
+                        let viewDate = dp.viewDate;
+                        let today = new Date();
+                        
+                        // Since timepicker takes initial time from 'viewDate', set up time here, 
+                        // otherwise time will be equal to 00:00 if user navigated through datepicker
+                        viewDate.setHours(today.getHours());
+                        viewDate.setMinutes(today.getMinutes());
+
+                        dp.update({
+                            timepicker: !dp.opts.timepicker,
+                            viewDate
+                          })
+                    }
+                  }], 
                   onSelect: (event) => {
                       firstKey.h1 = event.formattedDate;        
                       // console.log(home.h1)
                       console.log(event);}
                     }
-  let options3 = {locale: localeEn, timepicker: true,
+  let options3 = {locale: localeEn, timepicker: false,
+                  buttons: [{
+                    content(dp) {
+                        return dp.opts.timepicker 
+                            ? 'Turn OFF timepicker'
+                            : 'Turn ON timepicker'
+                    },
+                    onClick(dp) {
+                        let viewDate = dp.viewDate;
+                        let today = new Date();
+                        
+                        // Since timepicker takes initial time from 'viewDate', set up time here, 
+                        // otherwise time will be equal to 00:00 if user navigated through datepicker
+                        viewDate.setHours(today.getHours());
+                        viewDate.setMinutes(today.getMinutes());
+
+                        dp.update({
+                            timepicker: !dp.opts.timepicker,
+                            viewDate
+                          })
+                    }
+                  }], 
                   onSelect: (event) => {
                       secondKey.h2 = event.formattedDate;        
                       // console.log(home.h2)

@@ -51,18 +51,41 @@
 
   let options = {locale: localeEn, range: true, timepicker: false, 
                   multipleDatesSeparator: ' - ',  
+                  buttons: ['clear'],
                   onSelect: (event) => {
-                      range.start = event.formattedDate[0];
-                      range.end = event.formattedDate[1];
-                      console.log(event);}
-                    }
+                  range.start = event.formattedDate[0];
+                  range.end = event.formattedDate[1];
+                  console.log(event);}
+                }
 
-  let options2 = {locale: localeEn, timepicker: true,
-                  onSelect: (event) => {
+  let options2 = {locale: localeEn, timepicker: false,
+                  buttons: [{
+                              content(dp) {
+                                  return dp.opts.timepicker 
+                                      ? 'Turn OFF timepicker'
+                                      : 'Turn ON timepicker'
+                              },
+                              onClick(dp) {
+                                  let viewDate = dp.viewDate;
+                                  let today = new Date();
+                                  
+                                  // Since timepicker takes initial time from 'viewDate', set up time here, 
+                                  // otherwise time will be equal to 00:00 if user navigated through datepicker
+                                  viewDate.setHours(today.getHours());
+                                  viewDate.setMinutes(today.getMinutes());
+
+                                  dp.update({
+                                      timepicker: !dp.opts.timepicker,
+                                      viewDate
+                                    })
+                              }
+                            }], 
+                    onSelect: (event) => {
                       firstKey.h1 = event.formattedDate;        
                       // console.log(home.h1)
                       console.log(event);}
                     }
+
   let options3 = {locale: localeEn, timepicker: true,
                   onSelect: (event) => {
                       secondKey.h2 = event.formattedDate;        

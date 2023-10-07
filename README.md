@@ -40,13 +40,13 @@ You can preview the production build with `npm run preview`.
 
 ## Things to add / Features to build and complete v1 
 
+Edit the input features > current too troublesome to use
 Finish up scoring system 
 Need to test calendar results
 To complete version1 function, this function supports Calendar Feature - DONE! but realised haven push results so not done.
 Able to pass calendar results into cards...decide what to show in cards. 
 
-Gui Ren Feature to implement (1/4 Done.) 
-Install the logic 
+Gui Ren Feature to implement (1/4 Done.)  > Install the logic 
 
 Using new table format, confirmed on the details to show on table. (may change)
 Navigation + Breadcrumbs?  > adding some navigations. 
