@@ -40,9 +40,9 @@ You can preview the production build with `npm run preview`.
 
 ## Things to add / Features to build and complete v1 
 
-Edit the input features > current too troublesome to use
 Finish up scoring system 
-Need to test calendar results
+Include Owner details in Payload
+Need to test calendar results >  Add time to result page! 
 To complete version1 function, this function supports Calendar Feature - DONE! but realised haven push results so not done.
 Able to pass calendar results into cards...decide what to show in cards. 
 
@@ -60,7 +60,7 @@ feature to be added individual cards
 
 ## STATUS COMPLETED! 
 
-
+Edit the input features > current too troublesome to use - DONE!
 Run analysis without owners > Calendar Feature. - DONE! 
 Install calendar feature, button installed, backend to be updated - DONE!
 Clean up empty strings in final payload  > Logic Built! - DONE!

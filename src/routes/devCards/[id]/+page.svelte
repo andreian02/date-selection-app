@@ -2,31 +2,40 @@
 
 <script>
     import { goto } from '$app/navigation';    
-    import { Dcodes } from '../../../Store';
+    import { Dcodes, homeowners, protocolMode } from '../../../Store';
     import { page } from '$app/stores'
-    import {Solar, Lunar} from 'lunar-javascript'
+    import { Lunar } from 'lunar-javascript'
 
     import { logoHandle } from "$lib/components/logoHandle";
 
     const cardId = parseInt($page.params.id)
 
+    export let keys
     export let payload
-    export let logofiller 
-    
+    export let protocolM
+    //export let logofiller 
 
+    protocolMode.subscribe((data)=>{
+    protocolM = data
+    })
+    
     Dcodes.subscribe((data)=>{
     payload = data
     
     //console.log(payload)
     })
 
+    homeowners.subscribe((data)=>{
+    keys = data
+    console.log("Owner1:", keys[0], "Owner2:", keys[1] )
+   })
 
 
     function getDatesById(cardId) {
       for (const item of payload) {
         
         if (item.andex === cardId) {
-          
+          console.log("Individual payload result")
           return item;
         }
       }
@@ -36,23 +45,20 @@
     function getUrl(payload){
       let index = (cardId)
       let elem = (payload[index]['dayEl'])
-
-      console.log("d:",index)
-      console.log("s:", elem)
+      //console.log("d:",index)
+      //console.log("s:", elem)
       let url = logoHandle(elem)
-      console.log(url)
-    
+      //console.log(url)
       return url 
       
     }
 
     function getDetails(payload){
       let index = (cardId)
-      console.log("ddd:",index)
+      //console.log("ddd:",index)
       let r = payload.filter(payload => payload.andex === index);
       let t0 = r[0]['gValue']
       let z0 = r[0]['zValue']
-      
       console.log("tgdz:", r[0]['gValue'], r[0]['zValue'])
       return {
        t0,z0
@@ -61,6 +67,7 @@
 
     const result = getDatesById(cardId)
     console.log(result)
+    console.log("Mode:", protocolM)
     console.log("RESULT DATE:",result.date)
 
 
@@ -69,10 +76,8 @@
     
     const [day, month, year] = (result.date).split('/').map(Number);
     const dateObject = new Date(year, month - 1, day); // Month is 0-based, so we subtract 1
-
-
     //const dateObject = new Date(result.date);
-    console.log('dateobject:', dateObject)
+    //console.log('dateobject:', dateObject)
     
     var d = Lunar.fromDate(dateObject);
     // console.log(Ldate)

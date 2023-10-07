@@ -10,6 +10,7 @@
 	let path = '/devCards/'
 
     import { logoHandle } from "$lib/components/logoHandle";
+	import {zHourConverts} from "../../dtools"
 	let logofiller = [];
 
 	function getUrl(payload){
@@ -17,16 +18,19 @@
 			let index = (payload[i].andex)
       		let elem = (payload[i]['dayEl'])
 			let ddate = (payload[i]['date'])
-
 			let gyalue = payload[i]['gValue']
 			let zyalue = payload[i]['zValue']
 			let aScore = payload[i]['score']
+			
+			let zHour = index % 12;
+			let zRange = zHourConverts(zHour)
+
 
 			//console.log("index:",index)
       		//console.log("s:", elem)
       		let url = logoHandle(elem)
       		//console.log(url)
-			logofiller.push({id:index, e:elem, dd:ddate,
+			logofiller.push({id:index, e:elem, dd:ddate, hourR: zRange,
 				 eLink:url, g:gyalue, z:zyalue, a:aScore
 		})
  	   }return logofiller
@@ -59,13 +63,13 @@
 					
 					<td class="p-3 text-center">
 						<span>{item2.id}</span>
-						<p></p>
 					</td>
-					<td class="p-3">						
-							<div class="max-w-lg mx-auto rounded-lg px-6">
+					<td class="p-3 text-center">						
+							<div class="max-w-lg mx-auto rounded-lg px-8">
 							<img class="rounded-full h-5 w-5" alt="element" src={item2.eLink}/>	
 							</div>
 							<div class="text-xs">{item2.dd}</div>
+							<div class='tm'>{item2.hourR}</div>
 					</td>
 					<td class="p-3">
 						<!-- <p>{item1.gValue}</p>
@@ -106,6 +110,11 @@
 
 	.table tr {
 		border-radius: 20px;
+	}
+
+	.tm {
+		font-size: 0.6rem;
+		line-height: 0.6rem;
 	}
 
 	tr td:nth-child(n+5),

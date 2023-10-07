@@ -6,7 +6,7 @@
 	export let data
 </script>
 {#key data.pathname}
-<div in:blur={{ duration: 400, delay: 400, amount: 5 }} out:blur={{ duration: 600 }}>
+<div in:blur={{ duration: 400, delay: 600, amount: 5 }} out:blur={{ duration: 400 }}>
 	<div class="app">
 		<Header />
 
