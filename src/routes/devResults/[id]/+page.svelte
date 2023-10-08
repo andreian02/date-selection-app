@@ -3,8 +3,7 @@
 <script>
     import { Dcodes } from '../../../Store';
     import { page } from '$app/stores'
-    import {Solar, Lunar} from 'lunar-javascript'
-
+    import { Lunar} from 'lunar-javascript'
     import { logoHandle } from "$lib/components/logoHandle";
 
     const cardId = parseInt($page.params.id)
@@ -12,20 +11,14 @@
     export let payload
     export let logofiller 
     
-
     Dcodes.subscribe((data)=>{
     payload = data
-    
     //console.log(payload)
     })
 
-
-
     function getDatesById(cardId) {
       for (const item of payload) {
-        
         if (item.andex === cardId) {
-          
           return item;
         }
       }
@@ -35,14 +28,11 @@
     function getUrl(payload){
       let index = (cardId)
       let elem = (payload[index]['dayEl'])
-
       console.log("d:",index)
       console.log("s:", elem)
       let url = logoHandle(elem)
       console.log(url)
-    
       return url 
-      
     }
 
     function getDetails(payload){
@@ -62,13 +52,11 @@
     console.log(result)
     console.log("RESULT DATE:",result.date)
 
-
     let  url = getUrl(payload)
     const detail = getDetails(payload)
     
     const [day, month, year] = (result.date).split('/').map(Number);
     const dateObject = new Date(year, month - 1, day); // Month is 0-based, so we subtract 1
-
 
     //const dateObject = new Date(result.date);
     console.log('dateobject:', dateObject)
@@ -96,7 +84,6 @@
       <p class="text-blue-500  mx-3">得地</p>
       <p class="text-blue-500  mx-3">身旺</p>
     </div>
-
     <div class="flex flex-row">
       <div class="grid grid-cols-2 gap-2 content-center">
         <div>

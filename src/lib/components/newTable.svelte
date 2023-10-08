@@ -61,17 +61,17 @@
       			{#each logofiller as item2 (item2.id)}
 				<tr class="bg-slate-200">
 					
-					<td class="p-3 text-center">
-						<span>{item2.id}</span>
+					<td class="text-center">
+						<div class='p-1 tz'>{item2.id}</div>
 					</td>
-					<td class="p-3 text-center">						
+					<td class="p-2 text-center">						
 							<div class="max-w-lg mx-auto rounded-lg px-8">
 							<img class="rounded-full h-5 w-5" alt="element" src={item2.eLink}/>	
 							</div>
 							<div class="text-xs">{item2.dd}</div>
 							<div class='tm'>{item2.hourR}</div>
 					</td>
-					<td class="p-3">
+					<td class="p-2">
 						<!-- <p>{item1.gValue}</p>
 						<p>{item1.zValue}</p> -->
 						<p>{item2.g}</p>
@@ -81,18 +81,18 @@
 						<p></p>
 				  	{:else}
 						{#if birthYear.length >1}
-						<td class="p-3">
+						<td class="p-2">
 							<p>{birthYear[0].gYear}{birthYear[1].gYear}</p>
 							<p>{birthYear[0].zYear}{birthYear[1].zYear}</p>
 						</td>
 						{:else}
-						<td class="p-3">
+						<td class="p-2">
 							<p>{birthYear[0].gYear}</p>
 							<p>{birthYear[0].zYear}</p>
 						</td>
 						{/if}
 					{/if}
-					<td class="p-3">
+					<td class="p-2">
 						<span class="bg-green-400 text-gray-50 rounded-md px-2">{item2.a}</span>
 						<a href={path + item2.id}>⁞</a>
 					</td>
@@ -115,6 +115,9 @@
 	.tm {
 		font-size: 0.6rem;
 		line-height: 0.6rem;
+	}
+	.tz {
+		font-size: 0.6rem;
 	}
 
 	tr td:nth-child(n+5),
