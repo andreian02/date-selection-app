@@ -57,7 +57,7 @@
 			</thead>
 			<tbody>
 				<!-- {#each payload as item1 } -->
-			{#each payload as item1 (item1.andex)}
+			<!-- {#each payload as item1 (item1.andex)} -->
       			{#each logofiller as item2 (item2.id)}
 				<tr class="bg-slate-200">
 					
@@ -94,11 +94,11 @@
 					{/if}
 					<td class="p-3">
 						<span class="bg-green-400 text-gray-50 rounded-md px-2">{item2.a}</span>
-						<a href={path + item1.andex}>⁞</a>
+						<a href={path + item2.id}>⁞</a>
 					</td>
 				</tr>
 				{/each}
-			{/each}
+			<!-- {/each} -->
 			</tbody>
 		</table>
 	</div>

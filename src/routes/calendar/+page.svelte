@@ -1,4 +1,5 @@
 <script>
+	import  logo  from '$lib/images/logo.png'   
     import CalendarForm from '$lib/components/calendarFormV2.svelte';
 </script>
 
@@ -11,8 +12,8 @@
 
 <section>
 	<picture>
-		<img src='https://i.pinimg.com/564x/4b/d7/b5/4bd7b55b6d72ba73b6a1fc0c8ffa62b1.jpg'
-		alt="welcome">
+		<img src={logo}
+				alt="welcome">
 	</picture>
     <CalendarForm/>
 </section>

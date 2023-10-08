@@ -1,6 +1,6 @@
 <script>
-	
-	import { goto } from '$app/navigation';    
+	import { goto } from '$app/navigation'; 
+	import  logo  from '$lib/images/logo.png'   
 	export let data
 </script>
 
@@ -12,7 +12,7 @@
 <section>
 	<h1 class="text-3xl font-bold tracking-tight md:text-5xl py-2">Hello World</h1>
 			<picture class="flex">
-				<img src='https://i.pinimg.com/564x/4b/d7/b5/4bd7b55b6d72ba73b6a1fc0c8ffa62b1.jpg'
+				<img src={logo}
 				alt="welcome">
 			</picture>
 
