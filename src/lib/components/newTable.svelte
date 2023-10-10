@@ -91,12 +91,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<!-- {#each payload as item1 } -->
+			<!-- {#each payload as item1 } -->
 			<!-- {#each payload as item1 (item1.andex)} -->
       			{#each logofiller as item2, index (item2.id)}
 				  {#if index < numResultsDisplayed}
 				<tr class="bg-slate-200">
-					
 					<td class="text-center">
 						<div class='p-1 tz'>{item2.id}</div>
 					</td>
