@@ -8,6 +8,7 @@
     export let protocolM
 
 	let path = '/devCards/'
+	let sortBy = 'asc'
 
     import { logoHandle } from "$lib/components/logoHandle";
 	import {zHourConverts} from "../../dtools"
@@ -31,11 +32,36 @@
       		let url = logoHandle(elem)
       		//console.log(url)
 			logofiller.push({id:index, e:elem, dd:ddate, hourR: zRange,
-				 eLink:url, g:gyalue, z:zyalue, a:aScore
+				 eLink:url, g:gyalue, z:zyalue, marks:aScore
 		})
  	   }return logofiller
 	}
 	logofiller = (getUrl(payload))
+	//console.log("logf")
+	//console.log(logofiller)
+
+	function sortByScore(){
+		if (sortBy === 'asc'){
+			logofiller = logofiller.sort((a,b)=> a.marks - b.marks);
+			sortBy = 'desc';
+		} else {
+			logofiller = logofiller.sort((a,b) => b.marks - a.marks);
+			sortBy = 'asc';
+		}
+		
+	}
+
+	function sortByIndex() {
+	logofiller = logofiller.sort((a,b)=> a.id - b.id); // Sort in descending order
+	}
+
+	let batchSize = 10;
+  	let numResultsDisplayed = batchSize;
+	
+	function loadMore() {
+    	numResultsDisplayed += batchSize;
+    }
+
 	
 </script>
 
@@ -44,21 +70,31 @@
 		<table class="table text-black border-separate space-y-2 text-sm">
 			<thead class="text-black">
 				<tr>
-					<th class="p-3">#</th>
-					<th class="p-3 text-center">日期</th>
-					<th class="p-3 text-left">年月日时</th>
+					<th class="p-1">#
+						<button on:click={sortByIndex}>
+							{sortBy === 'asc' ? '▲' : '▼'}
+						</button>
+					</th>
+					<th class="p-2 text-center">日期</th>
+					<th class="p-2 text-left">年月日时</th>
 					{#if protocolM == 'protocol-one'}
-					<th class="p-3 text-left"></th>
+					<th class="p-2 text-left"></th>
 				  	{:else}
-					<th class="p-3 text-left">命主</th>
+					<th class="p-2 text-left">命主</th>
 					{/if}
-					<th class="p-3 text-left">分数</th>
+					<th class="p-2 text-left">分数 
+						<button on:click={sortByScore}>
+							{sortBy === 'asc' ? '▲' : '▼'}
+						</button>
+					</th>
+					
 				</tr>
 			</thead>
 			<tbody>
 				<!-- {#each payload as item1 } -->
 			<!-- {#each payload as item1 (item1.andex)} -->
-      			{#each logofiller as item2 (item2.id)}
+      			{#each logofiller as item2, index (item2.id)}
+				  {#if index < numResultsDisplayed}
 				<tr class="bg-slate-200">
 					
 					<td class="text-center">
@@ -93,14 +129,21 @@
 						{/if}
 					{/if}
 					<td class="p-2">
-						<span class="bg-green-400 text-gray-50 rounded-md px-2">{item2.a}</span>
+						<!-- <span class="bg-green-400 text-gray-50 rounded-md px-2">{item2.a}</span> -->
+						<span class=" text-gray-50 rounded-md px-2 color: {item2.marks >= 3 ? 'bg-green-400' : item2.marks >= 0 ? 'bg-yellow-400' : 'bg-red-400'}">{item2.marks}</span>
 						<a href={path + item2.id}>⁞</a>
 					</td>
 				</tr>
+				{/if}
 				{/each}
 			<!-- {/each} -->
 			</tbody>
 		</table>
+		<div class="text-center items-center">
+			<button class="text-center bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-1 px-2 rounded"
+				on:click={loadMore}>Load More
+			</button>
+		</div>
 	</div>
 </div>
 <style>
