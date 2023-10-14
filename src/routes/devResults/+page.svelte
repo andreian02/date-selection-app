@@ -1,11 +1,12 @@
 <!-- this is result page.  -->
 <script>
   import { Dcodes, doorSector, homeowners, yearKeys, protocolMode } from '../../Store.js';
-  import {answersheet, transistor, version1, version2, version3, version4, version5, cleanup} from '../../Utils.js'
+  import {transistor, version1, version2, version3, version4, version5, cleanup} from '../../Utils.js'
   import {checkElement} from '../../helper.js'
-  import {defaultDates, jieQidetect} from '../../dtools.js'
+  import {jieQidetect} from '../../dtools.js'
 	import NewTable from "$lib/components/newTable.svelte";
-	import ResultTable from '$lib/components/resultTable.svelte';
+  // remove ansersheet, and defaultDates from utilis, and dtools
+	// import ResultTable from '$lib/components/resultTable.svelte';
 
   export let sector
   export let payload 

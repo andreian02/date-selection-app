@@ -40,23 +40,22 @@ You can preview the production build with `npm run preview`.
 
 ## Things to add / Features to build and complete v1 
 
-Add show more button to load results, instead of displaying all at one go.
-Finish up scoring system 
+Finish up scoring system - Added scoring...  to quality check this, continue to test calendar results
 Include Owner details in Payload
-Need to test calendar results
-To complete version1 function, this function supports Calendar Feature - DONE! but realised haven push results so not done.
+
 Able to pass calendar results into cards...decide what to show in cards. - add  得令,得地,身旺 
 
 Gui Ren Feature to implement (1/4 Done.)  > Install the logic 
 
 Using new table format, confirmed on the details to show on table. (may change)
-Navigation + Breadcrumbs?  > adding some navigations. buttons or or simplier features.  
+Navigation + Breadcrumbs?  > adding some navigations. buttons or or simplier features, to add left card right card 
 Layout in the individual cards 
 
 
 For V2 
-implement radialchart to analyze all five element of the day
+implement radialchart to analyze all five element of the day - Added basic chart template
 feature to be added individual cards 
+explore google analytics to this project
 
 
 ## STATUS COMPLETED! 
@@ -66,7 +65,9 @@ Run analysis without owners > Calendar Feature. - DONE!
 Install calendar feature, button installed, backend to be updated - DONE!
 Clean up empty strings in final payload  > Logic Built! - DONE!
 Add time to result page! - DONE! 
-
+Add show more button to load results, instead of displaying all at one go.  - DONE! 
+Added filter options to sort and arrange results on page - DONE! 
+To complete version1 function, this function supports Calendar Feature - DONE!
 
 
 ## Resource

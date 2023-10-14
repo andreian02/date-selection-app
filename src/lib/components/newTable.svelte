@@ -55,7 +55,7 @@
 	logofiller = logofiller.sort((a,b)=> a.id - b.id); // Sort in descending order
 	}
 
-	let batchSize = 10;
+	let batchSize = 7;
   	let numResultsDisplayed = batchSize;
 	
 	function loadMore() {
@@ -76,7 +76,7 @@
 						</button>
 					</th>
 					<th class="p-2 text-center">日期</th>
-					<th class="p-2 text-left">年月日时</th>
+					<th class="p-2 text-left">时日月年</th>
 					{#if protocolM == 'protocol-one'}
 					<th class="p-2 text-left"></th>
 				  	{:else}
@@ -140,11 +140,12 @@
 		</table>
 		<div class="text-center items-center">
 			<button class="text-center bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-1 px-2 rounded"
-				on:click={loadMore}>Load More
+				on:click={loadMore}>Show More
 			</button>
 		</div>
 	</div>
 </div>
+
 <style>
 	.table {
 		border-spacing: 0 15px;

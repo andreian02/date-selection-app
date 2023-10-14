@@ -125,7 +125,9 @@
   $: protocolM = protocolM
   $: selectedM = selected
   $: startDate = new Date(range.start);
+
   $: endDate = new Date(range.end);
+  $: endDate_1 = new Date(endDate.setDate(endDate.getDate() + 1));
 
   $: dobDate1 = new Date(firstKey.h1);
   $: dobDate2 = new Date(secondKey.h2);
@@ -157,6 +159,7 @@
       // console.log("#####################################################")
       console.log("Door Sector:",selectedM)
       console.log("Date Range:", range.start, range.end)
+      console.log("date:", startDate, endDate_1)
       console.log("firstkey:", dobDate1)
       console.log("secondkey:", dobDate2)
 
@@ -239,8 +242,13 @@
               //         );
               
               dayElement = (DayElement(dz2.getDayGan()))
-              gStems = (dz2.getYearGan()+" "+dz2.getMonthGan()+" "+dz2.getDayGan()+" "+dz2.getTimeGan())
-              zStems = (dz2.getYearZhi()+" "+dz2.getMonthZhi()+" "+dz2.getDayZhi()+" "+dz2.getTimeZhi())
+              //gStems = (dz2.getYearGan()+" "+dz2.getMonthGan()+" "+dz2.getDayGan()+" "+dz2.getTimeGan())
+              //zStems = (dz2.getYearZhi()+" "+dz2.getMonthZhi()+" "+dz2.getDayZhi()+" "+dz2.getTimeZhi())
+
+              gStems = (dz2.getTimeGan()+" "+dz2.getDayGan()+" "+dz2.getMonthGan()+" "+dz2.getYearGan())
+              zStems = (dz2.getTimeZhi()+" "+dz2.getDayZhi()+" "+dz2.getMonthZhi()+" "+dz2.getYearZhi())
+
+
               counter++ 
               
 

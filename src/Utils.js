@@ -125,6 +125,24 @@ export function elementRS(body, use){
   return relationship
 }
 
+export function rMScore(relationship){
+  let jqResult;
+  if (relationship == '比旺'){
+    jqResult = "得令:旺";
+  } else if (relationship == '生入 ▲'){
+    jqResult = "得令:相";
+  } else if (relationship == '生出 ▼'){
+    jqResult = "失令:休";
+  } else if (relationship == '◀ 剋入'){
+    jqResult = "失令:死";
+  } else if (relationship == '剋出 ▶'){
+    jqResult = "失令:囚";
+  }
+  return jqResult
+}
+
+
+
 export function rScore(relationship){
   let scoring = 0;
   if (relationship == '比旺'){
@@ -270,28 +288,38 @@ export function version1(payload){
               input = `${myeArray[j]}${myeArray[k]}`
               console.log("-------------------------------------------------")
               console.log('clashing','v1-2', 'epairs:', input, 'resc:',clashing1)
+              console.log('result of rs:', 'score:', score)
             }
 
             let breaking1 = answersheet(myeArray[j])?.破
             if (breaking1 === myeArray[k]){
               console.log("Found epairs!")
               input = `${myeArray[j]}${myeArray[k]}`
+              let negscore = -1
+              totalScore += negscore
               console.log("-------------------------------------------------")
               console.log('breaking','v1-2', 'epairs:', input, 'resc:',breaking1)
+              console.log('result of rs:', 'score:', negscore)
             }
             let harming1 = answersheet(myeArray[j])?.害
             if (harming1 === myeArray[k]){
               console.log("Found epairs!")
               input = `${myeArray[j]}${myeArray[k]}`
+              let negscore = -1
+              totalScore += negscore
               console.log("-------------------------------------------------")
               console.log('harming','v1-2', 'epairs:', input, 'resc:',harming1)
+              console.log('result of rs:', 'score:', negscore)
             }
             let execute = answersheet(myeArray[j])?.刑
             if (execute === myeArray[k]){
               console.log("Found epairs!")
               input = `${myeArray[j]}${myeArray[k]}`
+              let negscore = -1
+              totalScore += negscore
               console.log("-------------------------------------------------")
               console.log('execute','v1-2', 'epairs:', input,)
+              console.log('result of rs:', 'score:', negscore)
             }
           }
 
@@ -306,11 +334,14 @@ export function version1(payload){
           console.log(myeArray_o)
           let execute2 = answersheet(myeArray[j])?.刑2 ?? "blank";
           console.log("execute2",myeArray[j], execute2)
+          //console.log('result of rs:', 'score:', score)
           
           if (execute2[0] === myeArray[j] && execute2[1] === myeArray[j]){
             console.log('caught all 3', )
+            
           } else {
             console.log('didnt caught any')
+            
           }
 
           
@@ -604,7 +635,7 @@ export function version3(payload, birthYear){
 
         const owner1 = checkElement(ownersArray[0])
         findings = "有合"
-        console.log(`${i} 有合 Value ${合3} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
+        console.log(`${i} 有合 Value ${合3}, found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
         console.log('x',findings)
         //let input = ""
         input = `${myArray[j]}${ownersArray[0]}`
