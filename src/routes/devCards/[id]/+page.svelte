@@ -144,12 +144,12 @@
 <!-- Id:{cardId} -->
 
 <body>
-  <div class="max-w-lg mx-auto my-5 bg-white rounded-lg p-1">
+  <div class="mx-auto my-5 bg-white rounded-lg p-1">
     <img class="w-24 h-24 rounded-full mx-auto" src={url} alt="element">
-    <h2 class="text-center text-2xl font-semibold mt-3">{result.date}</h2>
+    <h2 class="text-center text-xl font-semibold m-1">{result.date}</h2>
     <!-- <p class="text-center text-gray-600 mt-1">{detail.t0}</p>
     <p class="text-center text-gray-600 mt-1">{detail.z0}</p> -->
-    <div class="flex justify-center mt-5">
+    <div class="flex justify-center mt-2">
       <p class="text-blue-500  mx-3">{dayPayload.d1}</p>
       <p class="text-blue-500  mx-3">{dayPayload.d2}</p>
       <p class="text-blue-500  mx-3">{dayPayload.d3}</p>
@@ -171,14 +171,14 @@
     </div>
 
 
-    <div class="mt-5 text-center">
+    <div class="mt-2 text-center">
       <h3 class="text-2xl font-semibold">时日月年</h3>
-      <h3 class="text-lg text-gray-600 mt-1">{detail.t0}</h3>
-      <h3 class="text-lg text-gray-600 mt-1">{detail.z0}</h3>
+      <h3 class="text-lg text-gray-600">{detail.t0}</h3>
+      <h3 class="text-lg text-gray-600">{detail.z0}</h3>
     </div>
     
-    <div class="flex justify-center mt-5">
-      <p class="text-blue-500 mx-3">{jsonString}</p>
+    <div class="flex justify-center mt-3">
+      <p class="text-blue-500 text-sm mx-3">{jsonString}</p>
     </div>
 
 
@@ -186,37 +186,14 @@
       <h3 class="text-xl font-semibold">每日宜忌: </h3>
       <p class="text-gray-600">宜: {can}</p>
       <p class="text-gray-600">忌: {cannot}</p>
-
-
       <br/>
-
-
-      <h3 class="text-blue-500 text-center my-2">十二值星: {zhixing}</h3>
+      <h3 class="text-blue-500 text-center">十二值星: {zhixing}</h3>
     </div>
 
-
-
-    <div class="flex flex-row justify-center">
-      <div class="grid grid-cols-2 gap-10 content-center">
-        <div>
-          
-        </div>
-        <!-- <div>
-          <div class="mt-5 text-center">
-            <h3 class="text-2xl font-semibold">年月日时</h3>
-            <h3 class="text-lg text-gray-600 mt-1">{detail.t0}</h3>
-            <h3 class="text-lg text-gray-600 mt-1">{detail.z0}</h3>
-          </div>
-        </div> -->
-        <div>
-          
-        </div>
-      </div>
-    </div>
 
     <br/>
     
-    <div class="justify-center text-center py-10">
+    <div class="justify-center text-center py-8">
       <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         on:click={()=> goto('/devResults')}>
         Return
