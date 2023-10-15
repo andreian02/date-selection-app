@@ -11,7 +11,7 @@
     console.log("console.log",data)
 
     const seriesKey = 'name';
-    const xKey = ['wood','fire', 'earth', 'metal', 'water'];
+    const xKey = ['木','火', '土', '金', '水'];
   
     const seriesNames = Object.keys(data[0]).filter(d => d !== seriesKey);
   

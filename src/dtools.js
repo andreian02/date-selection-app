@@ -4,6 +4,23 @@ import { elementRS, rMScore } from './Utils'
 import { checkElement, cheatsheet, elementScore } from './helper';
 
 
+export function propertyOrder(input){
+    let propOrder = []
+    if (input == "水"){
+        propOrder = ["水", "木", "火", "土", "金"]
+    } else if (input == "木"){
+        propOrder = ["木", "火", "土", "金", "水"]
+    } else if (input == "火"){
+        propOrder = ["火", "土", "金", "水", "木"]
+    } else if (input == "土"){
+        propOrder = ["土", "金", "水", "木", "火"]
+    } else if (input == "金"){
+        propOrder = ["金", "水", "木", "火", "土"]
+    }
+    return propOrder
+}
+
+
 export function zHourConverts(input){
     let range;
     if (input == 0){
@@ -68,7 +85,6 @@ export function defaultDates(birthYear){
             const result = 'same'
             return result
         }
-        
     } else{
         const result = 'different'
         return result
@@ -76,10 +92,8 @@ export function defaultDates(birthYear){
 }
 
 
-
 export function jieQistrength(result){
     //console.log("check 得令, 得地, 得势")
-    
     let relationship;
     let monthElement;
     
@@ -91,7 +105,6 @@ export function jieQistrength(result){
     let strain_2 = []
     let output;
 
-
     const smallpayload = {
         d1: null,
         d2: null,
@@ -99,66 +112,29 @@ export function jieQistrength(result){
         d4: null
     }
     
-
     let dayPayload = result;
     let dmonth = dayPayload.date
     let dayElement = dayPayload.dayEl
     let dizhi = dayPayload.zValue
-
     let tiangan = dayPayload.gValue
 
-    
     const tianganlist = tiangan.split(" ")
     const dizhilist = dizhi.split(" ")
 
-
     function createList(tianganlist, dizhilist){
-       
-        
-
-
         for (let r=0; r<tianganlist.length; r++){
-            
             let dna = elementScore(tianganlist[r])
-            console.log('tg',tianganlist[r],dna)
+            //console.log('tg',tianganlist[r],dna)
             strain_1.push(dna)
         }
-
         for (let r=0; r<dizhilist.length; r++){
-
             let dna = elementScore(dizhilist[r])
-            console.log('2',dizhilist[r],dna)
+            //console.log('2',dizhilist[r],dna)
             strain_2.push(dna)
-        
         }
-
-
-        // for (const item of dizhilist){
-        //     if(item.hasOwnProperty('水')){
-        //         水 += item.水
-        //     }
-        //     if(item.hasOwnProperty('木')){
-        //         木 += item.木
-        //     }
-        //     if(item.hasOwnProperty('火')){
-        //         火 += item.火
-        //     }
-        //     if(item.hasOwnProperty('土')){
-        //         土 += item.土
-        //     }
-        //     if(item.hasOwnProperty('金')){
-        //         金 += item.金
-        //     }
-        // console.log("dz:",水, 木, 火, 土, 金)
-        // }
-       
-        // totalScore.push(水, 木, 火, 土, 金)
-        // console.log(totalScore)
-        // console.log("total:",  水, 木, 火, 土, 金)
-
     }
-    createList(tianganlist, dizhilist)
 
+    
     function scoring (strain_1, strain_2){
         let 水 = 0; 
         let 木 = 0; 
@@ -166,7 +142,6 @@ export function jieQistrength(result){
         let 土 = 0; 
         let 金 = 0; 
         
-
         for (const item of strain_1 ){
             if(item.hasOwnProperty('水')){
                 水 += item.水
@@ -217,26 +192,37 @@ export function jieQistrength(result){
             
 
         }
-        console.log("total2:", "water:", 水, "wood:",木, "fire:",火, "earth:", 土, "metal:",金)
+        console.log("total:", "water:", 水, "wood:",木, "fire:",火, "earth:", 土, "metal:",金)
         const result = {
-            水: 水,
-            木: 木,
-            火: 火,
-            土: 土,
-            金: 金
-
-
+            水: 水, 木: 木, 火: 火, 土: 土, 金: 金
         }
         return result
     }
 
+    function reOrderSequence(output, dayElement){
+        const pOrder = propertyOrder(dayElement)
+        const reOrderSeq = {};
+
+        pOrder.forEach((propertyName)=>{
+            if (output.hasOwnProperty(propertyName)){
+                reOrderSeq[propertyName] = output[propertyName];
+            }
+        });
+
+        for (const propertyName in output){
+            if (!pOrder.includes(propertyName)){
+                reOrderSeq[propertyName] = output[propertyName]
+            }
+        }
+        return {reOrderSeq, pOrder}
+    }
+
+    createList(tianganlist, dizhilist)
     output = scoring(strain_1, strain_2)
-    console.log("output score:",output)
+    //console.log("output score:",output)
 
-
-
-
-    
+    let newOutput = reOrderSequence(output, dayElement)
+    console.log('new output:',JSON.stringify(newOutput, null, 2))
 
     const [day, month, year] = (dmonth).split('/').map(Number);
     const dateObject = new Date(year, month - 1, day); 
@@ -245,7 +231,6 @@ export function jieQistrength(result){
     
     let ddayV = dm.getDayGan(); 
     let root = cheatsheet(ddayV)?.根
-
 
     monthElement = checkElement(dmonthV)
     relationship = elementRS(dayElement, monthElement)
@@ -261,13 +246,10 @@ export function jieQistrength(result){
 
     smallpayload.d1 = jQrelationship
 
-    // 
-
     function checkRoot(dizhilist) {
         for (let r=0; r<dizhilist.length; r++){
             let gotRoot= ""
             if (root[0] === dizhilist[r] || root[1] === dizhilist[r]){
-                //console.log("found")
                 //console.log(dizhilist[r])
                 gotRoot = "得地:有根"
                 //console.log('gotRoot:', gotRoot)
@@ -277,9 +259,8 @@ export function jieQistrength(result){
                 gotRoot = "失地:无根"
                 //console.log('gotRoot:', gotRoot)
             }
-
             return gotRoot
-            }
+        }
     }
 
     function daySupport(tianganlist, dayElement){
@@ -287,9 +268,7 @@ export function jieQistrength(result){
             let Support= ""
             const sElement = checkElement(tianganlist[r])
             relationship = elementRS(dayElement, sElement)
-
             if (relationship === "比旺" || relationship === "生入 ▲"){
-                //console.log("found")
                 //console.log(dizhilist[r])
                 Support = "得势:有助"
                 //console.log('gotRoot:', Support)
@@ -300,7 +279,7 @@ export function jieQistrength(result){
                 //console.log('gotRoot:', Support)
             }
             return Support
-            }
+        }
     }
     
 
@@ -311,9 +290,7 @@ export function jieQistrength(result){
     support = daySupport(tianganlist, dayElement)
     //console.log('support:', support)
     smallpayload.d3 = support
-
-    smallpayload.d4 = output
-
+    smallpayload.d4 = newOutput
 
     //return (dayPayload)
     return smallpayload

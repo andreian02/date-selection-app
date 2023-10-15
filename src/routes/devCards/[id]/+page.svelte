@@ -81,9 +81,21 @@
     dayPayload = jieQistrength(result)
     console.log("day:")
     console.log(dayPayload)
-    console.log('SCORE:',dayPayload.d4)
-    const jsonString = JSON.stringify(dayPayload.d4, null, 2);
+    console.log('SCORE:',dayPayload.d4.reOrderSeq)
+    const jsonString = JSON.stringify(dayPayload.d4.reOrderSeq, null, 2);
     console.log('string:',jsonString);
+
+
+    const score = dayPayload.d4.reOrderSeq 
+    for (const key in score) {
+      if (score.hasOwnProperty(key)) {
+        score[key] = Math.round(score[key]) + 3;
+      }
+    }
+    console.log("mscore:", score)
+
+    let e_data =[]
+    e_data.push(score)
 
 
     let  url = getUrl(payload)
@@ -108,14 +120,17 @@
     import AxisRadial from '$lib/components/AxisRadial.svelte';
 
     // This example loads csv data as json using @rollup/plugin-dsv
-    import s_data from '$lib/data/radarScores.js';
-    //console.log(s_data)
-
-    const seriesKey = 'name';
-    const xKey = ['木','火', '土', '金', '水'];
-    const seriesNames = Object.keys(s_data[0]).filter(d => d !== seriesKey);
-  
-    s_data.forEach(d => {
+    //import s_data from '$lib/data/radarScores.js';
+    //console.log('s_data',s_data)
+    //console.log('s_data_r',e_data)
+    // const seriesKey = 'name';
+    //const xKey = ['木','火', '土', '金', '水'];
+    //const seriesNames = Object.keys(s_data[0]).filter(d => d !== seriesKey);
+    
+    const xKey = dayPayload.d4.pOrder
+    const seriesNames = Object.keys(e_data[0]);
+    
+    e_data.forEach(d => {
       seriesNames.forEach(name => {
         d[name] = +d[name];
       });
@@ -146,7 +161,7 @@
         x={xKey}
         xDomain={[0, 10]}
         xRange={({ height }) => [0, height / 2]}
-        data={s_data}
+        data={e_data}
       >
         <Svg>
           <AxisRadial/>
@@ -155,17 +170,15 @@
       </LayerCake>
     </div>
 
-    
-    <div class="flex justify-center mt-5">
-      <p class="text-blue-500  mx-3">{jsonString}</p>
-    </div>
-
-
 
     <div class="mt-5 text-center">
       <h3 class="text-2xl font-semibold">时日月年</h3>
       <h3 class="text-lg text-gray-600 mt-1">{detail.t0}</h3>
       <h3 class="text-lg text-gray-600 mt-1">{detail.z0}</h3>
+    </div>
+    
+    <div class="flex justify-center mt-5">
+      <p class="text-blue-500 mx-3">{jsonString}</p>
     </div>
 
 
