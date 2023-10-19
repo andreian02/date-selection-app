@@ -85,7 +85,7 @@ export function defaultDates(birthYear){
             const result = 'same'
             return result
         }
-    } else{
+    } else {
         const result = 'different'
         return result
     }
@@ -99,10 +99,12 @@ export function jieQistrength(result){
     
     let jQrelationship;
     let gotRoot;
-    let support;
+    let gotSupport;
 
     let strain_1 = []
     let strain_2 = []
+    let sList = []
+    let rList = []
     let output;
 
     const smallpayload = {
@@ -230,6 +232,7 @@ export function jieQistrength(result){
     let dmonthV = dm.getMonthZhi();
     
     let ddayV = dm.getDayGan(); 
+    // let ddayC = dm.getDayZhi();
     let root = cheatsheet(ddayV)?.根
 
     monthElement = checkElement(dmonthV)
@@ -237,59 +240,78 @@ export function jieQistrength(result){
     jQrelationship = rMScore(relationship)
     
     //const dz2 = Lunar.fromDate(dmonth)
-    // console.log(tianganlist, dizhilist)
-    // console.log(ddayV, root)
-    // console.log('dayElement:', dayElement)
-    // console.log('monthElement:',monthElement)
-    // console.log('rs:',relationship)
-    // console.log('jqresult:', jQrelationship)
+    console.log(tianganlist, dizhilist)
+    console.log('daygan:',ddayV, root[0], root[1])
+    console.log('dayElement:', dayElement)
+    console.log('monthElement:',monthElement)
+    console.log('rs:',relationship)
+    console.log('jqresult:', jQrelationship)
 
     smallpayload.d1 = jQrelationship
 
-    function checkRoot(dizhilist) {
+
+    function checkRoot(dizhilist){
+        let tempscore = 0 
         for (let r=0; r<dizhilist.length; r++){
-            let gotRoot= ""
-            if (root[0] === dizhilist[r] || root[1] === dizhilist[r]){
-                //console.log(dizhilist[r])
-                gotRoot = "得地:有根"
-                //console.log('gotRoot:', gotRoot)
+            console.log('gan:',dizhilist[r])
+            if (dizhilist[r] == root[0] || dizhilist[r] == root[1]){
+                //console.log("got root")
+                tempscore++
+            } else {
+                //console.log("no root")
             }
-            else {
-                //console.log("pass")
-                gotRoot = "失地:无根"
-                //console.log('gotRoot:', gotRoot)
-            }
-            return gotRoot
+        }
+        console.log("calculating score", tempscore)
+        if (tempscore>=1){
+            let Root = "得地:有根"
+            console.log("got Root",Root)
+            return Root
+        } else {
+            let Root = "失地:无根"
+            console.log("no Root", Root)
+            return Root
         }
     }
+    
 
-    function daySupport(tianganlist, dayElement){
+    function checkSupport(tianganlist){
+        let tempscore = 0 
         for (let r=0; r<tianganlist.length; r++){
-            let Support= ""
-            const sElement = checkElement(tianganlist[r])
-            relationship = elementRS(dayElement, sElement)
+            console.log('tian:',tianganlist[r])
+            let sElement = checkElement(tianganlist[r])
+            let relationship = elementRS(dayElement, sElement)
+            console.log("r", relationship, "e", sElement)
             if (relationship === "比旺" || relationship === "生入 ▲"){
-                //console.log(dizhilist[r])
-                Support = "得势:有助"
-                //console.log('gotRoot:', Support)
+                // let gSupport = "得势:有助"
+                tempscore++ 
+                //console.log('gotSupport:', gSupport)
+            } else{
+                // let nSupport = "失势:无助"
+                //console.log("noSupport", nSupport)
             }
-            else {
-                //console.log("pass")
-                Support = "失势:无助"
-                //console.log('gotRoot:', Support)
-            }
+        }   
+        console.log("calculating score", tempscore)
+        if (tempscore >=1) {
+            let Support = "得势:有助"
+            console.log("got support",Support)
+            return Support
+            
+        } else {
+            let Support = "失势:无助"
+            console.log("no support",Support)
             return Support
         }
     }
     
 
+
     gotRoot = checkRoot(dizhilist)
-    ///console.log('root:', gotRoot)
+    console.log('checkRoot:', gotRoot)
     smallpayload.d2 = gotRoot
 
-    support = daySupport(tianganlist, dayElement)
-    //console.log('support:', support)
-    smallpayload.d3 = support
+    gotSupport = checkSupport(tianganlist)
+    console.log('checkSupport:', gotSupport)
+    smallpayload.d3 = gotSupport
     smallpayload.d4 = newOutput
 
     //return (dayPayload)

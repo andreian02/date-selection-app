@@ -173,15 +173,51 @@
       console.log(sc1year)
       console.log(sc2year)
 
+      function defaultOptions(){
+          if (range.start === null &&  range.end === null)  {
+              //console.log("this is where input is blank so we load default values")
+              const today = new Date();
+              const todayplus3 = new Date(today);
+              todayplus3.setDate(today.getDate() + 3);
+              startDate = today
+              endDate = todayplus3
+              protocolM = 'protocol-one'
+              console.log("loading protocol:", protocolM);
+              // console.log(sc1year.gYear)
+              // console.log(sc2year.gYear)
+          } 
+          // if (sc1year == sc2year ) {
+          //   console.log("year values:", sc1year, sc2year)
+          //   console.log("blank")
+          //   let blank = "blank"
+          //   return blank
+          // } else {
+          //   let blank = "not blank"
+          //   return blank
+          // }
+      }
+      
+
 
       function ifnotvisable(sc1year, sc2year) {
+          if (protocolM == 'protocol-one'){
+            sc2year = "";
+            sc1year = "";
+            console.log("REMOVE THE BOTH KEYS")
+            // yearKey.push(sc1year, sc2year)
+          }
+
           if (isSwitchedOn == false){
             console.log("REMOVE THE SECOND KEY, second input is not visable")
             sc2 = "";
             sc2year = "";
             yearKey.push(sc1year)
-
-          } else {
+          } 
+          // if (firstKey.h1 === null && secondKey.h2 === null){
+          //   protocolM = 'protocol-one'
+          //   console.log("loading protocol:", protocolM);
+          // } 
+          else {
             console.log("Maintain Operation, both input visable")
             yearKey.push(sc1year, sc2year)
 
@@ -189,6 +225,9 @@
           return yearKey
       }
       
+      defaultOptions()
+      console.log("status:", protocolM)
+
       ifnotvisable(sc1year, sc2year)   
       console.log("year key:",yearKey) 
       //yearKey.push(sc1year, sc2year)
@@ -320,9 +359,6 @@
                     <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" use:air_datepicker={options3} />
                   {/if}
                 </div>
-                
-
-               
 
                 <div class="md:col-span-1">
                   <label for="TwentyFourMountain">Door Sector</label>
@@ -334,6 +370,7 @@
                         {/each}
                     </select>
                 </div>
+                
                 {/if}
   
                 <br />
@@ -341,7 +378,7 @@
         
                 <div class="md:col-span-5 text-right">
                   <div class="inline-flex items-end">
-                    <button disabled={selected == ""} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    <button disabled={selected == ""} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded"
                       on:click={()=>{getResults()}}>
                       Submit
                     </button>

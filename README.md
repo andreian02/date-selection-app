@@ -40,22 +40,24 @@ You can preview the production build with `npm run preview`.
 
 ## Things to add / Features to build and complete v1 
 
+Add a liner to show total listing results. - TO be formatted.
+Add panel in the result table to allow filtering of strongest element day
 Finish up scoring system - Added scoring...  to quality check this, continue to test calendar results
-Include Owner details in Payload
 
-Able to pass calendar results into cards...decide what to show in cards. - add  得令,得地,身旺 
+FEATURES to be added individual cards 
+Include Owner details in Payload - Collect using stores.
+Layout in the individual cards ... owner details to be added! 
 
 Gui Ren Feature to implement (1/4 Done.)  > Install the logic 
-
 Using new table format, confirmed on the details to show on table. (may change)
 Navigation + Breadcrumbs?  > adding some navigations. buttons or or simplier features, to add left card right card 
-Layout in the individual cards 
+
+Adding Accordion to hide all details
 
 
-For V2 
-implement radialchart to analyze all five element of the day - Added basic chart template
-feature to be added individual cards 
-explore google analytics to this project
+
+explore google analytics to this project - item is researched!
+new feature...add finder to filter which element is the strongest within a window period
 
 
 ## STATUS COMPLETED! 
@@ -68,6 +70,10 @@ Add time to result page! - DONE!
 Add show more button to load results, instead of displaying all at one go.  - DONE! 
 Added filter options to sort and arrange results on page - DONE! 
 To complete version1 function, this function supports Calendar Feature - DONE!
+Able to pass calendar results into cards...decide what to show in cards. - add  得令,得地,身旺  - DONE!
+Implement radialchart to analyze all five element of the day - Added basic chart template - DONE!
+Added Error page handler - DONE!
+Add default catches if no input is made.  - DONE!
 
 
 ## Resource
@@ -78,7 +84,4 @@ https://www.amp-what.com/
 https://symbl.cc/en/collections/arrow-symbols/
 
 Card：https://tailwindcomponents.com/component/social-media-bio-card
-
-
-We will add this eventually: 
-https://layercake.graphics/example/Radar
+Chart: https://layercake.graphics/example/Radar

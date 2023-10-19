@@ -61,12 +61,12 @@
 	function loadMore() {
     	numResultsDisplayed += batchSize;
     }
-
 	
 </script>
 
 <div class="flex justify-center min-h-screen">
 	<div class="col-span-10">
+		
 		<table class="table text-black border-separate space-y-2 text-sm">
 			<thead class="text-black">
 				<tr>

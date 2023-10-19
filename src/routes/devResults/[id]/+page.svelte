@@ -5,6 +5,8 @@
     import { page } from '$app/stores'
     import { Lunar} from 'lunar-javascript'
     import { logoHandle } from "$lib/components/logoHandle";
+    
+    
 
     const cardId = parseInt($page.params.id)
 
@@ -67,7 +69,6 @@
     let cannot = d.getTimeJi();
     let zhixing = d.getZhiXing()
     //console.log(Ldate)
-
 </script>
 
 
@@ -108,6 +109,13 @@
             <p class="text-gray-600">忌: {cannot}</p>
           </div>
         </div>
+
+
+    
+
+       
+
+
       </div>
     </div>
   </div>

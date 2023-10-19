@@ -74,15 +74,17 @@
   
 
   console.log("----------------------------------------------------")
-  result_details = transistor(birthYear)
+  //result_details = transistor(birthYear)
   
   console.log('p:',protocolM)
   if (protocolM === 'protocol-one'){
       console.log("running protocol 1")
       version1(payload)
+      console.log("length:",payload.length)
 
   } 
   else {
+    result_details = transistor(birthYear)
     console.log("running protocol 2")
     version1(payload)
     version2(payload, birthYear)
@@ -92,6 +94,8 @@
 
     console.log("doing clean up")
     cleanup(payload)
+
+    console.log("length:",payload.length)
     
   }
 
@@ -109,6 +113,9 @@
   // cleanup(payload)
 
 </script>
+
+
+
 
 {#if protocolM == 'protocol-one'}
   <NewTable {payload} {protocolM}/>

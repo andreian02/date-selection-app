@@ -189,12 +189,15 @@
       <br/>
       <h3 class="text-blue-500 text-center">十二值星: {zhixing}</h3>
     </div>
-
+    
+    <!-- <div class="mt-5 text-center">
+      {keys[0]} Owner details!
+    </div> -->
 
     <br/>
     
     <div class="justify-center text-center py-8">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded"
         on:click={()=> goto('/devResults')}>
         Return
       </button>

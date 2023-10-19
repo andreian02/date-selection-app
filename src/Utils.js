@@ -173,7 +173,7 @@ export function transistor(birthYear) {
   let result_details = []
   let 合_1, 冲_1, 合_2, 冲_2, 合_3,冲_3, 合_4, 冲_4;
   let sanhe3, sanhe4;
-  
+  console.log("Running trans.....")
   if (birthYear.length > 1){
     
     合_1 = answersheet(birthYear[0].gYear).合

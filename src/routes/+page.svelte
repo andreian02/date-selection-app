@@ -23,10 +23,11 @@
 				<li>{data.Ldate}</li>
 				<li>{data.Year}年 · {data.Month}月 · {data.Day}日</li>
 			</p>
-			<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+			<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
 					on:click={()=> goto('/calendar')}>
 					Start
             </button>
+			
 		</div>
 </section>
 

@@ -21,6 +21,15 @@
       });
     });
 
+    import Dropdown from '$lib/components/Dropdown.svelte';
+    import Accordion from '$lib/components/Accordion.svelte';
+
+    let show = null;
+    const items = ["One", "Two", "Three", "Four"];
+
+    const showCollapse = i => {
+      i === show ? (show = null) : (show = i);
+    };
 
 </script>
 
@@ -45,6 +54,13 @@
   <br />
 
 
+
+{#each items as item, i}
+<Accordion {i} {show} {showCollapse} {item}/>
+{/each}
+
+
+<Dropdown />
 
 
 
