@@ -319,7 +319,28 @@ export function jieQistrength(result){
 }
 
 
+// export function guiren(period, dizhilist){
+//     let gren; 
+//     let gresult;
+//     //let glist = []; 
 
+//     if (period == "冬至"){
+//         gren = "阴贵"
+//         console.log(period, gren)
+//         for (let d=0; d<dizhilist.length; d++ )
+//             gresult = cheatsheet(dizhilist[d])
+//             console.log(gresult?.yingui)
+//             //glist.push(gresult?.yingui)
+
+//     } else {
+//         gren = "阳贵"
+//         console.log(period, gren)
+//         for (let d=0; d<dizhilist.length; d++ )
+//         gresult = cheatsheet(dizhilist[d])
+//         console.log(gresult?.yangui)
+//     }
+
+// }
 
 
 
@@ -367,12 +388,15 @@ export function jieQidetect(payload){
     console.log('下一个夏至:'+xiazhi_next);
     
 
-    if (currentDate > xiazhi_current && currentDate < dongzhi_next){
-        period = "冬至"
-        console.log('Now currently in 冬至')
-    } else {
+    if (currentDate < dongzhi_next && currentDate > xiazhi_current){
         period = "夏至"
         console.log('Now currently in 夏至')
+        //guiren(period, dizhilist)
+        
+    } else {
+        period = "冬至"
+        console.log('Now currently in 冬至')
+        //guiren(period, dizhilist)
     }
 
     

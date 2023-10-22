@@ -10,6 +10,7 @@
 	let path = '/devCards/'
 	let sortBy = 'asc'
 
+	
     import { logoHandle } from "$lib/components/logoHandle";
 	import {zHourConverts} from "../../dtools"
 	let logofiller = [];
@@ -62,11 +63,12 @@
     	numResultsDisplayed += batchSize;
     }
 	
+	import SummaryTable from '$lib/components/summaryTable.svelte'
 </script>
 
 <div class="flex justify-center min-h-screen">
-	<div class="col-span-10">
-		
+	<div class="col-span-10"> 
+		<SummaryTable  {payload} {period} />
 		<table class="table text-black border-separate space-y-2 text-sm">
 			<thead class="text-black">
 				<tr>

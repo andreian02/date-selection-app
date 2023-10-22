@@ -1088,6 +1088,74 @@ export function version5(payload, birthYear){
 
 }
 
+
+export function version6(payload, birthYear, period){
+  let gren; 
+  
+  console.log('----------------v6----------------------------------------')      
+  for (let i = 0; i < payload.length; i++) {
+    let gresult;
+    let g_list = []
+    let lu_list = []
+    //let totalScore = (payload[i]['score'])
+    let ownersArray = capacity_z(birthYear)
+    const dSector = ((payload[i]['door']))
+    const tianganlist = (payload[i]['gValue']).split(" ") //
+
+    const dizhilist = (payload[i]['zValue']).split(" ") //
+    console.log('date:', (payload[i]['zValue'])  , 'owners:', ownersArray,'doorSector:', dSector)
+    console.log(period, dizhilist)
+    
+    console.log('----------------v6-----------------------------------------')      
+    for (let d=0; d<dizhilist.length; d++ ){
+        
+        console.log('----------------v6---找禄-------------------------------')  
+        gresult = cheatsheet(dizhilist[d])
+        let find_lu = gresult?.lu
+        lu_list.push(find_lu)
+        
+        console.log('----------------v6---找贵人-----------------------------')      
+        if (period == "冬至"){
+          gren = "阴贵"
+          console.log(period, gren)
+          console.log('mapping:', dizhilist[d], '--', gresult?.yingui)
+          g_list.push(gresult?.yingui)
+          // console.log('glist',glist)
+    
+        } 
+        else {
+          gren = "阳贵"
+          console.log(period, gren)
+          console.log('mapping:', dizhilist[d], '--', gresult?.yangui)
+          g_list.push(gresult?.yangui)
+          // console.log('glist',glist)
+      }
+    }
+    const f_glist = g_list.filter((item) => item !== "");
+    const f_lu_list = lu_list.filter((item) => item !== "");
+    
+    const flat_glist = f_glist.reduce((result, item) => result.concat(item), []);
+    const flat_lu_list = f_lu_list.reduce((result, item) => result.concat(item), []);
+    const uniq_glist = Array.from(new Set(flat_glist))
+    const uniq_lu_list = Array.from(new Set(flat_lu_list))
+
+
+    console.log("date_set:",payload[i]['zValue'])
+    console.log('g_list:', f_glist, flat_glist, uniq_glist)
+   
+    if (f_lu_list.length == 0){
+      console.log('lu_list:', 'empty')
+    } else {
+      console.log('lu_list:', f_lu_list, flat_lu_list, uniq_lu_list)
+    }
+  } 
+}
+
+
+
+
+
+
 export function cleanup(payload){
   for (let i = 0; i < payload.length; i++) {
     //console.log(payload[i]['地支合五行'].filter((item) => item !== ""))

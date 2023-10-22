@@ -9,7 +9,10 @@ export function cheatsheet(input){
             L合: "丑",
             刑: ["卯"],
             破: "酉",
-            害: "未"
+            害: "未",
+            lu: "癸",
+            yingui:"乙",
+            yangui:"巳"
         }
     } else if (input == "丑"){
         details = { 
@@ -19,7 +22,10 @@ export function cheatsheet(input){
             L合: "子",
             刑2: ["戌","未"],
             破: "辰",
-            害: "午"
+            害: "午",
+            lu: "",
+            yingui:"甲",
+            yangui:["戊","庚"],
         }
     } else if (input == "寅"){
         details = {
@@ -29,7 +35,10 @@ export function cheatsheet(input){
             L合: "亥",
             刑2: ["巳", "申"],
             破: "",
-            害: "巳"
+            害: "巳",
+            lu: "甲",
+            yingui:"",
+            yangui:"辛"
         }
     } else if (input == "卯"){
         details = {
@@ -39,7 +48,10 @@ export function cheatsheet(input){
             L合: "戌",
             刑: "子",
             破: "午",
-            害: "辰"
+            害: "辰",
+            lu: "乙",
+            yingui:"癸",
+            yangui:"壬"
         }
     } else if (input == "辰"){
         details = {
@@ -49,7 +61,10 @@ export function cheatsheet(input){
             L合: "酉",
             刑: "辰",
             破: "丑",
-            害: "卯"
+            害: "卯",
+            lu: "",
+            yingui:"",
+            yangui:""
         }
     } else if (input == "巳"){
         details = {
@@ -59,7 +74,10 @@ export function cheatsheet(input){
             L合: "申",
             刑2: ["寅","申"],
             破: "",
-            害: "寅"
+            害: "寅",
+            lu: ["丙","戊"],
+            yingui:"壬",
+            yangui:"癸"
         }
     } else if (input == "午"){
         details = {
@@ -69,7 +87,10 @@ export function cheatsheet(input){
             L合: "未",
             刑: "午",
             破: "卯",
-            害: "丑"
+            害: "丑",
+            lu: ["丁","巳"],
+            yingui:"辛",
+            yangui:""
         }
     } else if (input == "未"){
         details = {
@@ -79,7 +100,10 @@ export function cheatsheet(input){
             L合: "午",
             刑2: ["戌","丑"],
             破: "戌",
-            害: "子"
+            害: "子",
+            lu: "",
+            yingui:["庚","戊"],
+            yangui:"甲"
         }
     } else if (input == "申"){
         details = {
@@ -89,7 +113,10 @@ export function cheatsheet(input){
             L合: "巳",
             刑2: ["寅","巳"],
             破: "",
-            害: "亥"
+            害: "亥",
+            lu: "庚",
+            yingui:"巳",
+            yangui:"乙"
         } 
     } else if (input == "酉"){
         details = { 
@@ -99,7 +126,10 @@ export function cheatsheet(input){
             L合: "辰",
             刑: "酉",
             破: "子",
-            害: "戌"
+            害: "戌",
+            lu: "辛",
+            yingui:"丁",
+            yangui:"丙"
         }
     } else if (input == "戌"){
         details = {
@@ -109,7 +139,10 @@ export function cheatsheet(input){
             L合: "卯",
             刑2: ["丑", "未",],
             破: "未",
-            害: "酉"
+            害: "酉",
+            lu: "",
+            yingui:"",
+            yangui:""
         }
     } else if (input == "亥"){
         details = {
@@ -119,7 +152,10 @@ export function cheatsheet(input){
             L合: "寅",
             刑: "亥",
             破: "",
-            害: "申"
+            害: "申",
+            lu: "壬",
+            yingui:"丙",
+            yangui:"丁"
         } 
     } else if (input == "甲"){
         details = { 合: "己", 冲: "庚", 根:["寅"] } 
@@ -165,99 +201,100 @@ export function checkElement(input){
     };
   
 
-
-    export function elementScore(input){
-        let score;
-        
-        if (input == "子") {
-            score = {
-                水:1, 木:0, 火:0, 土:0, 金:0
-            }
-        } else if (input == "丑"){
-            score = {
-                水:0.25, 木:0, 火:0, 土:0.5, 金:0.25
-            }
-        } else if (input == "寅"){
-            score = {
-                水:0, 木:0.5, 火:0.25, 土:0.25, 金:0
-            }
-        } else if (input == "卯"){
-            score = {
-                水:0, 木:1, 火:0, 土:0, 金:0
-            }
-        } else if (input == "辰"){
-            score = {
-                水:0.25, 木:0.25, 火:0, 土:0.5, 金:0
-            }
-        } else if (input == "巳"){
-            score = {
-                水:0, 木:0, 火:0.5, 土:0.25, 金:0.25 
-            }
-        } else if (input == "午"){
-            score = {
-                水:0, 木: 0.75, 火: 0.25, 土:0, 金:0
-            }
-        } else if (input == "未"){
-            score = {
-                水:0, 木:0.25, 火:0.25, 土:0.5, 金:0 
-            }
-        } else if (input == "申"){
-            score = {
-                水:0.25, 木:0, 火:0, 土:0.25, 金:0.5 
-            }
-        } else if (input == "酉"){
-            score = {
-                水:0, 木:0, 火:0, 土:0, 金:1
-            }
-        } else if (input == "戌"){
-            score = {
-                水:0, 木:0, 火:0.25, 土:0.25, 金:0.5
-            }
-        } else if (input == "亥"){
-            score = {
-                水:0.75, 木:0.25, 火:0, 土:0, 金:0
-            }
-        } else if (input == "甲"){
-            score = {
-                水: 0, 木: 1, 火: 0, 土: 0, 金: 0
-            }
-        } else if (input == "乙"){
-            score = {
-                水: 0, 木: 1, 火: 0, 土: 0, 金: 0
-            }
-        } else if (input == "丙"){
-            score = {
-                水: 0, 木: 0, 火: 1, 土: 0, 金: 0
-            }
-        } else if (input == "丁"){
-            score = {
-                水: 0, 木: 0, 火: 1, 土: 0, 金: 0
-            }
-        } else if (input == "戊"){
-            score = {
-                水: 0, 木: 0, 火: 0, 土: 1, 金: 0  
-            }
-        } else if (input == "己"){
-            score = {
-                水: 0, 木: 0, 火: 0, 土: 1, 金: 0 
-            }
-        } else if (input == "庚"){
-            score = {
-                水: 0, 木: 0, 火: 0, 土: 0, 金: 1
-            }
-        } else if (input == "辛"){
-            score = {
-                水: 0, 木: 0, 火: 0, 土: 0, 金: 1
-            }
-        } else if (input == "壬"){
-            score = {
-                水: 1, 木: 0, 火: 0, 土: 0, 金: 0
-            }
-        } else if (input == "癸"){
-            score = {
-                水: 1, 木: 0, 火: 0, 土: 0, 金: 0
-            }
-
+    
+export function elementScore(input){
+    let score;
+    
+    if (input == "子") {
+        score = {
+            水:1, 木:0, 火:0, 土:0, 金:0
         }
-        return score
+    } else if (input == "丑"){
+        score = {
+            水:0.25, 木:0, 火:0, 土:0.5, 金:0.25
+        }
+    } else if (input == "寅"){
+        score = {
+            水:0, 木:0.5, 火:0.25, 土:0.25, 金:0
+        }
+    } else if (input == "卯"){
+        score = {
+            水:0, 木:1, 火:0, 土:0, 金:0
+        }
+    } else if (input == "辰"){
+        score = {
+            水:0.25, 木:0.25, 火:0, 土:0.5, 金:0
+        }
+    } else if (input == "巳"){
+        score = {
+            水:0, 木:0, 火:0.5, 土:0.25, 金:0.25 
+        }
+    } else if (input == "午"){
+        score = {
+            水:0, 木: 0.75, 火: 0.25, 土:0, 金:0
+        }
+    } else if (input == "未"){
+        score = {
+            水:0, 木:0.25, 火:0.25, 土:0.5, 金:0 
+        }
+    } else if (input == "申"){
+        score = {
+            水:0.25, 木:0, 火:0, 土:0.25, 金:0.5 
+        }
+    } else if (input == "酉"){
+        score = {
+            水:0, 木:0, 火:0, 土:0, 金:1
+        }
+    } else if (input == "戌"){
+        score = {
+            水:0, 木:0, 火:0.25, 土:0.25, 金:0.5
+        }
+    } else if (input == "亥"){
+        score = {
+            水:0.75, 木:0.25, 火:0, 土:0, 金:0
+        }
+    } else if (input == "甲"){
+        score = {
+            水: 0, 木: 1, 火: 0, 土: 0, 金: 0
+        }
+    } else if (input == "乙"){
+        score = {
+            水: 0, 木: 1, 火: 0, 土: 0, 金: 0
+        }
+    } else if (input == "丙"){
+        score = {
+            水: 0, 木: 0, 火: 1, 土: 0, 金: 0
+        }
+    } else if (input == "丁"){
+        score = {
+            水: 0, 木: 0, 火: 1, 土: 0, 金: 0
+        }
+    } else if (input == "戊"){
+        score = {
+            水: 0, 木: 0, 火: 0, 土: 1, 金: 0  
+        }
+    } else if (input == "己"){
+        score = {
+            水: 0, 木: 0, 火: 0, 土: 1, 金: 0 
+        }
+    } else if (input == "庚"){
+        score = {
+            水: 0, 木: 0, 火: 0, 土: 0, 金: 1
+        }
+    } else if (input == "辛"){
+        score = {
+            水: 0, 木: 0, 火: 0, 土: 0, 金: 1
+        }
+    } else if (input == "壬"){
+        score = {
+            水: 1, 木: 0, 火: 0, 土: 0, 金: 0
+        }
+    } else if (input == "癸"){
+        score = {
+            水: 1, 木: 0, 火: 0, 土: 0, 金: 0
+        }
+
     }
+    return score
+}
+

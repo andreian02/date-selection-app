@@ -1,7 +1,7 @@
 <!-- this is result page.  -->
 <script>
   import { Dcodes, doorSector, homeowners, yearKeys, protocolMode } from '../../Store.js';
-  import {transistor, version1, version2, version3, version4, version5, cleanup} from '../../Utils.js'
+  import {transistor, version1, version2, version3, version4, version5, version6, cleanup} from '../../Utils.js'
   import {checkElement} from '../../helper.js'
   import {jieQidetect} from '../../dtools.js'
 	import NewTable from "$lib/components/newTable.svelte";
@@ -49,6 +49,7 @@
 
   console.log("$PAYLOD:", payload, )
   period = jieQidetect(payload) // insert period to result table. 
+  console.log("$Period!:", period)
   
   console.log("check protocol:", protocolM)
   if (protocolM == "protocol-one"){
@@ -92,6 +93,8 @@
     version4(payload, birthYear) //version4 is to check 地支 三合/三会 关系
     version5(payload, birthYear) //version5 is to check 地支 刑,破,害 关系
 
+    version6(payload, birthYear, period)
+
     console.log("doing clean up")
     cleanup(payload)
 
@@ -118,9 +121,9 @@
 
 
 {#if protocolM == 'protocol-one'}
-  <NewTable {payload} {protocolM}/>
+  <NewTable {payload} {protocolM} {period}/>
 {:else}
-  <NewTable {payload} {sector} {sectorElement} {keys} {birthYear}/>
+  <NewTable {payload} {sector} {sectorElement} {keys} {birthYear} {period}/>
 {/if}
 
 <!-- <NewTable {payload} {sector} {sectorElement} {keys} {birthYear}/> -->

@@ -2,8 +2,8 @@
 
 <script>
     import { goto } from '$app/navigation';    
-    import { Dcodes, homeowners, protocolMode } from '../../../Store';
-    import { jieQistrength } from '../../../dtools.js'
+    import { Dcodes, homeowners, yearKeys, protocolMode } from '../../../Store';
+    import { jieQistrength, jieQidetect } from '../../../dtools.js'
     
     
     import { page } from '$app/stores'
@@ -15,9 +15,11 @@
 
 
     export let keys
+    export let birthYear
     export let payload
     export let protocolM
     export let dayPayload
+    //export let periodqi
     //export let logofiller 
 
     protocolMode.subscribe((data)=>{
@@ -28,6 +30,10 @@
     payload = data
     
     //console.log(payload)
+    })
+    yearKeys.subscribe((data)=>{
+    birthYear = data
+    console.log("birthYear:",birthYear)
     })
 
     homeowners.subscribe((data)=>{
@@ -76,6 +82,9 @@
     console.log(result)
     console.log("Mode:", protocolM)
     console.log("RESULT DATE:",result.date)
+
+    // periodqi = jieQidetect(payload)
+    // console.log("Period QI:", periodqi)
 
 
     dayPayload = jieQistrength(result)
