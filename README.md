@@ -38,8 +38,9 @@ You can preview the production build with `npm run preview`.
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
 
 
-## Things to add / Features to build and complete v1 
+## Things to add / Features to build and complete v2
 
+Add default catches if no input is made.  - DONE!
 Add a liner to show total listing results. - TO be formatted.
 Add panel in the result table to allow filtering of strongest element day
 Finish up scoring system - Added scoring...  to quality check this, continue to test calendar results
@@ -48,13 +49,12 @@ FEATURES to be added individual cards
 Include Owner details in Payload - Collect using stores.
 Layout in the individual cards ... owner details to be added! 
 
-Gui Ren Feature to implement (1/4 Done.)  > Install the logic 
+Gui Ren Feature to implement (3/4 Done.)  > Installed the logic, validations required! 
+
 Using new table format, confirmed on the details to show on table. (may change)
 Navigation + Breadcrumbs?  > adding some navigations. buttons or or simplier features, to add left card right card 
 
-Adding Accordion to hide all details
-
-
+Adding Accordion to hide all details in detailed cards
 
 explore google analytics to this project - item is researched!
 new feature...add finder to filter which element is the strongest within a window period
@@ -62,18 +62,18 @@ new feature...add finder to filter which element is the strongest within a windo
 
 ## STATUS COMPLETED! 
 
-Edit the input features > current too troublesome to use - DONE!
-Run analysis without owners > Calendar Feature. - DONE! 
-Install calendar feature, button installed, backend to be updated - DONE!
-Clean up empty strings in final payload  > Logic Built! - DONE!
-Add time to result page! - DONE! 
-Add show more button to load results, instead of displaying all at one go.  - DONE! 
-Added filter options to sort and arrange results on page - DONE! 
-To complete version1 function, this function supports Calendar Feature - DONE!
-Able to pass calendar results into cards...decide what to show in cards. - add  得令,得地,身旺  - DONE!
-Implement radialchart to analyze all five element of the day - Added basic chart template - DONE!
-Added Error page handler - DONE!
-Add default catches if no input is made.  - DONE!
+1.Edit the input features > current too troublesome to use - DONE!
+2.Run analysis without owners > Calendar Feature. - DONE! 
+3.Install calendar feature, button installed, backend to be updated - DONE!
+4.Clean up empty strings in final payload  > Logic Built! - DONE!
+5.Add time to result page! - DONE! 
+6.Add show more button to load results, instead of displaying all at one go.  - DONE! 
+7.Added filter options to sort and arrange results on page - DONE! 
+8.To complete version1 function, this function supports Calendar Feature - DONE!
+9.Able to pass calendar results into cards...decide what to show in cards. - add  得令,得地,身旺  - DONE!
+10.Implement radialchart to analyze all five element of the day - Added basic chart template - DONE!
+11.Added Error page handler - DONE!
+
 
 
 ## Resource

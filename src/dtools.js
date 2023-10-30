@@ -291,7 +291,7 @@ export function jieQistrength(result){
             }
         }   
         console.log("calculating score", tempscore)
-        if (tempscore >=1) {
+        if (tempscore >=2) {
             let Support = "得势:有助"
             console.log("got support",Support)
             return Support

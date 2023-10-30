@@ -1,4 +1,6 @@
 <script>
+    import {Solar, Lunar} from 'lunar-javascript'
+
 
     import { LayerCake, Svg } from 'layercake';
     import { scaleLinear } from 'd3-scale';
@@ -31,12 +33,29 @@
       i === show ? (show = null) : (show = i);
     };
 
+
+    var d = Lunar.fromDate(new Date());
+    console.log('d:',d)
+    console.log('d:',new Date())
+
+    // 宜
+    let ml = d.getTimeYi();
+    for ( let i=0, j=ml.length; i<j; i++){
+      console.log('宜:', ml[i]);
+    }
+
+    // // 忌
+    let nl = d.getTimeJi();
+    for (let i=0, j=nl.length; i<j; i++){
+      console.log('忌:', nl[i]);
+    }
+
 </script>
 
 
 
 
-<div class="chart-container">
+<!-- <div class="chart-container">
     <LayerCake
       padding={{ top: 30, right: 0, bottom: 7, left: 0 }}
       x={xKey}
@@ -51,22 +70,22 @@
     </LayerCake>
   </div>
   
-  <br />
+  <br /> -->
 
 
 
-{#each items as item, i}
+<!-- {#each items as item, i}
 <Accordion {i} {show} {showCollapse} {item}/>
-{/each}
+{/each} -->
 
 
-<Dropdown />
+<!-- <Dropdown /> -->
 
 
 
 
 
-  <style>
+  <!-- <style>
     /*
       The wrapper div needs to have an explicit width and height in CSS.
       It can also be a flexbox child or CSS grid element.
@@ -78,4 +97,4 @@
       height: 250px;
     }
 
-  </style>
+  </style> -->

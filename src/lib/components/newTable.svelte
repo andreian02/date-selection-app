@@ -22,7 +22,7 @@
 			let ddate = (payload[i]['date'])
 			let gyalue = payload[i]['gValue']
 			let zyalue = payload[i]['zValue']
-			let aScore = payload[i]['score']
+			let aScore = payload[i]['dScore']
 			
 			let zHour = index % 12;
 			let zRange = zHourConverts(zHour)
@@ -101,7 +101,7 @@
 					<td class="text-center">
 						<div class='p-1 tz'>{item2.id}</div>
 					</td>
-					<td class="p-2 text-center">						
+					<td class="p-1 text-center">						
 							<div class="max-w-lg mx-auto rounded-lg px-8">
 							<img class="rounded-full h-5 w-5" alt="element" src={item2.eLink}/>	
 							</div>
@@ -129,9 +129,9 @@
 						</td>
 						{/if}
 					{/if}
-					<td class="p-2">
+					<td class="p-1">
 						<!-- <span class="bg-green-400 text-gray-50 rounded-md px-2">{item2.a}</span> -->
-						<span class=" text-gray-50 rounded-md px-2 color: {item2.marks >= 3 ? 'bg-green-400' : item2.marks >= 0 ? 'bg-yellow-400' : 'bg-red-400'}">{item2.marks}</span>
+						<span class="text-gray-50 rounded-md px-2 color: {item2.marks >= 3 ? 'bg-green-400' : item2.marks >= 0 ? 'bg-yellow-400' : 'bg-red-400'}">{item2.marks}</span>
 						<a href={path + item2.id}>⁞</a>
 					</td>
 				</tr>

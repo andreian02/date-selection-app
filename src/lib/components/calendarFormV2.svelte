@@ -173,15 +173,16 @@
       console.log(sc1year)
       console.log(sc2year)
 
-      function defaultOptions(){
+      function defaultOptions1(){
           if (range.start === null &&  range.end === null)  {
               //console.log("this is where input is blank so we load default values")
               const today = new Date();
-              const todayplus3 = new Date(today);
-              todayplus3.setDate(today.getDate() + 3);
+              const todayplus2 = new Date(today);
+              todayplus2.setDate(today.getDate() + 2);
               startDate = today
-              endDate = todayplus3
+              endDate = todayplus2
               protocolM = 'protocol-one'
+              console.log("Check for default protocol:");
               console.log("loading protocol:", protocolM);
               // console.log(sc1year.gYear)
               // console.log(sc2year.gYear)
@@ -195,6 +196,20 @@
           //   let blank = "not blank"
           //   return blank
           // }
+      }
+
+      function defaultOptions2(){
+       
+          console.log("checking 2nd option")
+          console.log("same values")
+          console.log("bdates:", sc1year, sc2year)
+         
+          if (sc1year['gYear'] == sc2year['gYear'] &&  sc1year['zYear'] == sc2year['zYear'] && sc1year['gYear'] == "己" && sc1year['zYear'] == "酉" ) 
+          {
+              console.log("dob fields are likely to be default values")
+              protocolM = 'protocol-one'
+          }
+        
       }
       
 
@@ -225,7 +240,8 @@
           return yearKey
       }
       
-      defaultOptions()
+      defaultOptions1()
+      defaultOptions2()
       console.log("status:", protocolM)
 
       ifnotvisable(sc1year, sc2year)   

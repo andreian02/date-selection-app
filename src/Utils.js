@@ -67,6 +67,27 @@ export function yearofBirthdate(dob){
 }
 
 
+export function fulldetails(dob){
+  
+  const person = Lunar.fromDate(dob);
+  const fullDetails = {
+    gYear: "",
+    zYear: "",
+    gMonth: "",
+    zMonth: "",
+    gDay: "",
+    zDay: "", 
+    gHour: "", 
+    zHour: ""
+  }
+  fullDetails.gYear = (person.getYearGan())
+  fullDetails.zYear = (person.getYearZhi())
+  return (fullDetails)
+}
+
+
+
+
 
 // 干支合 + 1/2合 
 export function ganzhihe(input){
@@ -348,7 +369,7 @@ export function version1(payload){
         }
 
 
-        payload[i]['score'] = totalScore
+        payload[i]['dScore'] = totalScore
         payload[i]['z_天干合五行'] = combinedElements1
         payload[i]['z_地支合五行'] = combinedElements2
         payload[i]['z_天干合关系'] = result1
@@ -372,7 +393,7 @@ export function version2(payload, birthYear){
       //let score = 0;
       const dayElement = (payload[i]['dayEl'])
       const doorElement = checkElement((payload[i]['door']))
-      let totalScore = (payload[i]['score'])
+      let totalScore = (payload[i]['dScore'])
       
       //const ownersArray = [birthYear[0]['gYear'], birthYear[1]['gYear']]
       //const owner1 = checkElement(birthYear[0]['gYear'])
@@ -539,7 +560,7 @@ export function version2(payload, birthYear){
         payload[i]['天干合冲'] = effect
         payload[i]['天干六合'] = combinedElements
         payload[i]['天干合关系'] = result
-        payload[i]['score'] = totalScore
+        payload[i]['dScore'] = totalScore
         //console.log('y', findings)      
         //payload[j]['chonghe'] = findings
       }
@@ -562,7 +583,7 @@ export function version3(payload, birthYear){
     const dayElement = (payload[i]['dayEl'])
     const doorElement = checkElement((payload[i]['door']))
 
-    let totalScore = (payload[i]['score'])
+    let totalScore = (payload[i]['dScore'])
          
     //const ownersArray = [birthYear[0]['zYear'], birthYear[1]['zYear']]
     //const owner1 = checkElement(birthYear[0]['zYear'])
@@ -756,7 +777,7 @@ export function version3(payload, birthYear){
       payload[i]['地支合冲'] = effect
       payload[i]['地支合五行'] = combinedElements
       payload[i]['地支合关系'] = result
-      payload[i]['score'] = totalScore
+      payload[i]['dScore'] = totalScore
       //console.log('y', findings)      
       //payload[j]['chonghe'] = findings
     }
@@ -792,7 +813,7 @@ export function version4(payload, birthYear){
     const dayElement = (payload[i]['dayEl'])
     const doorElement = checkElement((payload[i]['door']))
 
-    let totalScore = (payload[i]['score'])
+    let totalScore = (payload[i]['dScore'])
          
     //const ownersArray = [birthYear[0]['zYear'], birthYear[1]['zYear']]
     
@@ -899,7 +920,7 @@ export function version4(payload, birthYear){
             payload[i]['地支三合三会五行'] = combinedElements
             payload[i]['地支三合三会关系'] = result
             payload[i]['地支三合三会'] = findings
-            payload[i]['score'] = totalScore
+            payload[i]['dScore'] = totalScore
 
         
         } 
@@ -938,7 +959,7 @@ export function version5(payload, birthYear){
     const dayElement = (payload[i]['dayEl'])
     const doorElement = checkElement((payload[i]['door']))
 
-    let totalScore = (payload[i]['score'])
+    let totalScore = (payload[i]['dScore'])
          
     //const ownersArray = [birthYear[0]['zYear'], birthYear[1]['zYear']]
     
@@ -1007,7 +1028,7 @@ export function version5(payload, birthYear){
 
           } //payload[i]['chonghe2'] = findings
             payload[i]['地支三刑'] = result1
-            payload[i]['score'] = totalScore
+            payload[i]['dScore'] = totalScore
     
     console.log('--------------v5.2-----地支-破害-------------------')     
     for (let z=0; z<reflist_2.length; z++) {
@@ -1046,7 +1067,7 @@ export function version5(payload, birthYear){
 
         } //payload[i]['chonghe2'] = findings
           payload[i]['地支破害'] = result2
-          payload[i]['score'] = totalScore
+          payload[i]['dScore'] = totalScore
   
     console.log('----------------v5.3---地支-自刑-------------------')      
     for (let z=0; z<reflist_3.length; z++) {
@@ -1080,7 +1101,7 @@ export function version5(payload, birthYear){
           }   
         } 
       } payload[i]['地支自刑'] = result3
-        payload[i]['score'] = totalScore
+        payload[i]['dScore'] = totalScore
         
   } console.log(payload)
     return (payload)
@@ -1090,63 +1111,112 @@ export function version5(payload, birthYear){
 
 
 export function version6(payload, birthYear, period){
-  let gren; 
-  
-  console.log('----------------v6----------------------------------------')      
-  for (let i = 0; i < payload.length; i++) {
-    let gresult;
-    let g_list = []
-    let lu_list = []
-    //let totalScore = (payload[i]['score'])
-    let ownersArray = capacity_z(birthYear)
-    const dSector = ((payload[i]['door']))
-    const tianganlist = (payload[i]['gValue']).split(" ") //
-
-    const dizhilist = (payload[i]['zValue']).split(" ") //
-    console.log('date:', (payload[i]['zValue'])  , 'owners:', ownersArray,'doorSector:', dSector)
-    console.log(period, dizhilist)
+    let gren; 
     
-    console.log('----------------v6-----------------------------------------')      
-    for (let d=0; d<dizhilist.length; d++ ){
+    console.log('----------------v6----------------------------------------')      
+    for (let i = 0; i < payload.length; i++) {
+      let gresult;
+      let g_list = []
+      let lu_list = []
+      let ma_list = []
+      //let totalScore = (payload[i]['dScore'])
+      let ownersArray = capacity_z(birthYear)
         
-        console.log('----------------v6---找禄-------------------------------')  
+
+      const dSector = ((payload[i]['door']))
+      const tianganlist = (payload[i]['gValue']).split(" ") //
+
+      const dizhilist = (payload[i]['zValue']).split(" ") //
+      console.log('date:', (payload[i]['zValue']), 'owners:', ownersArray,'doorSector:', dSector)
+      console.log(period, dizhilist)
+      
+      console.log('----------------v6-----------------------------------------')      
+      for (let d=0; d<dizhilist.length; d++ ){
+
+        //console.log('----------------v6---找马-------------------------------')
+        gresult = cheatsheet(dizhilist[d])
+        let find_ma = gresult?.ma
+        //console.log('ma:',dizhilist[d], ":", find_ma)
+        ma_list.push(find_ma)
+        
+        //console.log('----------------v6---找禄-------------------------------')  
         gresult = cheatsheet(dizhilist[d])
         let find_lu = gresult?.lu
         lu_list.push(find_lu)
         
-        console.log('----------------v6---找贵人-----------------------------')      
+        //console.log('----------------v6---找贵人-----------------------------')      
         if (period == "冬至"){
           gren = "阴贵"
-          console.log(period, gren)
-          console.log('mapping:', dizhilist[d], '--', gresult?.yingui)
+          //console.log(period, gren)
+          //console.log('mapping:', dizhilist[d], ':', gresult?.yingui)
           g_list.push(gresult?.yingui)
           // console.log('glist',glist)
-    
         } 
         else {
-          gren = "阳贵"
-          console.log(period, gren)
-          console.log('mapping:', dizhilist[d], '--', gresult?.yangui)
+          //gren = "阳贵"
+          //console.log(period, gren)
+          //console.log('mapping:', dizhilist[d], ':', gresult?.yangui)
           g_list.push(gresult?.yangui)
           // console.log('glist',glist)
+        }
+    }
+    const f_ma_list = ma_list
+                .filter((item) => item !== "")
+                .reduce((result, item) => result.concat(item), []);
+
+    const f_glist = g_list
+                .filter((item) => item !== "")
+                .reduce((result, item) => result.concat(item), []);
+    
+    const f_lu_list = lu_list
+                .filter((item) => item !== "")
+                .reduce((result, item) => result.concat(item), []);
+    
+    //const flat_glist = f_glist.reduce((result, item) => result.concat(item), []);
+    //const flat_lu_list = f_lu_list.reduce((result, item) => result.concat(item), []);
+    const uniq_glist = Array.from(new Set(f_glist))
+    const uniq_lu_list = Array.from(new Set(f_lu_list))
+    const uniq_ma_list = Array.from(new Set(f_ma_list))
+
+    console.log(payload[i]['gValue'])
+    console.log(payload[i]['zValue'])
+    console.log('g_list:', f_glist, uniq_glist)
+    console.log('lu_list:', f_lu_list, uniq_lu_list)
+    console.log('ma_list', f_ma_list, uniq_ma_list)
+
+    let malist=[]
+    let lulist=[]
+    let guilist=[]
+
+    for(let x=0; x<uniq_ma_list.length; x++){
+      let keyitem = uniq_ma_list[x]
+      if(payload[i]['zValue'].includes(keyitem)){
+        malist.push(keyitem)
+        //console.log('ma:',keyitem)
       }
     }
-    const f_glist = g_list.filter((item) => item !== "");
-    const f_lu_list = lu_list.filter((item) => item !== "");
-    
-    const flat_glist = f_glist.reduce((result, item) => result.concat(item), []);
-    const flat_lu_list = f_lu_list.reduce((result, item) => result.concat(item), []);
-    const uniq_glist = Array.from(new Set(flat_glist))
-    const uniq_lu_list = Array.from(new Set(flat_lu_list))
-
-
-    console.log("date_set:",payload[i]['zValue'])
-    console.log('g_list:', f_glist, flat_glist, uniq_glist)
-   
-    if (f_lu_list.length == 0){
-      console.log('lu_list:', 'empty')
-    } else {
-      console.log('lu_list:', f_lu_list, flat_lu_list, uniq_lu_list)
+    for(let x=0; x<uniq_glist.length; x++){
+      let keyitem = uniq_glist[x]
+      if(payload[i]['gValue'].includes(keyitem)){
+        guilist.push(keyitem)
+        //console.log('guiren:',keyitem)
+      }
+    }
+    for(let x=0; x<uniq_lu_list.length; x++){
+      let keyitem = uniq_lu_list[x]
+      if(payload[i]['gValue'].includes(keyitem)){
+        lulist.push(keyitem)
+        //console.log('lu:',keyitem)
+      }
+    }
+    payload[i]['z_马'] = malist
+    payload[i]['z_禄'] = lulist
+    payload[i]['z_贵'] = guilist
+    if (malist.length>=1 && lulist.length>= 1 && guilist.length>=1){
+      console.log("禄马贵")
+    }
+    else if (malist.length>=1 && lulist.length>=1 ){
+      console.log("禄马")
     }
   } 
 }

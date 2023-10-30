@@ -11,6 +11,7 @@ export function cheatsheet(input){
             破: "酉",
             害: "未",
             lu: "癸",
+            ma: "寅",
             yingui:"乙",
             yangui:"巳"
         }
@@ -24,6 +25,7 @@ export function cheatsheet(input){
             破: "辰",
             害: "午",
             lu: "",
+            ma: "亥",
             yingui:"甲",
             yangui:["戊","庚"],
         }
@@ -37,6 +39,7 @@ export function cheatsheet(input){
             破: "",
             害: "巳",
             lu: "甲",
+            ma: "申",
             yingui:"",
             yangui:"辛"
         }
@@ -50,6 +53,7 @@ export function cheatsheet(input){
             破: "午",
             害: "辰",
             lu: "乙",
+            ma: "巳",
             yingui:"癸",
             yangui:"壬"
         }
@@ -63,6 +67,7 @@ export function cheatsheet(input){
             破: "丑",
             害: "卯",
             lu: "",
+            ma: "寅",
             yingui:"",
             yangui:""
         }
@@ -76,6 +81,7 @@ export function cheatsheet(input){
             破: "",
             害: "寅",
             lu: ["丙","戊"],
+            ma: "亥",
             yingui:"壬",
             yangui:"癸"
         }
@@ -89,6 +95,7 @@ export function cheatsheet(input){
             破: "卯",
             害: "丑",
             lu: ["丁","巳"],
+            ma: "申",
             yingui:"辛",
             yangui:""
         }
@@ -102,6 +109,7 @@ export function cheatsheet(input){
             破: "戌",
             害: "子",
             lu: "",
+            ma: "巳",
             yingui:["庚","戊"],
             yangui:"甲"
         }
@@ -115,6 +123,7 @@ export function cheatsheet(input){
             破: "",
             害: "亥",
             lu: "庚",
+            ma: "寅",
             yingui:"巳",
             yangui:"乙"
         } 
@@ -128,6 +137,7 @@ export function cheatsheet(input){
             破: "子",
             害: "戌",
             lu: "辛",
+            ma: "亥",
             yingui:"丁",
             yangui:"丙"
         }
@@ -141,6 +151,7 @@ export function cheatsheet(input){
             破: "未",
             害: "酉",
             lu: "",
+            ma: "申",
             yingui:"",
             yangui:""
         }
@@ -154,6 +165,7 @@ export function cheatsheet(input){
             破: "",
             害: "申",
             lu: "壬",
+            ma: "巳",
             yingui:"丙",
             yangui:"丁"
         } 
