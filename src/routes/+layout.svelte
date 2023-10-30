@@ -1,6 +1,7 @@
 <script>
 	import { blur } from 'svelte/transition';
 	import Header from '../lib/components/Header.svelte';
+	import Analytics from "$lib/+analytics.svelte";
 	// import './styles.css';
 	import "../app.css";
 	export let data
@@ -11,6 +12,7 @@
 		<Header />
 
 		<main>
+			<Analytics />
 			<slot />
 		</main>
 
