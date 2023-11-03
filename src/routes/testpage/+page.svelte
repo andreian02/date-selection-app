@@ -74,9 +74,9 @@
 
 
 
-<!-- {#each items as item, i}
+{#each items as item, i}
 <Accordion {i} {show} {showCollapse} {item}/>
-{/each} -->
+{/each}
 
 
 <!-- <Dropdown /> -->

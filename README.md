@@ -38,26 +38,28 @@ You can preview the production build with `npm run preview`.
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
 
 
-## Things to add / Features to build and complete v2
+## Things to add / Features to build and complete v3
 
-Add default catches if no input is made.  - DONE!
-Add a liner to show total listing results. - TO be formatted.
+
 Add panel in the result table to allow filtering of strongest element day
 Finish up scoring system - Added scoring...  to quality check this, continue to test calendar results
+New feature...add finder to filter which element is the strongest within a window period
+
 
 FEATURES to be added individual cards 
 Include Owner details in Payload - Collect using stores.
 Layout in the individual cards ... owner details to be added! 
 
 Gui Ren Feature to implement (3/4 Done.)  > Installed the logic, validations required! 
+To push results and show them in the individual cards! 
+To add them as part of the overall score feature! 
 
 Using new table format, confirmed on the details to show on table. (may change)
 Navigation + Breadcrumbs?  > adding some navigations. buttons or or simplier features, to add left card right card 
 
-Adding Accordion to hide all details in detailed cards
+Adding Accordion to hide all details in detailed cards - maybe owner details. Datedetails ten gods
 
-explore google analytics to this project - item is researched!
-new feature...add finder to filter which element is the strongest within a window period
+
 
 
 ## STATUS COMPLETED! 
@@ -73,7 +75,9 @@ new feature...add finder to filter which element is the strongest within a windo
 9.Able to pass calendar results into cards...decide what to show in cards. - add  得令,得地,身旺  - DONE!
 10.Implement radialchart to analyze all five element of the day - Added basic chart template - DONE!
 11.Added Error page handler - DONE!
-
+12.Installed Google Analytics and added it to project - DONE!
+13.Add default catches if no input is made.  - DONE!
+14.Add a liner to show total listing results. Added Summary tab - DONE!
 
 
 ## Resource

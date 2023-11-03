@@ -72,7 +72,7 @@
       let r = payload.filter(payload => payload.andex === index);
       let t0 = r[0]['gValue']
       let z0 = r[0]['zValue']
-      console.log("tgdz:", r[0]['gValue'], r[0]['zValue'])
+      //console.log("tgdz:", r[0]['gValue'], r[0]['zValue'])
       return {
        t0,z0
       }
@@ -94,14 +94,14 @@
     const jsonString = JSON.stringify(dayPayload.d4.reOrderSeq, null, 2);
     console.log('string:',jsonString);
 
-
+    //markup scores. 
     const score = dayPayload.d4.reOrderSeq 
     for (const key in score) {
       if (score.hasOwnProperty(key)) {
         score[key] = Math.round(score[key]) + 3;
       }
     }
-    console.log("mscore:", score)
+    //console.log("mscore:", score)
 
     let e_data =[]
     e_data.push(score)
@@ -187,7 +187,7 @@
     </div>
     
     <div class="flex justify-center mt-3">
-      <p class="text-blue-500 text-sm mx-3">{jsonString}</p>
+      <p class="text-blue-500 text-sm mx-1">{jsonString}</p>
     </div>
 
 
@@ -199,9 +199,21 @@
       <h3 class="text-blue-500 text-center">十二值星: {zhixing}</h3>
     </div>
     
+    
+    <!-- {result.z_禄} -->
+    
     <!-- <div class="mt-5 text-center">
       {keys[0]} Owner details!
     </div> -->
+    {#if birthYear.length >1}
+    <ul>
+      <p>{keys[0]}  ({birthYear[0].gYear}|{birthYear[1].gYear}) </p> 
+      <p>{keys[1]}  ({birthYear[0].zYear}|{birthYear[1].zYear}) </p>
+    </ul>
+    {:else}
+      <p>{birthYear[0].gYear}</p> 
+      <p>{birthYear[0].zYear}</p>
+    {/if}
 
     <br/>
     

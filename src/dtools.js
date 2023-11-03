@@ -319,31 +319,6 @@ export function jieQistrength(result){
 }
 
 
-// export function guiren(period, dizhilist){
-//     let gren; 
-//     let gresult;
-//     //let glist = []; 
-
-//     if (period == "冬至"){
-//         gren = "阴贵"
-//         console.log(period, gren)
-//         for (let d=0; d<dizhilist.length; d++ )
-//             gresult = cheatsheet(dizhilist[d])
-//             console.log(gresult?.yingui)
-//             //glist.push(gresult?.yingui)
-
-//     } else {
-//         gren = "阳贵"
-//         console.log(period, gren)
-//         for (let d=0; d<dizhilist.length; d++ )
-//         gresult = cheatsheet(dizhilist[d])
-//         console.log(gresult?.yangui)
-//     }
-
-// }
-
-
-
 
 export function jieQidetect(payload){
     let period = ""; 

@@ -13,7 +13,7 @@ export function cheatsheet(input){
             lu: "癸",
             ma: "寅",
             yingui:"乙",
-            yangui:"巳"
+            yangui:"己"
         }
     } else if (input == "丑"){
         details = { 
@@ -94,7 +94,7 @@ export function cheatsheet(input){
             刑: "午",
             破: "卯",
             害: "丑",
-            lu: ["丁","巳"],
+            lu: ["丁","己"],
             ma: "申",
             yingui:"辛",
             yangui:""
@@ -124,7 +124,7 @@ export function cheatsheet(input){
             害: "亥",
             lu: "庚",
             ma: "寅",
-            yingui:"巳",
+            yingui:"己",
             yangui:"乙"
         } 
     } else if (input == "酉"){

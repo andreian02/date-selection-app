@@ -81,6 +81,8 @@
   if (protocolM === 'protocol-one'){
       console.log("running protocol 1")
       version1(payload)
+      // 
+      version6(payload, birthYear, period)
       console.log("length:",payload.length)
 
   } 

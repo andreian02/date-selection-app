@@ -16,10 +16,12 @@ export function capacity_g(birthYear) {
 
 export function capacity_z(birthYear) {
   let ownersArray;
-  if (birthYear.length > 1){
+  if (birthYear.length === 2){
     ownersArray = [birthYear[0]['zYear'], birthYear[1]['zYear']]     
-  } else {
+  } else if (birthYear.length === 1){
     ownersArray = [birthYear[0]['zYear']] 
+  } else {
+    ownersArray = ""
   } 
     return ownersArray
   };
@@ -801,11 +803,11 @@ export function version4(payload, birthYear){
                 ]
   let ownersArray = capacity_z(birthYear)
     
-    //console.log("version4:", ownersArray)
-    // const owner1 = checkElement(ownersArray[0])
-    // const owner2 = checkElement(ownersArray[1])
-    // let owners = [owner1, owner2];
-    // console.log('owners elemt', owners)
+    console.log("version4:", ownersArray)
+    const owner1 = checkElement(ownersArray[0])
+    const owner2 = checkElement(ownersArray[1])
+    let owners = [owner1, owner2];
+    console.log('owners elemt', owners)
 
   for (let i = 0; i < payload.length; i++) {
     //let findings = ""
@@ -1121,6 +1123,7 @@ export function version6(payload, birthYear, period){
       let ma_list = []
       //let totalScore = (payload[i]['dScore'])
       let ownersArray = capacity_z(birthYear)
+      console.log("check owner load:",ownersArray.length)
         
 
       const dSector = ((payload[i]['door']))
