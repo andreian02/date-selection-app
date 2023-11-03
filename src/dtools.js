@@ -240,7 +240,7 @@ export function jieQistrength(result){
     jQrelationship = rMScore(relationship)
     
     //const dz2 = Lunar.fromDate(dmonth)
-    console.log(tianganlist, dizhilist)
+    console.log('天干地支:',tianganlist, dizhilist)
     console.log('daygan:',ddayV, root[0], root[1])
     console.log('dayElement:', dayElement)
     console.log('monthElement:',monthElement)

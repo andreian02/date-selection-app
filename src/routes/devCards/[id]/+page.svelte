@@ -98,7 +98,8 @@
     const score = dayPayload.d4.reOrderSeq 
     for (const key in score) {
       if (score.hasOwnProperty(key)) {
-        score[key] = Math.round(score[key]) + 3;
+        // score[key] = Math.round(score[key]) + 3;
+        score[key]+=3;
       }
     }
     //console.log("mscore:", score)
@@ -190,30 +191,41 @@
       <p class="text-blue-500 text-sm mx-1">{jsonString}</p>
     </div>
 
+    <div class="mt-5 text-center">
+      <h3 class="text-xl font-semibold">命主 : 年柱</h3>
+      {#if birthYear.length >1}
+        <ul>
+          <p class="text-blue-500">{birthYear[0].gYear}  {birthYear[1].gYear}</p>  
+          <p class="text-blue-500">{birthYear[0].zYear}  {birthYear[1].zYear}</p>
+        </ul>
+      {:else}
+        <ul>
+          <p class="text-blue-500">{birthYear[0].gYear}</p>  
+          <p class="text-blue-500">{birthYear[0].zYear}</p>
+        </ul>
+      {/if}
+    </div>
+
+
+    <div class="mt-8 text-center">
+      <h3 class="text-xl font-semibold">禄马贵人</h3>
+      <p class="text-gray-600"> {result.z_禄}</p>
+      <p class="text-gray-600"> {result.z_马}</p>
+      <p class="text-gray-600"> {result.z_贵}</p>
+      <br/>
+    </div>
 
     <div class="mt-5 text-center">
-      <h3 class="text-xl font-semibold">每日宜忌: </h3>
+      <h3 class="text-xl font-semibold">每日宜忌</h3>
       <p class="text-gray-600">宜: {can}</p>
       <p class="text-gray-600">忌: {cannot}</p>
       <br/>
       <h3 class="text-blue-500 text-center">十二值星: {zhixing}</h3>
     </div>
     
-    
+
     <!-- {result.z_禄} -->
     
-    <!-- <div class="mt-5 text-center">
-      {keys[0]} Owner details!
-    </div> -->
-    {#if birthYear.length >1}
-    <ul>
-      <p>{keys[0]}  ({birthYear[0].gYear}|{birthYear[1].gYear}) </p> 
-      <p>{keys[1]}  ({birthYear[0].zYear}|{birthYear[1].zYear}) </p>
-    </ul>
-    {:else}
-      <p>{birthYear[0].gYear}</p> 
-      <p>{birthYear[0].zYear}</p>
-    {/if}
 
     <br/>
     
