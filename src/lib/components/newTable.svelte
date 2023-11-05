@@ -65,8 +65,8 @@
 	}
 
 	function sortByIndex() {
-	logofiller = logofiller.sort((a,b)=> a.id - b.id); // Sort in descending order
-	eventName = ""
+		logofiller = logofiller.sort((a,b)=> a.id - b.id); // Sort in descending order
+		eventName = ""
 	}
 
 	let batchSize = 7;
@@ -77,26 +77,25 @@
     }
 	import SummaryTable from '$lib/components/summaryTable.svelte'
 	
-	let eventName='';
+	let eventName = '';
 
 	function handleClick(buttonName) {
         // Perform some action or call a function
 		eventName = buttonName
 
-		if (eventName === 'water'){
+		if (eventName === '水'){
 			logofiller = logofiller.sort((a, b) => b.dMarks.水 - a.dMarks.水);
 			console.log('water st:',logofiller)
-
-		} else if (eventName === 'wood'){
+		} else if (eventName === '木'){
 			logofiller = logofiller.sort((a, b) => b.dMarks.木 - a.dMarks.木);
 			console.log('wood st:',logofiller)
-		} else if (eventName === 'fire'){
+		} else if (eventName === '火'){
 			logofiller = logofiller.sort((a, b) => b.dMarks.火 - a.dMarks.火);
 			console.log('fire st:',logofiller)
-		} else if (eventName === 'earth'){
+		} else if (eventName === '土'){
 			logofiller = logofiller.sort((a, b) => b.dMarks.土 - a.dMarks.土);
 			console.log('earth st:',logofiller)
-		} else if (eventName === 'metal'){
+		} else if (eventName === '金'){
 			logofiller = logofiller.sort((a, b) => b.dMarks.金 - a.dMarks.金);
 			console.log('metal st:',logofiller)
 		}
@@ -109,33 +108,33 @@
 		<SummaryTable {payload} {period} />
 		<!-- <Elementbutton {logofiller} on:buttonClick={handleClick} /> -->
 		<div class="flex flex-col pt-3 justify-center items-center">
-			<p class='text-sm' >五行{eventName}</p>
+			<p class='text-sm' >五行 : {eventName}</p>
 			<thead>
-				<button on:click={()=>handleClick('water')}> 
+				<button on:click={()=>handleClick('水')}> 
 					<picture class="flex h-10 w-6">
 					<img src={water}
 					alt="water"></picture>
 				</button>
 
-				<button on:click={()=>handleClick('wood')}> 
+				<button on:click={()=>handleClick('木')}> 
 					<picture class="flex h-10 w-6">
 					<img src={wood}
 					alt="water"></picture>
 				</button>
 
-				<button on:click={()=>handleClick('fire')}> 
+				<button on:click={()=>handleClick('火')}> 
 					<picture class="flex h-10 w-6">
 					<img src={fire}
 					alt="fire"></picture>
 				</button>
 
-				<button on:click={()=>handleClick('earth')}> 
+				<button on:click={()=>handleClick('土')}> 
 					<picture class="flex h-10 w-6">
 					<img src={earth}
 					alt="earth"></picture>
 				</button>
 
-				<button on:click={()=>handleClick('metal')}> 
+				<button on:click={()=>handleClick('金')}> 
 					<picture class="flex h-10 w-6">
 					<img src={metal}
 					alt="metal"></picture>
