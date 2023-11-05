@@ -1,5 +1,5 @@
 import { Lunar } from 'lunar-javascript'
-import { cheatsheet, checkElement } from './helper'
+import { cheatsheet, checkElement, elementScore, dayScore } from './helper'
 
 
 // '甲','卯','乙','辰','巽','巳','丙', '午', '丁', '未', '坤', '申', '庚', '酉', "辛", '戌','乾','亥','壬','子','癸','丑','艮','寅'
@@ -1112,10 +1112,41 @@ export function version5(payload, birthYear){
 }
 
 
-export function version6(payload, birthYear, period){
+export function version6(payload){
+  console.log('----------------v6----------------------------------------') 
+  
+
+  for (let i = 0; i < payload.length; i++) {
+    let strain_1 = []
+    let strain_2 = []  
+    let output;
+    
+    const tianganlist = (payload[i]['gValue']).split(" ") //
+    const dizhilist = (payload[i]['zValue']).split(" ") //
+    
+      for (let r=0; r<tianganlist.length; r++){
+          let dna = elementScore(tianganlist[r])
+          //console.log('tg',tianganlist[r],dna)
+          strain_1.push(dna)
+      }
+      for (let r=0; r<dizhilist.length; r++){
+          let dna = elementScore(dizhilist[r])
+          //console.log('2',dizhilist[r],dna)
+          strain_2.push(dna)
+      }
+
+      output = dayScore(strain_1, strain_2)
+      console.log("i:",i, "output score:",output)
+      payload[i]['z_Score'] = output  
+
+  }
+}
+
+
+export function version7(payload, birthYear, period){
     let gren; 
     
-    console.log('----------------v6----------------------------------------')      
+    console.log('----------------v7----------------------------------------')      
     for (let i = 0; i < payload.length; i++) {
       let gresult;
       let g_list = []
@@ -1133,21 +1164,21 @@ export function version6(payload, birthYear, period){
       console.log('date:', (payload[i]['zValue']), 'owners:', ownersArray,'doorSector:', dSector)
       console.log(period, dizhilist)
       
-      console.log('----------------v6-----------------------------------------')      
+      console.log('----------------v7-----------------------------------------')      
       for (let d=0; d<dizhilist.length; d++ ){
 
-        //console.log('----------------v6---找马-------------------------------')
+        //console.log('----------------v7---找马-------------------------------')
         gresult = cheatsheet(dizhilist[d])
         let find_ma = gresult?.ma
         //console.log('ma:',dizhilist[d], ":", find_ma)
         ma_list.push(find_ma)
         
-        //console.log('----------------v6---找禄-------------------------------')  
+        //console.log('----------------v7---找禄-------------------------------')  
         gresult = cheatsheet(dizhilist[d])
         let find_lu = gresult?.lu
         lu_list.push(find_lu)
         
-        //console.log('----------------v6---找贵人-----------------------------')      
+        //console.log('----------------v7---找贵人-----------------------------')      
         if (period == "冬至"){
           gren = "阴贵"
           //console.log(period, gren)

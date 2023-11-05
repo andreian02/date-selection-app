@@ -1,7 +1,7 @@
 <!-- this is result page.  -->
 <script>
   import { Dcodes, doorSector, homeowners, yearKeys, protocolMode } from '../../Store.js';
-  import {transistor, version1, version2, version3, version4, version5, version6, cleanup} from '../../Utils.js'
+  import {transistor, version1, version2, version3, version4, version5, version6, version7, cleanup} from '../../Utils.js'
   import {checkElement} from '../../helper.js'
   import {jieQidetect} from '../../dtools.js'
 	import NewTable from "$lib/components/newTable.svelte";
@@ -82,7 +82,9 @@
       console.log("running protocol 1")
       version1(payload)
       // 
-      version6(payload, birthYear, period)
+      version6(payload)
+      version7(payload, birthYear, period)
+      
       console.log("length:",payload.length)
 
   } 
@@ -95,11 +97,11 @@
     version4(payload, birthYear) //version4 is to check 地支 三合/三会 关系
     version5(payload, birthYear) //version5 is to check 地支 刑,破,害 关系
 
-    version6(payload, birthYear, period)
+    version6(payload)
 
+    version7(payload, birthYear, period)
     console.log("doing clean up")
     cleanup(payload)
-
     console.log("length:",payload.length)
     
   }

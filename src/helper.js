@@ -310,3 +310,68 @@ export function elementScore(input){
     return score
 }
 
+
+export function dayScore(strain_1, strain_2){
+    let 水 = 0; 
+    let 木 = 0; 
+    let 火= 0; 
+    let 土 = 0; 
+    let 金 = 0; 
+
+    for (const item of strain_1 ){
+        if(item.hasOwnProperty('水')){
+            水 += item.水
+            //console.log(item, 'water', 水)
+        }
+        if(item.hasOwnProperty('木')){
+            木 += item.木
+            //console.log(item, 'wood', 木)
+        }
+        if(item.hasOwnProperty('火')){
+            火 += item.火
+            //console.log(item, 'fire', 火)
+        }
+        if(item.hasOwnProperty('土')){
+            土 += item.土
+            //console.log(item, 'earth', 土)
+        }
+        if(item.hasOwnProperty('金')){
+            金 += item.金
+            //console.log(item, 'metal', 金)
+        }
+        // console.log("total1:", 
+        // "water:", 水, "wood:",木, 
+        // "fire:",火, "earth:", 土, "metal:",金)
+    }
+
+    for (const item of strain_2 ){
+        if(item.hasOwnProperty('水')){
+            水 += item.水
+            //console.log(item, 'water', 水)
+        }
+        if(item.hasOwnProperty('木')){
+            木 += item.木
+            //console.log(item, 'wood', 木)
+        }
+        if(item.hasOwnProperty('火')){
+            火 += item.火
+            //console.log(item, 'fire', 火)
+        }
+        if(item.hasOwnProperty('土')){
+            土 += item.土
+            //console.log(item, 'earth', 土)
+        }
+        if(item.hasOwnProperty('金')){
+            金 += item.金
+            //console.log(item, 'metal', 金)
+        }
+        
+
+    }
+    console.log("total:", "water:", 水, "wood:",木, "fire:",火, "earth:", 土, "metal:",金)
+    const result = {
+        水: 水, 木: 木, 火: 火, 土: 土, 金: 金
+    }
+    return result
+
+}

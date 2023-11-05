@@ -6,12 +6,22 @@
 	export let keys
     export let period
     export let protocolM
+	
+	import water from '$lib/images/elements/water.svg'
+	import wood from '$lib/images/elements/wood.svg'
+	import fire from '$lib/images/elements/fire.svg'
+	import earth from '$lib/images/elements/earth.svg'
+	import metal from '$lib/images/elements/metal.svg'
 
 	let path = '/devCards/'
 	let sortBy = 'asc'
 
-	
+
+	import Elementbutton from "./elementbutton.svelte";
+    // export let buttonName
+    
     import { logoHandle } from "$lib/components/logoHandle";
+	
 	import {zHourConverts} from "../../dtools"
 	let logofiller = [];
 
@@ -23,17 +33,19 @@
 			let gyalue = payload[i]['gValue']
 			let zyalue = payload[i]['zValue']
 			let aScore = payload[i]['dScore']
+
+			let dayScore = payload[i]['z_Score']
 			
 			let zHour = index % 12;
 			let zRange = zHourConverts(zHour)
 
 
 			//console.log("index:",index)
-      		//console.log("s:", elem)
+      		// console.log("s:", payload[i])
       		let url = logoHandle(elem)
       		//console.log(url)
 			logofiller.push({id:index, e:elem, dd:ddate, hourR: zRange,
-				 eLink:url, g:gyalue, z:zyalue, marks:aScore
+				 eLink:url, g:gyalue, z:zyalue, marks:aScore, dMarks:dayScore
 		})
  	   }return logofiller
 	}
@@ -49,11 +61,12 @@
 			logofiller = logofiller.sort((a,b) => b.marks - a.marks);
 			sortBy = 'asc';
 		}
-		
+		console.log(logofiller)
 	}
 
 	function sortByIndex() {
 	logofiller = logofiller.sort((a,b)=> a.id - b.id); // Sort in descending order
+	eventName = ""
 	}
 
 	let batchSize = 7;
@@ -62,13 +75,75 @@
 	function loadMore() {
     	numResultsDisplayed += batchSize;
     }
-	
 	import SummaryTable from '$lib/components/summaryTable.svelte'
+	
+	let eventName='';
+
+	function handleClick(buttonName) {
+        // Perform some action or call a function
+		eventName = buttonName
+
+		if (eventName === 'water'){
+			logofiller = logofiller.sort((a, b) => b.dMarks.水 - a.dMarks.水);
+			console.log('water st:',logofiller)
+
+		} else if (eventName === 'wood'){
+			logofiller = logofiller.sort((a, b) => b.dMarks.木 - a.dMarks.木);
+			console.log('wood st:',logofiller)
+		} else if (eventName === 'fire'){
+			logofiller = logofiller.sort((a, b) => b.dMarks.火 - a.dMarks.火);
+			console.log('fire st:',logofiller)
+		} else if (eventName === 'earth'){
+			logofiller = logofiller.sort((a, b) => b.dMarks.土 - a.dMarks.土);
+			console.log('earth st:',logofiller)
+		} else if (eventName === 'metal'){
+			logofiller = logofiller.sort((a, b) => b.dMarks.金 - a.dMarks.金);
+			console.log('metal st:',logofiller)
+		}
+    }
+
 </script>
 
 <div class="flex justify-center min-h-screen">
 	<div class="col-span-10"> 
-		<SummaryTable  {payload} {period} />
+		<SummaryTable {payload} {period} />
+		<!-- <Elementbutton {logofiller} on:buttonClick={handleClick} /> -->
+		<div class="flex flex-col pt-3 justify-center items-center">
+			<p class='text-sm' >五行{eventName}</p>
+			<thead>
+				<button on:click={()=>handleClick('water')}> 
+					<picture class="flex h-10 w-6">
+					<img src={water}
+					alt="water"></picture>
+				</button>
+
+				<button on:click={()=>handleClick('wood')}> 
+					<picture class="flex h-10 w-6">
+					<img src={wood}
+					alt="water"></picture>
+				</button>
+
+				<button on:click={()=>handleClick('fire')}> 
+					<picture class="flex h-10 w-6">
+					<img src={fire}
+					alt="fire"></picture>
+				</button>
+
+				<button on:click={()=>handleClick('earth')}> 
+					<picture class="flex h-10 w-6">
+					<img src={earth}
+					alt="earth"></picture>
+				</button>
+
+				<button on:click={()=>handleClick('metal')}> 
+					<picture class="flex h-10 w-6">
+					<img src={metal}
+					alt="metal"></picture>
+				</button>
+			</thead>
+		</div>
+			
+		
 		<table class="table text-black border-separate space-y-2 text-sm">
 			<thead class="text-black">
 				<tr>

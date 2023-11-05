@@ -1,7 +1,7 @@
 import { derived, writable } from "svelte/store";
 
 export const Dcodes = writable([]);
-export const Basin = writable([]);
+export const Basin = writable('');
 
 
 

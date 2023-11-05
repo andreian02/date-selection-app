@@ -40,25 +40,27 @@ You can preview the production build with `npm run preview`.
 
 ## Things to add / Features to build and complete v3
 
-Add panel in the result table to allow filtering of strongest element day
 Finish up scoring system - Added scoring...  to quality check this, continue to test calendar results
+
+Add panel in the result table to allow filtering of strongest element day
+New feature ... bring day scoring upfront...
 New feature...add finder to filter which element is the strongest within a window period
+Add cleanup to calendar option.
+
+Think what do we do with the door information! 
 
 FEATURES to be added individual cards 
-Layout in the individual cards ... owner details to be added! 
 
 Gui Ren Feature to implement (3/4 Done.)  > Installed the logic, validations required! 
 To push results and show them in the individual cards! 
 To add them as part of the overall score feature! 
 
-
-Using new table format, confirmed on the details to show on table. (may change)
 Navigation + Breadcrumbs?  > adding some navigations. buttons or or simplier features, to add left card right card 
 Adding Accordion to hide all details in detailed cards - maybe owner details. Datedetails ten gods
 
 
 
-## STATUS COMPLETED! 
+## STATUS COMPLETED! Currently on V2.
 
 1.Edit the input features > current too troublesome to use - DONE!
 2.Run analysis without owners > Calendar Feature. - DONE! 
@@ -75,6 +77,7 @@ Adding Accordion to hide all details in detailed cards - maybe owner details. Da
 13.Add default catches if no input is made.  - DONE!
 14.Add a liner to show total listing results. Added Summary tab - DONE!
 15.Include Owner details in Payload - Collect using stores - DONE!
+16.Layout in the individual cards ... owner details to be added - DONE!
 
 
 ## Resource

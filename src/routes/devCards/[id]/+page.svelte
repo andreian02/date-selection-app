@@ -193,12 +193,14 @@
 
     <div class="mt-5 text-center">
       <h3 class="text-xl font-semibold">命主 : 年柱</h3>
-      {#if birthYear.length >1}
+      {#if typeof birthYear[0].gYear === "undefined"}
+         <p class="text-blue-500">N/A</p>  
+      {:else if birthYear.length === 2}
         <ul>
           <p class="text-blue-500">{birthYear[0].gYear}  {birthYear[1].gYear}</p>  
           <p class="text-blue-500">{birthYear[0].zYear}  {birthYear[1].zYear}</p>
         </ul>
-      {:else}
+      {:else if birthYear.length === 1}
         <ul>
           <p class="text-blue-500">{birthYear[0].gYear}</p>  
           <p class="text-blue-500">{birthYear[0].zYear}</p>
