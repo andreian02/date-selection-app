@@ -42,12 +42,19 @@ You can preview the production build with `npm run preview`.
 
 Finish up scoring system - Added scoring...  to quality check this, continue to test calendar results
 
-Add panel in the result table to allow filtering of strongest element day
-New feature ... bring day scoring upfront...
-New feature...add finder to filter which element is the strongest within a window period
-Add cleanup to calendar option.
+New feature...add finder to filter which element is the strongest within a window period - ADDED! 
+Adding layers to this sorting system - this is on going well, need to check results, 
+Need to finetune gui ren results for sure. 
+
+V4 aim will be to integrate user login! 
+
+
+Add cleanup to calendar option. 
 
 Think what do we do with the door information! 
+Change door to di zhi...and see whats the impact on overall score. 
+
+
 
 FEATURES to be added individual cards 
 
@@ -78,6 +85,7 @@ Adding Accordion to hide all details in detailed cards - maybe owner details. Da
 14.Add a liner to show total listing results. Added Summary tab - DONE!
 15.Include Owner details in Payload - Collect using stores - DONE!
 16.Layout in the individual cards ... owner details to be added - DONE!
+17.New feature ... bring day scoring upfront. - DONE!
 
 
 ## Resource
@@ -88,4 +96,5 @@ https://www.amp-what.com/
 https://symbl.cc/en/collections/arrow-symbols/
 
 Card：https://tailwindcomponents.com/component/social-media-bio-card
+
 Chart: https://layercake.graphics/example/Radar
