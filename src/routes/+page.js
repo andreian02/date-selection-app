@@ -11,6 +11,7 @@ export async function load () {
     let Year = Ldate.getYearInGanZhiExact()
     let Month = Ldate.getMonthInGanZhiExact()
     let Day = Ldate.getDayInGanZhi()
+    let Time = Ldate.getTimeInGanZhi()
 
 
     let currentDay= String(date.getDate()).padStart(2, '0');
@@ -20,10 +21,9 @@ export async function load () {
 
     let solar2 = Solar.fromYmd(currentYear,currentMonth,currentDay);
 
-    
-
     return {
         Ldate,
-        Year, Month, Day, solar2
+        Year, Month, Day, Time,
+        solar2
     }
   }

@@ -21,7 +21,7 @@
 			<!-- <p>择日是将选日期人的出生干支信息与当日的五行干支信息进行运算，去掉冲、克、刑、害对自身不好的日子，挑选出生助自身的好日子。</p> -->
 			<p class="text-center text-xl tracking-tight p-5">
 				<li>{data.Ldate}</li>
-				<li>{data.Year}年 · {data.Month}月 · {data.Day}日</li>
+				<li>{data.Year}年 · {data.Month}月 · {data.Day}日 · {data.Time}时</li>
 			</p>
 			<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
 					on:click={()=> goto('/calendar')}>

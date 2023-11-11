@@ -24,30 +24,30 @@ export function propertyOrder(input){
 export function zHourConverts(input){
     let range;
     if (input == 0){
-        range = "23:00 - 00:59"
-    } else if (input == 1){
-        range = "01:00 - 02:59"
-    } else if (input == 2){
-        range = "03:00 - 04:59"
-    } else if (input == 3){
-        range = "05:00 - 06:59"
-    } else if (input == 4){
-        range = "07:00 - 08:59"
-    } else if (input == 5){
-        range = "09:00 - 10:59"
-    } else if (input == 6){
-        range = "11:00 - 12:59"
-    } else if (input == 7){
-        range = "13:00 - 14:59"
-    } else if (input == 8){
-        range = "15:00 - 16:59"
-    } else if (input == 9){
-        range = "17:00 - 18:59"
-    } else if (input == 10){
-        range = "19:00 - 20:59"
-    } else if (input == 11){
         range = "21:00 - 22:59"
-    }
+    } else if (input == 1){
+        range = "23:00 - 00:59"
+    } else if (input == 2){
+        range = "01:00 - 02:59"
+    } else if (input == 3){
+        range = "03:00 - 04:59"
+    } else if (input == 4){
+        range = "05:00 - 06:59"
+    } else if (input == 5){
+        range = "07:00 - 08:59"
+    } else if (input == 6){
+        range = "09:00 - 10:59"
+    } else if (input == 7){
+        range = "11:00 - 12:59"
+    } else if (input == 8){
+        range = "13:00 - 14:59"
+    } else if (input == 9){
+        range = "15:00 - 16:59"
+    } else if (input == 10){
+        range = "17:00 - 18:59"
+    } else if (input == 11){
+        range = "19:00 - 20:59"
+    } 
     return range
 }
 

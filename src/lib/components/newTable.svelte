@@ -153,9 +153,9 @@
 		else if (eventName === '木'){
 			logofiller = logofiller.sort((a, b) =>  {
 				const hasXCata = a.f_tg.includes('木');
-				const hasXCatb = a.f_tg.includes('木');
+				const hasXCatb = b.f_tg.includes('木');
 				const hasZCata = a.f_dz.includes('木');
-				const hasZCatb = a.f_dz.includes('木');
+				const hasZCatb = b.f_dz.includes('木');
 
 				if (hasXCata && !hasXCatb) {
       					return -1;
@@ -180,9 +180,9 @@
 		else if (eventName === '火'){
 			logofiller = logofiller.sort((a, b) =>  {
 				const hasXCata = a.f_tg.includes('火');
-				const hasXCatb = a.f_tg.includes('火');
+				const hasXCatb = b.f_tg.includes('火');
 				const hasZCata = a.f_dz.includes('火');
-				const hasZCatb = a.f_dz.includes('火');
+				const hasZCatb = b.f_dz.includes('火');
 
 				if (hasXCata && !hasXCatb) {
       					return -1;
@@ -207,9 +207,9 @@
 		else if (eventName === '土'){
 			logofiller = logofiller.sort((a, b) =>  {
 				const hasXCata = a.f_tg.includes('土');
-				const hasXCatb = a.f_tg.includes('土');
+				const hasXCatb = b.f_tg.includes('土');
 				const hasZCata = a.f_dz.includes('土');
-				const hasZCatb = a.f_dz.includes('土');
+				const hasZCatb = b.f_dz.includes('土');
 
 				if (hasXCata && !hasXCatb) {
       					return -1;
@@ -235,9 +235,9 @@
 		else if (eventName === '金'){
 			logofiller = logofiller.sort((a, b) =>  {
 				const hasXCata = a.f_tg.includes('金');
-				const hasXCatb = a.f_tg.includes('金');
+				const hasXCatb = b.f_tg.includes('金');
 				const hasZCata = a.f_dz.includes('金');
-				const hasZCatb = a.f_dz.includes('金');
+				const hasZCatb = b.f_dz.includes('金');
 
 				if (hasXCata && !hasXCatb) {
       					return -1;
