@@ -42,11 +42,11 @@ You can preview the production build with `npm run preview`.
 
 Finish up scoring system - Added scoring...  to quality check this, continue to test calendar results
 
-New feature...add finder to filter which element is the strongest within a window period - ADDED! 
+New feature...add finder to filter which element is the strongest within a window period - ADDED! But will require edits.
 Adding layers to this sorting system - this is on going well.... need to check results, 
 Need to finetune gui ren results for sure. 
 
-Priority
+## Priority List 
 + weekday or weekend - can we show this information? 
 + relook into scoring 
 + filter option to eliminate days that clash with owner year pillar 
@@ -54,18 +54,14 @@ Priority
 + review how we should show the results 
 + add in option to leave out the options that has to do with weird hours 
 
-
-
-
-
-
+## Future Build 
 V4 aim will be to integrate user login page!
 maybe also need register account page. 
 Rest password also / Forget password! 
 
 Add cleanup to calendar option. 
 
-Deprioritized! 
+## Deprioritized! 
 Think what do we do with the door information! 
 Change door to di zhi...and see whats the impact on overall score. 
 
@@ -100,12 +96,13 @@ Adding Accordion to hide all details in detailed cards.
 15.Include Owner details in Payload - Collect using stores - DONE! \
 16.Layout in the individual cards ... owner details to be added - DONE! \
 17.New feature ... bring day scoring upfront. - DONE! \
+18
 
 
 ## Resource
-Form Component: https://tailwindcomponents.com/component/responsive-form-1
-Calendar Component: https://air-datepicker.com/
-Unicode Symbols: https://www.amp-what.com/
-Unicode Symbols: https://symbl.cc/en/collections/arrow-symbols/
-Card：https://tailwindcomponents.com/component/social-media-bio-card
+Form Component: https://tailwindcomponents.com/component/responsive-form-1 \
+Calendar Component: https://air-datepicker.com/ \ 
+Unicode Symbols: https://www.amp-what.com/ \ 
+Unicode Symbols: https://symbl.cc/en/collections/arrow-symbols/ \ 
+Card：https://tailwindcomponents.com/component/social-media-bio-card \
 Chart: https://layercake.graphics/example/Radar

@@ -6,7 +6,7 @@
     let last = payload.length-1;
 
     console.log("summary:", payload[0]['date'])
-    console.log("summary:", payload[last]['date'])
+    console.log("summary:", payload[last]['date'])   
 
 </script>
 

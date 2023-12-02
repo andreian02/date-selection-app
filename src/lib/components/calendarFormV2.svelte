@@ -1,14 +1,15 @@
 <script>
   import { goto } from '$app/navigation';
-  import { Dcodes, homeowners, doorSector, yearKeys, protocolMode } from '../../Store.js';
+  import { Dcodes, homeowners, doorSector, yearKeys, pillarChoice, protocolMode } from '../../Store.js';
   import {Solar, Lunar} from 'lunar-javascript'
   
   import {air_datepicker}  from "$lib/components/calendarItem";
   import localeEn from 'air-datepicker/locale/en';
-  import { DayElement, dayofbirthDetails, yearofBirthdate } from '../../Utils.js';
+  import { DayElement, dayofbirthDetails, YearofBirthdate, MonthofBirthdate, DayofBirthdate, TimeofBirthdate } from '../../Utils.js';
   
   import Calswitch from './calswitch.svelte';
   import Newswitch from './newswitch.svelte';
+	import Radiogroup from './radiogroup.svelte';
   export let value = 'couple';
   export let mode = 'off';
 	
@@ -16,6 +17,23 @@
   let isCalendarOn = true;
 
   let protocolM = 'main';
+
+ 
+	let pValue;
+	const p_options = [{
+		label: '年',
+    value: 0
+	}, {
+    label: '月',
+		value: 1
+	}, {
+    label: '日',
+		value: 2
+	}, {
+    label: '时',
+		value: 3
+	}]
+
 
 	function handleSwitch() {
     isSwitchedOn = !isSwitchedOn;
@@ -28,7 +46,7 @@
       protocolM = 'protocol-one'
     }
     
-		console.log(isCalendarOn, protocolM)}
+	console.log(isCalendarOn, protocolM)}
 
 	let isExpanded = false
   let isInputVisible = true;
@@ -124,6 +142,7 @@
                   
   $: protocolM = protocolM
   $: selectedM = selected
+  $: pillarM = pValue
   $: startDate = new Date(range.start);
 
   $: endDate = new Date(range.end);
@@ -158,6 +177,7 @@
       
       // console.log("#####################################################")
       console.log("Door Sector:",selectedM)
+      console.log("Pillar:", pillarM)
       console.log("Date Range:", range.start, range.end)
       console.log("date:", startDate, endDate_1)
       console.log("firstkey:", dobDate1)
@@ -166,12 +186,43 @@
       sc1 = dayofbirthDetails(dobDate1);
       sc2 = dayofbirthDetails(dobDate2);
 
-      sc1year = yearofBirthdate(dobDate1);
-      sc2year = yearofBirthdate(dobDate2);
+      console.log("Configure pillar mode....")
+      if (pillarM == 0) {
+        console.log("Year Selected")
+        sc1year = YearofBirthdate(dobDate1);
+        sc2year = YearofBirthdate(dobDate2);
+        
+        console.log(sc1year)
+        console.log(sc2year)
+      } if (pillarM == 1) {
+        console.log("Month Selected")
+        sc1year = MonthofBirthdate(dobDate1);
+        sc2year = MonthofBirthdate(dobDate2);
+        
+        console.log(sc1year)
+        console.log(sc2year)
+      } if (pillarM == 2) {
+        console.log("Day Selected")
+        sc1year = DayofBirthdate(dobDate1);
+        sc2year = DayofBirthdate(dobDate2);
+        
+        console.log(sc1year)
+        console.log(sc2year)
+      } if (pillarM == 3) {
+        console.log("Hour Selected")
+        sc1year = TimeofBirthdate(dobDate1);
+        sc2year = TimeofBirthdate(dobDate2);
+        
+        console.log(sc1year)
+        console.log(sc2year)
+      }
 
-      console.log("YEAR")
-      console.log(sc1year)
-      console.log(sc2year)
+      // sc1year = YearofBirthdate(dobDate1);
+      // sc2year = YearofBirthdate(dobDate2);
+
+      // console.log("YEAR")
+      // console.log(sc1year)
+      // console.log(sc2year)
 
       function defaultOptions1(){
           if (range.start === null &&  range.end === null)  {
@@ -264,6 +315,10 @@
         return(selected)
       })
 
+      pillarChoice.update(()=>{
+        return(pValue)
+      })
+
       protocolMode.update(()=>{
         return(protocolM)
       })
@@ -312,7 +367,9 @@
                             dayEl: dayElement,
                             gValue: gStems,
                             zValue: zStems,
-                            door: selected})
+                            door: selected,
+                            pillar: pValue
+                          })
 
               payload = payload
               dateRangeData = [... new Set(payload)]
@@ -336,20 +393,24 @@
 <div class="p-2 flex">
     <div class="container max-w-screen-md mx-auto">
       <div>
-        <h2 class="font-semibold text-xl text-gray-600">择日表格 ｜ Date Selection V1</h2>
+        <h2 class="font-semibold text-xl text-gray-600">择日表格 ｜ Date Selection V2</h2>
         <p class="text-gray-500 mb-2"></p>
   
         <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
           <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
             <div class="text-gray-600">
               <p class="font-medium text-lg">Date Details:</p>
-              <p class='pb-4'>Please fill in necessary the fields.</p>
+              <p class='pb-3'>Please fill in necessary the fields.</p>
               
               <Calswitch bind:mode={mode} onSwitch2={handleSwitch2}/>
               <p class="pt-4"></p>
 
               {#if isCalendarOn}
               <Newswitch bind:value={value} onSwitch={handleSwitch}/>
+              <p class="pt-4"></p>
+
+              <p>Pillar</p>
+              <Radiogroup {p_options} fontSize={13}  bind:userSelected={pValue}/>
               {/if}
               
             </div>

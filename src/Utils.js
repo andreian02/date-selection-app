@@ -55,16 +55,51 @@ export function dayofbirthDetails(dob){
   return (bz)
 }
 
-export function yearofBirthdate(dob){
-  
+export function YearofBirthdate(dob){
+  const person = Lunar.fromDate(dob);
+  const birthYear = {
+    gYear: "",
+    zYear: "" 
+  }
+
+  birthYear.gYear = (person.getYearGan())
+  birthYear.zYear = (person.getYearZhi())
+  return (birthYear)
+}
+
+export function MonthofBirthdate(dob){
   const person = Lunar.fromDate(dob);
   const birthYear = {
     gYear: "",
     zYear: "" 
   }
   
-  birthYear.gYear = (person.getYearGan())
-  birthYear.zYear = (person.getYearZhi())
+  birthYear.gYear = (person.getMonthGan())
+  birthYear.zYear = (person.getMonthZhi())
+  return (birthYear)
+}
+
+export function DayofBirthdate(dob){
+  const person = Lunar.fromDate(dob);
+  const birthYear = {
+    gYear: "",
+    zYear: "" 
+  }
+
+  birthYear.gYear = (person.getDayGan())
+  birthYear.zYear = (person.getDayZhi())
+  return (birthYear)
+}
+
+export function TimeofBirthdate(dob){
+  const person = Lunar.fromDate(dob);
+  const birthYear = {
+    gYear: "",
+    zYear: ""
+  }
+  
+  birthYear.gYear = (person.getTimeGan())
+  birthYear.zYear = (person.getTimeZhi())
   return (birthYear)
 }
 
@@ -650,7 +685,8 @@ export function version3(payload, birthYear){
         let sanhe3 = result_details[8]
         let sanhe4 = result_details[9]
 
-        console.log("test values",合3, 冲3, 合4, 冲4, sanhe3[0],sanhe3[1], sanhe4[0],sanhe4[1])
+        console.log("2 person")
+        console.log("test values:",合3, 冲3, 合4, 冲4, sanhe3[0],sanhe3[1], sanhe4[0],sanhe4[1])
         console.log("peek" ,myArray[j])
 
 
@@ -731,16 +767,17 @@ export function version3(payload, birthYear){
       let 冲3 = result_details[3]
       
       let sanhe3 = result_details[4]
-
-      console.log("test values",合3, 冲3, sanhe3[0], sanhe3[1])
       
+      console.log("1 person")
+      //console.log("test values",合3, 冲3, sanhe3[0], sanhe3[1])
+      console.log("test values:",合3, 冲3, sanhe3)
 
       if (myArray[j] === 合3 || sanhe3[0] || sanhe3[1]) {
 
 
         const owner1 = checkElement(ownersArray[0])
         findings = "有合"
-        console.log(`${i} 有合 Value ${合3}} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
+        console.log(`${i} 有合 Value ${合3} found at index ${j}, ${myArray[j]}, ${ownersArray[0]}`);
         console.log('x',findings)
         //let input = ""
         input = `${myArray[j]}${ownersArray[0]}`

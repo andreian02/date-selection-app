@@ -1,6 +1,6 @@
 <!-- this is result page.  -->
 <script>
-  import { Dcodes, doorSector, homeowners, yearKeys, protocolMode } from '../../Store.js';
+  import { Dcodes, doorSector, homeowners, yearKeys, pillarChoice, protocolMode } from '../../Store.js';
   import {transistor, version1, version2, version3, version4, version5, version6, version7, cleanup} from '../../Utils.js'
   import {checkElement} from '../../helper.js'
   import {jieQidetect} from '../../dtools.js'
@@ -13,6 +13,7 @@
   export let keys
   export let birthYear
   export let protocolM
+  export let pillarM
 
   console.log("--------------------------------")
   console.log("Result Table:")
@@ -25,6 +26,11 @@
   doorSector.subscribe((data)=>{
     sector = data
     console.log("sector:", sector)
+  })
+
+  pillarChoice.subscribe((data)=>{
+    pillarM = data
+    console.log("pillar:", pillarM)
   })
 
   Dcodes.subscribe((data)=>{

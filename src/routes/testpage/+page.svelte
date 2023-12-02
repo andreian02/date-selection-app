@@ -1,6 +1,7 @@
 <script>
     import {Solar, Lunar} from 'lunar-javascript'
 
+    import {Dcodes} from '../../Store.js';
 
     import { LayerCake, Svg } from 'layercake';
     import { scaleLinear } from 'd3-scale';
@@ -14,6 +15,7 @@
 
     const seriesKey = 'name';
     const xKey = ['木','火', '土', '金', '水'];
+
   
     const seriesNames = Object.keys(data[0]).filter(d => d !== seriesKey);
   
@@ -26,6 +28,7 @@
     import Dropdown from '$lib/components/Dropdown.svelte';
     import Accordion from '$lib/components/Accordion.svelte';
 
+    let payload
     let show = null;
     const items = ["One", "Two", "Three", "Four"];
 
@@ -50,10 +53,12 @@
       console.log('忌:', nl[i]);
     }
 
+
+
+
+
+
 </script>
-
-
-
 
 <!-- <div class="chart-container">
     <LayerCake
@@ -77,6 +82,10 @@
 {#each items as item, i}
 <Accordion {i} {show} {showCollapse} {item}/>
 {/each}
+
+
+
+
 
 
 <!-- <Dropdown /> -->

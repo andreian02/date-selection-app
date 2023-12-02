@@ -6,7 +6,6 @@
     export let sectorElement
     export let period
     export let protocolM
-
     
     // function filterData() {
     //   return payload.filter((item) => item.dayEl != "金");}
