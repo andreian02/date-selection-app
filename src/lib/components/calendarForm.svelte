@@ -5,7 +5,7 @@
   
   import {air_datepicker}  from "$lib/components/calendarItem";
   import localeEn from 'air-datepicker/locale/en';
-  import { DayElement, dayofbirthDetails, yearofBirthdate } from '../../Utils.js';
+  import { DayElement, dayofbirthDetails, YearofBirthdate } from '../../Utils.js';
   
   import Newswitch from './newswitch.svelte';
   import Calswitch from './calswitch.svelte';
